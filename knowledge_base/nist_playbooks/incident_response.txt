@@ -1,0 +1,168 @@
+## NIST Incident Response Framework (SP 800-61)
+
+### Phase 1: Preparation
+
+Preparation activities:
+- Establish incident response team and define roles
+- Develop incident response policies and procedures
+- Deploy security monitoring tools (SIEM, IDS/IPS, EDR)
+- Configure logging and auditing on all critical systems
+- Establish communication channels and escalation procedures
+- Conduct regular training and tabletop exercises
+- Maintain updated contact lists and vendor agreements
+- Create forensic toolkit and jump bag
+
+Key deliverables:
+- Incident Response Plan
+- Communication Plan
+- Escalation Matrix
+- Asset Inventory
+- Network Diagrams
+
+### Phase 2: Detection and Analysis
+
+Detection sources:
+- Security Information and Event Management (SIEM) alerts
+- Intrusion Detection/Prevention Systems (IDS/IPS)
+- Endpoint Detection and Response (EDR)
+- Antivirus/Antimalware alerts
+- User reports
+- Network flow analysis
+- Log analysis
+
+Analysis steps:
+1. Validate the alert - confirm it's a true positive
+2. Determine scope - identify affected systems and data
+3. Assess severity - categorize by impact and urgency
+4. Document findings - maintain detailed timeline
+5. Notify appropriate stakeholders
+
+Severity levels:
+- Critical: Active data exfiltration, ransomware spreading, APT activity
+- High: Confirmed compromise, lateral movement detected
+- Medium: Suspicious activity, single system compromise
+- Low: Policy violations, reconnaissance detected
+
+### Phase 3: Containment
+
+Short-term containment (immediate):
+- Isolate affected systems from network
+- Block malicious IPs/domains at firewall
+- Disable compromised accounts
+- Capture volatile evidence (memory dumps, network connections)
+
+Long-term containment:
+- Apply patches to vulnerable systems
+- Reset credentials for affected accounts
+- Implement additional monitoring on affected segments
+- Deploy temporary security controls
+
+Evidence preservation:
+- Create forensic images of affected systems
+- Preserve log files and network captures
+- Document chain of custody
+- Hash all evidence files
+
+### Phase 4: Eradication
+
+Eradication steps:
+1. Identify root cause and attack vector
+2. Remove malware and artifacts
+3. Close vulnerability used for initial access
+4. Remove backdoors and persistence mechanisms
+5. Reset all potentially compromised credentials
+6. Rebuild systems if integrity is questionable
+
+Common eradication tasks:
+- Clean malware from all affected systems
+- Remove unauthorized accounts and scheduled tasks
+- Delete malicious registry keys and startup entries
+- Patch exploited vulnerabilities
+- Update security controls and signatures
+
+### Phase 5: Recovery
+
+Recovery steps:
+1. Restore systems from known-good backups
+2. Rebuild compromised systems from scratch if needed
+3. Gradually restore network connectivity
+4. Monitor recovered systems closely for signs of re-compromise
+5. Validate system integrity before returning to production
+
+Recovery monitoring (30-90 days):
+- Enhanced logging on recovered systems
+- Network traffic analysis for C2 callbacks
+- Account activity monitoring
+- File integrity monitoring
+- Regular vulnerability scanning
+
+### Phase 6: Post-Incident Activity (Lessons Learned)
+
+Post-incident review:
+- Conduct after-action review within 1-2 weeks
+- Document timeline of events
+- Identify what worked well and what needs improvement
+- Update incident response procedures
+- Implement recommended security improvements
+- Share indicators of compromise with trusted partners
+
+Report contents:
+- Executive summary
+- Incident timeline
+- Technical findings
+- Root cause analysis
+- Impact assessment
+- Recommendations
+- Indicators of Compromise (IoCs)
+
+## Incident Classification
+
+### Malware Incident Playbook
+1. Identify malware type (ransomware, trojan, worm, etc.)
+2. Determine infection vector (email, web, USB, lateral movement)
+3. Identify all affected systems using IoCs
+4. Isolate affected systems
+5. Collect samples for analysis
+6. Remove malware and persistence mechanisms
+7. Restore from clean backups
+8. Update AV signatures and block IoCs
+
+### Unauthorized Access Playbook
+1. Identify compromised accounts
+2. Determine scope of access
+3. Disable compromised accounts
+4. Review access logs for data access
+5. Reset passwords for all potentially affected accounts
+6. Review and revoke unauthorized changes
+7. Implement MFA if not present
+8. Monitor for re-compromise
+
+### Data Breach Playbook
+1. Identify data accessed or exfiltrated
+2. Determine affected data subjects
+3. Assess regulatory obligations (GDPR, HIPAA, etc.)
+4. Contain the breach (stop ongoing exfiltration)
+5. Preserve evidence
+6. Notify legal counsel
+7. Notify affected parties as required
+8. Implement measures to prevent recurrence
+
+### Insider Threat Playbook
+1. Identify suspicious user activity
+2. Preserve evidence without alerting subject
+3. Coordinate with HR and Legal
+4. Review access logs and file access patterns
+5. Determine if data was exfiltrated
+6. Revoke access when ready to confront
+7. Conduct forensic investigation
+8. Implement DLP controls
+
+### Denial of Service Playbook
+1. Identify type of DoS (volumetric, application, protocol)
+2. Activate DDoS mitigation service
+3. Implement rate limiting and IP blocking
+4. Contact ISP for upstream filtering
+5. Scale infrastructure if possible
+6. Monitor for secondary attacks during distraction
+7. Document attack patterns for future prevention
+8. Review and update DDoS protection plan

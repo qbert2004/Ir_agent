@@ -1,0 +1,311 @@
+# IR-Agent API 🛡️
+
+AI-powered security event ingestion and threat detection system built with FastAPI.
+
+## Features
+
+- 📥 **Event Ingestion**: Receive security events from Vector or other sources
+- 🤖 **AI Analysis**: Automatic threat detection using Groq AI (Llama 3.3 70B)
+- 📊 **Better Stack Integration**: Forward suspicious events to Better Stack for centralized logging
+- 📈 **Real-time Metrics**: Monitor system performance and threat detection rates
+- 🔒 **API Authentication**: Secure endpoints with Bearer token authentication
+- 📚 **Auto-generated Documentation**: Interactive Swagger UI and ReDoc
+
+## Architecture
+
+```
+Windows Events → Vector → IR-Agent API → AI Analysis → Better Stack
+                                       ↓
+                                   Metrics & Reports
+```
+
+## Quick Start
+
+### 1. Prerequisites
+
+- Python 3.8+
+- Vector (for Windows Event Log collection)
+- Groq API key
+- Better Stack source token
+
+### 2. Installation
+
+```bash
+# Clone repository
+git clone <your-repo>
+cd ir-agent-api
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 3. Configuration
+
+Create a `.env` file in the project root:
+
+```env
+# API Security
+MY_API_TOKEN=your-secret-token-here
+
+# Better Stack
+BETTER_STACK_SOURCE_TOKEN=your-betterstack-token
+
+# AI Configuration
+GROQ_API_KEY=your-groq-api-key
+AI_THREAT_THRESHOLD=60
+
+# Application
+ENVIRONMENT=production
+DEBUG=false
+```
+
+### 4. Run the Application
+
+```bash
+# Development mode (with auto-reload)
+python app/main.py
+
+# Or using uvicorn directly
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### 5. Access Documentation
+
+Open your browser:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+- Health Check: http://localhost:8000/health
+
+## API Endpoints
+
+### Health & Status
+
+- `GET /health` - System health and component status
+- `GET /health/live` - Liveness probe
+- `GET /health/ready` - Readiness probe
+
+### Event Ingestion
+
+- `POST /ingest/telemetry` - Receive events from Vector (NDJSON format)
+- `POST /ingest/telemetry/single` - Submit single event (testing)
+- `POST /ingest/telemetry/batch` - Submit multiple events
+
+### Metrics
+
+- `GET /ingest/metrics` - Get current metrics
+- `POST /ingest/metrics/reset` - Reset metrics (testing)
+
+## Vector Integration
+
+Install and configure Vector to collect Windows Event Logs:
+
+### 1. Install Vector
+
+Download from: https://vector.dev/download/
+
+### 2. Configure Vector
+
+Edit `C:\ProgramData\Vector\config\vector.yaml`:
+
+```yaml
+sources:
+  win_security:
+    type: windows_event_log
+    channels: ["Security"]
+
+transforms:
+  security_cleaned:
+    type: remap
+    inputs: ["win_security"]
+    source: |
+      .hostname = get_hostname!()
+      .event_id = to_string!(.event_id)
+      .timestamp = format_timestamp!(now(), format: "%+")
+
+sinks:
+  to_api:
+    type: http
+    inputs: ["security_cleaned"]
+    uri: "http://127.0.0.1:8000/ingest/telemetry"
+    method: "post"
+    encoding:
+      codec: "ndjson"
+    request:
+      headers:
+        Authorization: "Bearer YOUR_API_TOKEN"
+        Content-Type: "application/x-ndjson"
+```
+
+### 3. Set Environment Variable
+
+```powershell
+# PowerShell (Administrator)
+[System.Environment]::SetEnvironmentVariable("MY_API_TOKEN", "your-token", "Machine")
+```
+
+### 4. Start Vector Service
+
+```powershell
+Start-Service vector
+```
+
+## Testing
+
+### Manual Event Submission
+
+```powershell
+# Test event
+Invoke-RestMethod -Uri "http://localhost:8000/ingest/telemetry/single" `
+  -Method POST `
+  -ContentType "application/json" `
+  -Body '{
+    "event_type": "ProcessCreation",
+    "event_id": "4688",
+    "hostname": "test-pc",
+    "user": "admin",
+    "command_line": "powershell -enc SGVsbG8=",
+    "process_name": "powershell.exe"
+  }'
+
+# Check metrics
+Invoke-RestMethod -Uri "http://localhost:8000/ingest/metrics"
+```
+
+### Run Tests
+
+```bash
+# Install test dependencies
+pip install pytest pytest-asyncio
+
+# Run tests
+pytest tests/
+```
+
+## Project Structure
+
+```
+ir-agent-api/
+├── app/
+│   ├── core/           # Configuration
+│   ├── models/         # Pydantic models
+│   ├── routes/         # API endpoints
+│   ├── services/       # Business logic
+│   └── main.py         # Application entry point
+├── tests/              # Tests
+├── .env                # Environment variables
+├── requirements.txt    # Dependencies
+└── README.md
+```
+
+## Configuration Options
+
+### Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `MY_API_TOKEN` | API authentication token | None |
+| `BETTER_STACK_SOURCE_TOKEN` | Better Stack source token | None |
+| `GROQ_API_KEY` | Groq AI API key | None |
+| `AI_MODEL` | AI model to use | llama-3.3-70b-versatile |
+| `AI_THREAT_THRESHOLD` | Threat score threshold (0-100) | 60 |
+| `HOST` | Server host | 0.0.0.0 |
+| `PORT` | Server port | 8000 |
+| `ENVIRONMENT` | Environment (dev/prod) | development |
+| `DEBUG` | Enable debug mode | true |
+
+## Monitoring
+
+### Metrics Available
+
+- `total_events` - Total events received
+- `ai_analyzed` - Events analyzed by AI
+- `threats_detected` - Threats detected (score >= threshold)
+- `sent_to_betterstack` - Events forwarded to Better Stack
+- `detection_rate` - Threat detection rate (%)
+- `success_rate` - Better Stack forwarding success rate (%)
+
+### Better Stack Dashboard
+
+View your logs at: https://logs.betterstack.com
+
+Events are tagged with:
+- `threat_score` - AI threat score (0-100)
+- `threat_level` - Threat severity (low/medium/high/critical)
+- `event_type` - Type of Windows event
+- `hostname` - Source machine
+
+## Security Considerations
+
+1. **Keep your tokens secret** - Never commit `.env` to version control
+2. **Use strong API tokens** - Generate random 32+ character tokens
+3. **Enable HTTPS** - Use a reverse proxy (nginx, Caddy) in production
+4. **Rotate tokens regularly** - Change API keys monthly/quarterly
+5. **Monitor logs** - Check Better Stack for suspicious activity
+
+## Troubleshooting
+
+### Vector Not Connecting
+
+```powershell
+# Check Vector service
+Get-Service vector
+
+# Check Vector logs
+Get-Content "C:\ProgramData\Vector\logs\vector.log" -Tail 50
+
+# Validate config
+cd "C:\Program Files\Vector"
+.\bin\vector.exe validate C:\ProgramData\Vector\config\vector.yaml
+```
+
+### API Not Receiving Events
+
+1. Check Vector is sending to correct URL
+2. Verify API token matches in Vector config and `.env`
+3. Check firewall rules (allow port 8000)
+4. View API logs for error messages
+
+### AI Analysis Not Working
+
+1. Verify `GROQ_API_KEY` is set correctly
+2. Check Groq API quota: https://console.groq.com
+3. View application logs for API errors
+
+### Better Stack Not Receiving
+
+1. Verify `BETTER_STACK_SOURCE_TOKEN` is correct
+2. Check Better Stack dashboard for errors
+3. Ensure events exceed `AI_THREAT_THRESHOLD`
+
+## Performance Tips
+
+1. **Batch events** - Use `/ingest/telemetry/batch` for bulk submissions
+2. **Adjust threshold** - Lower `AI_THREAT_THRESHOLD` to catch more threats
+3. **Filter events** - Configure Vector to only send security-relevant events
+4. **Monitor metrics** - Use `/ingest/metrics` to track performance
+
+## License
+
+MIT License - see LICENSE file for details
+
+## Support
+
+For issues and questions:
+- GitHub Issues: <your-repo>/issues
+- Email: your-email@example.com
+
+## Acknowledgments
+
+- FastAPI - Modern Python web framework
+- Groq - Fast AI inference
+- Better Stack - Log management platform
+- Vector - Data pipeline tool

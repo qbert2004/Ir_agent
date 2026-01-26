@@ -1,0 +1,128 @@
+## Critical Windows Security Event IDs
+
+### Authentication Events
+
+Event ID 4624 - Successful Logon
+Logon Types:
+- Type 2: Interactive (local console)
+- Type 3: Network (SMB, mapped drives)
+- Type 4: Batch (scheduled tasks)
+- Type 5: Service
+- Type 7: Unlock
+- Type 8: NetworkCleartext
+- Type 9: NewCredentials (RunAs with /netonly)
+- Type 10: RemoteInteractive (RDP)
+- Type 11: CachedInteractive
+Security significance: Monitor for Type 3 and Type 10 from unusual sources, Type 2 on servers.
+
+Event ID 4625 - Failed Logon
+Indicates brute-force attempts, password spraying, or credential stuffing.
+High volume from single source = brute force.
+Distributed sources targeting one account = password spray.
+Status codes: 0xC000006A (wrong password), 0xC0000064 (user not found), 0xC0000072 (disabled account).
+
+Event ID 4648 - Explicit Credential Logon
+A logon was attempted using explicit credentials (RunAs, mapped network drives with different creds).
+Common in lateral movement when attackers use stolen credentials.
+
+Event ID 4672 - Special Privileges Assigned
+Assigned to new logon session. Indicates admin-level logon.
+Privileges: SeDebugPrivilege (process debugging), SeBackupPrivilege (read any file), SeRestorePrivilege (write any file).
+Alert on non-admin accounts receiving these privileges.
+
+### Process Events
+
+Event ID 4688 - New Process Created
+Critical for detecting malicious processes. Enable command-line logging for full visibility.
+Key fields: NewProcessName, CommandLine, ParentProcessName, TokenElevationType.
+Watch for: cmd.exe, powershell.exe, wscript.exe, cscript.exe, mshta.exe, regsvr32.exe, rundll32.exe spawned by Office apps or browsers.
+
+Event ID 4689 - Process Terminated
+Useful for correlating process lifetimes with 4688.
+
+### Service Events
+
+Event ID 7045 - New Service Installed
+Indicates persistence mechanism or lateral movement (PsExec creates PSEXESVC).
+Watch for: Services with random names, services running from temp directories, services with encoded commands.
+
+Event ID 7034 - Service Crashed Unexpectedly
+May indicate exploitation attempt or unstable malware.
+
+Event ID 7036 - Service Started/Stopped
+Track security-relevant services: Windows Defender, Windows Firewall, Event Log.
+
+### Object Access
+
+Event ID 4663 - Object Access Attempted
+File/folder access attempt. Requires SACL configuration.
+Monitor access to sensitive files: SAM, NTDS.dit, password files.
+
+Event ID 4656 - Handle Requested
+Object handle requested. Precedes 4663.
+Critical for detecting attempts to access LSASS, SAM, or security-sensitive files.
+
+### Account Management
+
+Event ID 4720 - User Account Created
+New account creation. Watch for accounts created outside normal provisioning.
+Attackers create backdoor accounts for persistence.
+
+Event ID 4732 - Member Added to Security-Enabled Local Group
+User added to Administrators or other privileged group.
+Alert on unexpected additions to high-privilege groups.
+
+Event ID 4728 - Member Added to Security-Enabled Global Group
+User added to domain-level group (Domain Admins, Enterprise Admins).
+
+### Active Directory
+
+Event ID 4662 - Directory Service Access
+Used to detect DCSync attacks (replication requests).
+Watch for: DS-Replication-Get-Changes, DS-Replication-Get-Changes-All rights used by non-DC accounts.
+
+Event ID 4769 - Kerberos Service Ticket Requested
+Used to detect Kerberoasting.
+Watch for: RC4 encryption (Type 0x17) TGS requests to service accounts.
+
+Event ID 4771 - Kerberos Pre-Authentication Failed
+AS-REP roasting detection.
+Watch for accounts with pre-auth disabled.
+
+### PowerShell Events
+
+Event ID 4104 - Script Block Logging
+Captures deobfuscated PowerShell script content.
+Essential for detecting encoded/obfuscated PowerShell attacks.
+Watch for: IEX, Invoke-Expression, DownloadString, -enc, bypass, AMSI, reflection.
+
+Event ID 4103 - Module Logging
+PowerShell pipeline execution details.
+
+### Scheduled Tasks
+
+Event ID 4698 - Scheduled Task Created
+New scheduled task. Common persistence mechanism.
+Watch for: Tasks running PowerShell, tasks with encoded commands, tasks executing from unusual paths.
+
+### Windows Defender
+
+Event ID 1116 - Malware Detected
+Windows Defender detection event.
+Includes threat name, severity, and affected file.
+
+Event ID 1117 - Action Taken on Malware
+Response action taken by Defender.
+
+Event ID 5001 - Real-Time Protection Disabled
+Critical alert: antivirus disabled.
+Attackers often disable security tools before deploying payloads.
+
+### Firewall Events
+
+Event ID 2003 - Firewall Rule Changed
+Windows Firewall rule modification.
+Watch for: Rules allowing inbound connections, rules disabled by script.
+
+Event ID 2004 - Firewall Exception Added
+New exception added. Potential C2 channel establishment.

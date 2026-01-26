@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IR-Agent - Hybrid ML+Agent Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        /* Metrics Grid */
+        .metrics-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .metric-card {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .metric-card.highlight {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8ecff 100%);
+        }
+
+        .metric-card.warning {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+
+        .metric-card.success {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .metric-card.warning .metric-value {
+            color: #f59e0b;
+        }
+
+        .metric-card.success .metric-value {
+            color: #10b981;
+        }
+
+        .metric-label {
+            color: #64748b;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-sublabel {
+            color: #94a3b8;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        /* Processing Paths */
+        .paths-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .path-card {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .path-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .path-card .icon {
+            font-size: 24px;
+        }
+
+        .path-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .path-stat {
+            text-align: center;
+        }
+
+        .path-stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        .path-stat-label {
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        /* Controls */
+        .controls {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 20px;
+            align-items: flex-end;
+        }
+
+        .control-group {
+            flex: 1;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .control-group input,
+        .control-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 0;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Report Output */
+        .report-output {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+            max-height: 600px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            display: none;
+        }
+
+        .report-output.visible {
+            display: block;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #64748b;
+            display: none;
+        }
+
+        .loading.visible {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-online {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-offline {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .alert.visible {
+            display: block;
+        }
+
+        .alert.error {
+            background: #fef2f2;
+            border: 2px solid #fecaca;
+            color: #991b1b;
+        }
+
+        .alert.success {
+            background: #f0fdf4;
+            border: 2px solid #bbf7d0;
+            color: #166534;
+        }
+
+        /* Architecture Diagram */
+        .architecture {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            font-size: 12px;
+            color: #475569;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .paths-container {
+                grid-template-columns: 1fr;
+            }
+            .control-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛡️ IR-Agent Dashboard</h1>
+            <p>Hybrid ML + CyberAgent Event Processing</p>
+        </div>
+
+        <div class="content">
+            <!-- Architecture -->
+            <div class="architecture">
+                Collector → API → ML Filter → [Fast-Path ≥80%] → Better Stack<br>
+                                          ↓<br>
+                              [Anomalous 50-80%] → CyberAgent → Better Stack
+            </div>
+
+            <!-- Processing Metrics -->
+            <div class="metrics-section">
+                <div class="section-title">📊 Event Processing</div>
+                <div class="metrics">
+                    <div class="metric-card highlight">
+                        <div class="metric-value" id="totalProcessed">-</div>
+                        <div class="metric-label">Total Processed</div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-value" id="maliciousDetected">-</div>
+                        <div class="metric-label">Malicious Detected</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="benignFiltered">-</div>
+                        <div class="metric-label">Benign Filtered</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="filterRate">-</div>
+                        <div class="metric-label">Filter Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Processing Paths -->
+            <div class="paths-container">
+                <div class="path-card">
+                    <h3><span class="icon">⚡</span> Fast-Path (ML Only)</h3>
+                    <p style="color: #64748b; font-size: 13px;">High confidence events (≥80%), ~5ms processing</p>
+                    <div class="path-stats">
+                        <div class="path-stat">
+                            <div class="path-stat-value" id="fastPathCount">-</div>
+                            <div class="path-stat-label">Events</div>
+                        </div>
+                        <div class="path-stat">
+                            <div class="path-stat-value" id="fastPathPercent">-</div>
+                            <div class="path-stat-label">of Total</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="path-card">
+                    <h3><span class="icon">🤖</span> Deep-Path (Agent)</h3>
+                    <p style="color: #64748b; font-size: 13px;">Anomalous events, CyberAgent analysis, ~1-2s</p>
+                    <div class="path-stats">
+                        <div class="path-stat">
+                            <div class="path-stat-value" id="deepPathCount">-</div>
+                            <div class="path-stat-label">Events</div>
+                        </div>
+                        <div class="path-stat">
+                            <div class="path-stat-value" id="agentInvocations">-</div>
+                            <div class="path-stat-label">Agent Calls</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Better Stack & ML -->
+            <div class="metrics-section">
+                <div class="section-title">📡 Better Stack & ML Model</div>
+                <div class="metrics">
+                    <div class="metric-card success">
+                        <div class="metric-value" id="sentToBetterStack">-</div>
+                        <div class="metric-label">Sent to Better Stack</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="failedCount">-</div>
+                        <div class="metric-label">Failed</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="mlStatus">-</div>
+                        <div class="metric-label">ML Model</div>
+                        <div class="metric-sublabel" id="mlF1">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="lastEvent">-</div>
+                        <div class="metric-label">Last Event</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Report Controls -->
+            <div class="controls">
+                <div class="section-title">📝 Generate Report</div>
+                <div class="control-row">
+                    <div class="control-group">
+                        <label for="timeRange">Time Range (hours)</label>
+                        <input type="number" id="timeRange" value="24" min="1" max="168">
+                    </div>
+                    <div class="control-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="aiAnalysis" checked>
+                            <label for="aiAnalysis" style="margin-bottom: 0;">
+                                AI Analysis (Groq)
+                                <span class="status-badge" id="aiStatus">checking...</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn" id="generateBtn" onclick="generateReport()">
+                        🤖 Generate Report
+                    </button>
+                </div>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Generating report with AI analysis...</p>
+            </div>
+
+            <div class="alert error" id="error"></div>
+            <div class="alert success" id="success"></div>
+
+            <div class="report-output" id="reportOutput"></div>
+        </div>
+    </div>
+
+    <script>
+        // Load metrics on page load
+        async function loadMetrics() {
+            try {
+                const response = await fetch('http://localhost:9000/ingest/metrics');
+                const data = await response.json();
+
+                console.log('Metrics loaded:', data);
+
+                if (data.status === 'success') {
+                    const processing = data.processing || {};
+                    const paths = data.paths || {};
+                    const betterstack = data.betterstack || {};
+                    const mlModel = data.ml_model || {};
+
+                    // Processing metrics
+                    document.getElementById('totalProcessed').textContent = processing.total_processed || 0;
+                    document.getElementById('maliciousDetected').textContent = processing.malicious_detected || 0;
+                    document.getElementById('benignFiltered').textContent = processing.benign_filtered || 0;
+                    document.getElementById('filterRate').textContent = processing.filter_rate || '0%';
+
+                    // Path metrics
+                    const fastPath = paths.fast_path_count || 0;
+                    const deepPath = paths.deep_path_count || 0;
+                    const total = fastPath + deepPath;
+
+                    document.getElementById('fastPathCount').textContent = fastPath;
+                    document.getElementById('fastPathPercent').textContent = total > 0 ?
+                        Math.round((fastPath / total) * 100) + '%' : '-';
+                    document.getElementById('deepPathCount').textContent = deepPath;
+                    document.getElementById('agentInvocations').textContent = paths.agent_invocations || 0;
+
+                    // Better Stack
+                    document.getElementById('sentToBetterStack').textContent = betterstack.sent || 0;
+                    document.getElementById('failedCount').textContent = betterstack.failed || 0;
+
+                    // ML Model
+                    document.getElementById('mlStatus').textContent = mlModel.model_loaded ? '✅ Loaded' : '❌ Not Loaded';
+                    const f1 = mlModel.metrics?.f1;
+                    document.getElementById('mlF1').textContent = f1 ? `F1: ${(f1 * 100).toFixed(1)}%` : '';
+
+                    // Last event
+                    const lastEvent = data.last_event;
+                    if (lastEvent) {
+                        const date = new Date(lastEvent);
+                        document.getElementById('lastEvent').textContent = date.toLocaleTimeString();
+                    } else {
+                        document.getElementById('lastEvent').textContent = '-';
+                    }
+
+                    // AI status
+                    const aiStatus = document.getElementById('aiStatus');
+                    aiStatus.textContent = 'online';
+                    aiStatus.className = 'status-badge status-online';
+                }
+            } catch (error) {
+                console.error('Failed to load metrics:', error);
+                document.getElementById('totalProcessed').textContent = 'Error';
+
+                const aiStatus = document.getElementById('aiStatus');
+                aiStatus.textContent = 'offline';
+                aiStatus.className = 'status-badge status-offline';
+            }
+        }
+
+        // Generate report
+        async function generateReport() {
+            const timeRange = document.getElementById('timeRange').value;
+            const aiAnalysis = document.getElementById('aiAnalysis').checked;
+
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const success = document.getElementById('success');
+            const output = document.getElementById('reportOutput');
+            const btn = document.getElementById('generateBtn');
+
+            // Reset states
+            loading.classList.remove('visible');
+            error.classList.remove('visible');
+            success.classList.remove('visible');
+            output.classList.remove('visible');
+
+            // Show loading
+            loading.classList.add('visible');
+            btn.disabled = true;
+            btn.textContent = '⏳ Generating...';
+
+            try {
+                const response = await fetch('http://localhost:9000/api/report/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        time_range_hours: parseInt(timeRange),
+                        include_ai_analysis: aiAnalysis
+                    })
+                });
+
+                const data = await response.json();
+                console.log('Report response:', data);
+
+                loading.classList.remove('visible');
+                btn.disabled = false;
+                btn.textContent = '🤖 Generate Report';
+
+                if (data.status === 'success') {
+                    success.textContent = '✅ Report generated successfully!';
+                    success.classList.add('visible');
+
+                    output.textContent = data.report;
+                    output.classList.add('visible');
+
+                    // Reload metrics
+                    await loadMetrics();
+                } else {
+                    error.textContent = '❌ Error: ' + (data.message || 'Unknown error');
+                    error.classList.add('visible');
+
+                    if (data.report) {
+                        output.textContent = data.report;
+                        output.classList.add('visible');
+                    }
+                }
+            } catch (err) {
+                loading.classList.remove('visible');
+                btn.disabled = false;
+                btn.textContent = '🤖 Generate Report';
+
+                error.textContent = '❌ Failed to generate report: ' + err.message;
+                error.classList.add('visible');
+                console.error('Report generation error:', err);
+            }
+        }
+
+        // Load metrics on page load
+        loadMetrics();
+
+        // Reload metrics every 5 seconds
+        setInterval(loadMetrics, 5000);
+    </script>
+</body>
+</html>
