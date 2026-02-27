@@ -24,7 +24,8 @@ wheels/
 venv/
 env/
 ENV/
-.venv
+.venv/
+.venv.rar
 
 # IDE
 .vscode/
@@ -58,3 +59,8 @@ htmlcov/
 
 # Vector
 vector-data/
+
+# Misc
+nul
+*.rar
+*.pkl

@@ -2,13 +2,14 @@
 Report Generation - С РЕАЛЬНЫМ AI АНАЛИЗОМ
 Интегрирован с гибридной ML+Agent архитектурой
 """
-import os
 import logging
 import httpx
 from fastapi import APIRouter
 from pydantic import BaseModel
 from datetime import datetime
-from groq import Groq
+
+from app.core.config import settings
+from app.core.llm_client import get_llm_client
 
 router = APIRouter(prefix="/api/report", tags=["Reports"])
 logger = logging.getLogger("ir-agent")
@@ -82,15 +83,13 @@ async def generate_report(request: ReportRequest):
 async def _generate_ai_report(metrics_data: dict, time_range_hours: int) -> str:
     """Генерирует отчет через Groq AI"""
     try:
-        api_key = os.getenv("LLM_API_KEY")
-        if not api_key:
+        llm = get_llm_client()
+        if not llm.available:
             logger.warning("No Groq API key, using basic report")
             return _generate_basic_report(metrics_data, time_range_hours)
 
         logger.info("Calling Groq AI for report generation...")
-
-        client = Groq(api_key=api_key)
-        model = os.getenv("LLM_REPORT_MODEL", "llama-3.3-70b-versatile")
+        model = settings.ai_report_model
 
         # Извлекаем данные из новой структуры
         processing = metrics_data.get("processing", {})
@@ -156,8 +155,7 @@ Keep it professional, concise, and actionable. Use proper Markdown formatting.""
 
         logger.info(f"Sending request to Groq ({model})...")
 
-        response = client.chat.completions.create(
-            model=model,
+        ai_report = llm.chat(
             messages=[
                 {
                     "role": "system",
@@ -168,11 +166,10 @@ Keep it professional, concise, and actionable. Use proper Markdown formatting.""
                     "content": prompt
                 }
             ],
+            model=model,
             temperature=0.5,
-            max_tokens=2000
+            max_tokens=2000,
         )
-
-        ai_report = response.choices[0].message.content
         logger.info("AI report generated successfully")
 
         # Добавляем хедер с метриками

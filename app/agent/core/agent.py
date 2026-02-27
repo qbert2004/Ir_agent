@@ -178,20 +178,15 @@ class CyberAgent:
         )
 
     def _call_llm(self, system_prompt: str, user_prompt: str) -> str:
-        """Call the Groq LLM with system and user prompts."""
+        """Call the LLM via shared client with retry/timeout."""
         try:
-            from groq import Groq
-            import os
+            from app.core.llm_client import get_llm_client
 
-            api_key = os.getenv("LLM_API_KEY") or os.getenv("GROQ_API_KEY")
-            model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
-
-            if not api_key:
+            client = get_llm_client()
+            if not client.available:
                 return "Final Answer: LLM API key not configured. Cannot process query."
 
-            client = Groq(api_key=api_key)
-            response = client.chat.completions.create(
-                model=model,
+            return client.chat(
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
@@ -199,7 +194,6 @@ class CyberAgent:
                 temperature=0.2,
                 max_tokens=1024,
             )
-            return response.choices[0].message.content or ""
         except Exception as e:
             logger.error(f"LLM call failed: {e}")
             return f"Final Answer: Error calling LLM: {str(e)}"

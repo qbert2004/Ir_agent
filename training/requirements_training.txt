@@ -1,0 +1,36 @@
+# Training Dependencies for Neural Classifier
+# Install: pip install -r training/requirements_training.txt
+
+# Core ML
+torch>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+scipy>=1.10.0
+
+# Data Processing
+pandas>=2.0.0
+pyyaml>=6.0.0
+tqdm>=4.65.0
+
+# EVTX Parsing
+python-evtx>=0.7.0
+lxml>=4.9.0
+
+# Transformers (for embeddings)
+sentence-transformers>=2.2.0
+transformers>=4.30.0
+tokenizers>=0.13.0
+
+# Hugging Face Hub
+huggingface-hub>=0.16.0
+
+# Logging
+tensorboard>=2.13.0
+
+# Optional: Fine-tuning
+# accelerate>=0.20.0
+# peft>=0.4.0
+# bitsandbytes>=0.40.0  # Linux only
+
+# Optional: Experiment tracking
+# wandb>=0.15.0

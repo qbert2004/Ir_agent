@@ -1,0 +1,73 @@
+{
+    "description": "Конфигурация обучения нейросетевого классификатора",
+
+    "data": {
+        "evtx_dir": "datasets/EVTX-ATTACK-SAMPLES",
+        "output_dir": "training/data",
+        "train_split": 0.8,
+        "val_split": 0.2,
+        "synthetic_benign_ratio": 1.0
+    },
+
+    "model": {
+        "embedding_model": "all-MiniLM-L6-v2",
+        "embedding_dim": 384,
+        "hidden_layers": [512, 256, 128],
+        "num_classes": 5,
+        "dropout": 0.3
+    },
+
+    "training": {
+        "epochs": 50,
+        "batch_size": 32,
+        "learning_rate": 0.001,
+        "weight_decay": 0.01,
+        "early_stopping_patience": 10,
+        "lr_scheduler_patience": 5,
+        "lr_scheduler_factor": 0.5
+    },
+
+    "classes": [
+        "benign",
+        "suspicious_low",
+        "suspicious_medium",
+        "malicious_high",
+        "malicious_critical"
+    ],
+
+    "output": {
+        "model_path": "models/neural_classifier.pt",
+        "best_model_path": "models/neural_classifier_best.pt",
+        "history_path": "models/training_history.json"
+    },
+
+    "hardware_recommendations": {
+        "minimum_gpu": "GTX 1660 / RTX 3060",
+        "recommended_gpu": "RTX 3070 / RTX 4070",
+        "minimum_vram_gb": 6,
+        "recommended_vram_gb": 8,
+        "cpu_training": "возможно, но в 10-20x медленнее"
+    },
+
+    "alternative_embedding_models": {
+        "all-MiniLM-L6-v2": {
+            "dim": 384,
+            "speed": "fast",
+            "quality": "good",
+            "recommended": true
+        },
+        "all-mpnet-base-v2": {
+            "dim": 768,
+            "speed": "medium",
+            "quality": "better",
+            "recommended": false
+        },
+        "paraphrase-multilingual-MiniLM-L12-v2": {
+            "dim": 384,
+            "speed": "fast",
+            "quality": "good",
+            "multilingual": true,
+            "recommended": false
+        }
+    }
+}

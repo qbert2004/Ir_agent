@@ -21,11 +21,13 @@ from datetime import datetime
 from typing import Dict, Any, List
 from collections import defaultdict
 import ctypes
+import os
 
 # ==================== НАСТРОЙКИ ====================
-API_URL = "http://localhost:9000/ingest/telemetry"
-BETTER_STACK_TOKEN = "ndVwN8UXuTWePE9gNqGmHT5h"
-BETTER_STACK_URL = "https://s1564996.eu-nbg-2.betterstackdata.com"
+API_URL = os.getenv("API_URL", "http://localhost:9000/ingest/telemetry")
+API_TOKEN = os.getenv("MY_API_TOKEN", "")
+BETTER_STACK_TOKEN = os.getenv("BETTER_STACK_SOURCE_TOKEN", "")
+BETTER_STACK_URL = os.getenv("BETTER_STACK_URL", "https://s1564996.eu-nbg-2.betterstackdata.com")
 
 # Интервалы сбора
 EVENT_CHECK_INTERVAL = 10  # События каждые 10 секунд
@@ -504,7 +506,10 @@ class UnifiedCollector:
             response = requests.post(
                 API_URL,
                 json=data,
-                headers={"Content-Type": "application/json"},
+                headers={
+                    "Content-Type": "application/json",
+                    "Authorization": f"Bearer {API_TOKEN}",
+                },
                 timeout=10
             )
             if response.status_code == 200:
