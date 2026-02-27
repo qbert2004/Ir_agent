@@ -17,12 +17,14 @@ from typing import Dict, Any
 import logging
 
 from app.services.event_processor import get_event_processor
+from app.services.incident_manager import get_incident_manager
 
 router = APIRouter(prefix="/ingest", tags=["Ingest"])
 logger = logging.getLogger("ir-agent")
 
-# Get event processor singleton
+# Get singletons
 event_processor = get_event_processor()
+incident_manager = get_incident_manager()
 
 
 async def process_event(event: Dict[str, Any]):
@@ -161,3 +163,53 @@ async def ml_status():
             "deep_path": "CyberAgent analysis, ~1-2s, confidence 50-80%",
         },
     }
+
+
+# ── Incident Investigation Endpoints ──────────────────────────────────
+
+@router.get("/incidents")
+async def list_incidents():
+    """List all correlated incidents."""
+    return {
+        "status": "success",
+        "incidents": incident_manager.list_incidents(),
+        "stats": incident_manager.get_stats(),
+    }
+
+
+@router.get("/incidents/{incident_id}")
+async def get_incident(incident_id: str):
+    """Get incident details."""
+    incident = incident_manager.get_incident(incident_id)
+    if not incident:
+        return {"status": "error", "message": f"Incident {incident_id} not found"}
+    return {"status": "success", "incident": incident}
+
+
+@router.post("/incidents/{incident_id}/investigate")
+async def investigate_incident(incident_id: str):
+    """
+    Run full investigation on a correlated incident.
+
+    Performs:
+        1. Timeline reconstruction
+        2. IoC extraction
+        3. MITRE ATT&CK mapping
+        4. Incident classification
+        5. Root cause analysis
+        6. Impact assessment
+        7. Response recommendations
+    """
+    result = incident_manager.investigate(incident_id)
+    if not result:
+        return {"status": "error", "message": f"Incident {incident_id} not found"}
+    return {"status": "success", "investigation": result}
+
+
+@router.get("/incidents/{incident_id}/report")
+async def get_incident_report(incident_id: str):
+    """Get human-readable investigation report."""
+    report = incident_manager.get_report(incident_id)
+    if not report:
+        return {"status": "error", "message": f"Incident {incident_id} not found"}
+    return {"status": "success", "report": report}

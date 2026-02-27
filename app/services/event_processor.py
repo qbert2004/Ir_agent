@@ -19,6 +19,7 @@ from typing import Dict, Any, Optional, Tuple
 
 from app.services.ml_detector import get_detector, MLAttackDetector
 from app.services.metrics import metrics_service
+from app.services.incident_manager import get_incident_manager
 from app.common.betterstack_forwarder import BetterStackForwarder
 
 logger = logging.getLogger("ir-agent")
@@ -59,6 +60,7 @@ class EventProcessor:
         self._ml_detector: Optional[MLAttackDetector] = None
         self._betterstack: Optional[BetterStackForwarder] = None
         self._agent_service = None  # Lazy loaded to avoid circular imports
+        self._incident_manager = get_incident_manager()
 
         # Metrics
         self.metrics = {
@@ -123,6 +125,11 @@ class EventProcessor:
                     "confidence": confidence,
                     "path": "fast",
                 }
+
+            # Step 1.5: Correlate into incident
+            incident_id = self._incident_manager.correlate_event(
+                event, ml_confidence=confidence, ml_reason=reason
+            )
 
             # Step 2: Determine processing path
             if confidence >= self.THRESHOLD_CERTAIN:
