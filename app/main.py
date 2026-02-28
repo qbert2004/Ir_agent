@@ -25,6 +25,7 @@ try:
     from app.common.ai_groq import ask, stream
     from app.routers import health, ingest, report, investigation, agent
     from app.routers import ml_investigation
+    from app.routers import assessment
     from app.core.config import settings
     from app.core.middleware import (
         RequestIDMiddleware,
@@ -88,6 +89,18 @@ async def lifespan(app: FastAPI):
     logger.info("CORS origins: %s", settings.cors_origins_list)
     logger.info("Rate limit: %d req/min", settings.rate_limit_per_minute)
     logger.info("Threshold: %d  Port: %d", settings.ai_threat_threshold, settings.api_port)
+    logger.info(
+        "Docs UI: %s",
+        "DISABLED (production)" if settings.environment == "production" else "/docs (dev mode)",
+    )
+
+    # Database
+    try:
+        from app.db.database import init_db
+        await init_db()
+        logger.info("Database: %s", settings.database_url.split("///")[-1])
+    except Exception as e:
+        logger.error("Database init failed: %s", e)
 
     # Agent
     try:
@@ -124,13 +137,25 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.warning("Failed to save agent state: %s", e)
 
+    try:
+        from app.db.database import close_db
+        await close_db()
+    except Exception as e:
+        logger.warning("DB close error: %s", e)
+
 
 # ── FastAPI app ──────────────────────────────────────────────────────────
+# In production hide Swagger UI to avoid API surface exposure.
+_docs_url = None if settings.environment == "production" else "/docs"
+_redoc_url = None if settings.environment == "production" else "/redoc"
+
 app = FastAPI(
     title="IR-Agent API",
     description="AI-powered Incident Response Agent",
     version=settings.app_version,
     lifespan=lifespan,
+    docs_url=_docs_url,
+    redoc_url=_redoc_url,
 )
 
 # ── Middleware (order matters: outermost first) ──────────────────────────
@@ -154,6 +179,7 @@ app.include_router(report.router)
 app.include_router(investigation.router)
 app.include_router(agent.router)
 app.include_router(ml_investigation.router)
+app.include_router(assessment.router)
 
 
 # ── Extra endpoints ──────────────────────────────────────────────────────

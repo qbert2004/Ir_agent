@@ -11,6 +11,7 @@ Flow:
         → UNCERTAIN (50-80%): Agent deep analysis → forward
 """
 
+import json
 import logging
 import os
 import uuid
@@ -21,6 +22,11 @@ from app.services.ml_detector import get_detector, MLAttackDetector
 from app.services.metrics import metrics_service
 from app.services.incident_manager import get_incident_manager
 from app.common.betterstack_forwarder import BetterStackForwarder
+from app.assessment.threat_assessment import (
+    ThreatAssessmentEngine, ThreatAssessment,
+    MLSignal, IoCSignal, MITRESignal, AgentSignal,
+    get_assessment_engine,
+)
 
 logger = logging.getLogger("ir-agent")
 
@@ -61,6 +67,7 @@ class EventProcessor:
         self._betterstack: Optional[BetterStackForwarder] = None
         self._agent_service = None  # Lazy loaded to avoid circular imports
         self._incident_manager = get_incident_manager()
+        self._assessment_engine: ThreatAssessmentEngine = get_assessment_engine()
 
         # Metrics
         self.metrics = {
@@ -98,13 +105,14 @@ class EventProcessor:
 
     async def classify_and_forward(self, event: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Main entry point: classify event and forward if malicious.
+        Main entry point: classify event, assess threat, and forward if malicious.
 
-        Args:
-            event: Raw event data
-
-        Returns:
-            Processing result with classification details
+        Flow:
+            1. Fast ML classification (GradientBoosting)
+            2. ThreatAssessment (ML signal → unified score)
+            3. BENIGN (<50%) → discard
+            4. HIGH CONFIDENCE (≥80%) → fast-path + ThreatAssessment
+            5. UNCERTAIN (50-80%) + anomalous → deep-path Agent → ThreatAssessment fusion
         """
         self.metrics["total_events"] += 1
         self.metrics["last_event_time"] = datetime.utcnow().isoformat()
@@ -131,20 +139,36 @@ class EventProcessor:
                 event, ml_confidence=confidence, ml_reason=reason
             )
 
+            # Step 1.6: Quick ThreatAssessment with ML signal only (fast-path)
+            ml_signal = MLSignal(
+                score=confidence,
+                is_malicious=is_malicious,
+                reason=reason,
+                model_loaded=self._ml_detector.is_ready,
+            )
+
             # Step 2: Determine processing path
             if confidence >= self.THRESHOLD_CERTAIN:
-                # HIGH CONFIDENCE - fast forward
-                result = await self._fast_path_forward(event, confidence, reason)
+                # HIGH CONFIDENCE — fast forward with ML-only assessment
+                assessment = self._assessment_engine.assess(ml=ml_signal)
+                result = await self._fast_path_forward(
+                    event, confidence, reason, assessment=assessment
+                )
                 self.metrics["malicious_fast_path"] += 1
             else:
-                # UNCERTAIN (50-80%) - check if truly anomalous
+                # UNCERTAIN (50-80%) — check if truly anomalous
                 if self._is_anomalous(event):
-                    # ANOMALOUS - invoke agent for deep analysis
-                    result = await self._deep_path_analyze(event, confidence, reason, event_id)
+                    # ANOMALOUS — deep Agent analysis + full ThreatAssessment fusion
+                    result = await self._deep_path_analyze(
+                        event, confidence, reason, event_id, ml_signal=ml_signal
+                    )
                     self.metrics["malicious_deep_path"] += 1
                 else:
-                    # NOT ANOMALOUS - fast forward without agent
-                    result = await self._fast_path_forward(event, confidence, reason)
+                    # NOT ANOMALOUS — fast forward with ML-only assessment
+                    assessment = self._assessment_engine.assess(ml=ml_signal)
+                    result = await self._fast_path_forward(
+                        event, confidence, reason, assessment=assessment
+                    )
                     self.metrics["malicious_fast_path"] += 1
 
             return result
@@ -161,20 +185,41 @@ class EventProcessor:
         self,
         event: Dict[str, Any],
         confidence: float,
-        reason: str
+        reason: str,
+        assessment: Optional["ThreatAssessment"] = None,
     ) -> Dict[str, Any]:
         """
         Fast-path: High-confidence malicious events go directly to Better Stack.
+        Includes ThreatAssessment in enriched event payload.
         """
-        # Enrich event with ML results
-        enriched = self._enrich_event(event, confidence, reason, path="fast")
-
-        # Forward to Better Stack
+        enriched = self._enrich_event(
+            event, confidence, reason, path="fast", assessment=assessment
+        )
         success = await self._forward_to_betterstack(enriched)
 
-        logger.info(f"FAST-PATH [{confidence:.0%}]: {event.get('process_name', 'unknown')} - {reason}")
+        severity = assessment.severity.value if assessment else "unknown"
+        logger.info(
+            f"FAST-PATH [{confidence:.0%}] severity={severity}: "
+            f"{event.get('process_name', 'unknown')} - {reason}"
+        )
 
-        return {
+        # ── Persist to DB ────────────────────────────────────────────────────
+        try:
+            from app.db.event_store import event_store
+            await event_store.save_event(
+                event=event,
+                ml_confidence=confidence,
+                ml_label="malicious",
+                ml_reason=reason,
+                processing_path="fast",
+                threat_score=assessment.final_score if assessment else None,
+                threat_severity=assessment.severity.value if assessment else None,
+                assessment_json=json.dumps(assessment.to_dict()) if assessment else None,
+            )
+        except Exception as db_err:
+            logger.warning("EventProcessor: DB save failed (fast-path): %s", db_err)
+
+        result = {
             "status": "forwarded" if success else "forward_failed",
             "classification": "malicious",
             "confidence": confidence,
@@ -182,48 +227,65 @@ class EventProcessor:
             "path": "fast",
             "betterstack_sent": success,
         }
+        if assessment:
+            result["threat_assessment"] = assessment.to_dict()
+        return result
 
     async def _deep_path_analyze(
         self,
         event: Dict[str, Any],
         ml_confidence: float,
         ml_reason: str,
-        event_id: str
+        event_id: str,
+        ml_signal: Optional["MLSignal"] = None,
     ) -> Dict[str, Any]:
         """
-        Deep-path: Use CyberAgent for uncertain cases (50-80% confidence).
+        Deep-path: CyberAgent analysis + full ThreatAssessment fusion.
 
-        Agent uses tools like classify_event, mitre_lookup, analyze_event
-        to provide deeper analysis.
+        Combines ML signal, Agent verdict, and MITRE data into
+        a unified ThreatAssessment via the assessment engine.
         """
         self.metrics["agent_invocations"] += 1
 
         try:
             agent = self._get_agent_service()
 
-            # Build investigation prompt
             event_summary = self._build_event_summary(event)
             prompt = (
                 f"Investigate this security event that has {ml_confidence:.0%} ML confidence:\n\n"
                 f"{event_summary}\n\n"
                 f"ML Initial Assessment: {ml_reason}\n\n"
-                f"Use available tools to determine if this is truly malicious. "
-                f"Consider MITRE ATT&CK techniques, known IoCs, and behavioral patterns. "
+                f"Use ml_classify, lookup_ioc, mitre_lookup and other tools to determine "
+                f"if this is truly malicious. "
                 f"Provide your final verdict: MALICIOUS, SUSPICIOUS, or FALSE_POSITIVE."
             )
 
-            # Run agent
             session_id = f"event-{event_id}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
-            response = agent.query(prompt, session_id=session_id)
+            response = await agent.aquery(prompt, session_id=session_id)
 
-            # Parse agent verdict
             agent_verdict, agent_confidence = self._parse_agent_response(response.answer)
 
-            # Decide based on agent analysis
-            should_forward = agent_verdict in ["MALICIOUS", "SUSPICIOUS"]
+            # ── Build full ThreatAssessment with all available signals ──────
+            agent_sig = AgentSignal(
+                verdict=agent_verdict,
+                confidence=agent_confidence,
+                tools_used=response.tools_used,
+                reasoning_steps=response.total_steps,
+            )
+
+            # Try to extract MITRE signal from ML engine
+            mitre_sig = self._extract_mitre_signal(event)
+
+            assessment = self._assessment_engine.assess(
+                ml=ml_signal,
+                agent=agent_sig,
+                mitre=mitre_sig,
+            )
+            # ───────────────────────────────────────────────────────────────
+
+            should_forward = assessment.severity.value in ("critical", "high", "medium")
 
             if should_forward:
-                # Enrich with both ML and agent results
                 enriched = self._enrich_event(
                     event,
                     ml_confidence,
@@ -235,19 +297,37 @@ class EventProcessor:
                         "summary": response.answer[:500],
                         "tools_used": response.tools_used,
                         "steps": response.total_steps,
-                    }
+                    },
+                    assessment=assessment,
                 )
                 success = await self._forward_to_betterstack(enriched)
             else:
                 success = False
 
             logger.info(
-                f"DEEP-PATH [{ml_confidence:.0%}→{agent_verdict}]: "
-                f"{event.get('process_name', 'unknown')} - "
-                f"Tools: {response.tools_used}"
+                f"DEEP-PATH [{ml_confidence:.0%}→{agent_verdict}] "
+                f"assessment={assessment.severity.value} "
+                f"(score={assessment.final_score:.0f}): "
+                f"{event.get('process_name', 'unknown')} - Tools: {response.tools_used}"
             )
 
-            return {
+            # ── Persist to DB ────────────────────────────────────────────────
+            try:
+                from app.db.event_store import event_store
+                await event_store.save_event(
+                    event=event,
+                    ml_confidence=ml_confidence,
+                    ml_label=agent_verdict.lower(),
+                    ml_reason=ml_reason,
+                    processing_path="deep",
+                    threat_score=assessment.final_score,
+                    threat_severity=assessment.severity.value,
+                    assessment_json=json.dumps(assessment.to_dict()),
+                )
+            except Exception as db_err:
+                logger.warning("EventProcessor: DB save failed (deep-path): %s", db_err)
+
+            result = {
                 "status": "forwarded" if should_forward and success else "analyzed",
                 "classification": agent_verdict.lower(),
                 "ml_confidence": ml_confidence,
@@ -257,12 +337,18 @@ class EventProcessor:
                 "path": "deep",
                 "tools_used": response.tools_used,
                 "betterstack_sent": success if should_forward else False,
+                "threat_assessment": assessment.to_dict(),
             }
+            return result
 
         except Exception as e:
             logger.error(f"Deep-path agent error: {e}")
-            # Fallback: forward with ML-only enrichment if agent fails
-            enriched = self._enrich_event(event, ml_confidence, ml_reason, path="deep-fallback")
+            # Fallback: forward with ML-only assessment
+            fallback_assessment = self._assessment_engine.assess(ml=ml_signal)
+            enriched = self._enrich_event(
+                event, ml_confidence, ml_reason,
+                path="deep-fallback", assessment=fallback_assessment
+            )
             success = await self._forward_to_betterstack(enriched)
             return {
                 "status": "forwarded_fallback" if success else "error",
@@ -271,7 +357,34 @@ class EventProcessor:
                 "reason": ml_reason,
                 "path": "deep-fallback",
                 "error": str(e),
+                "threat_assessment": fallback_assessment.to_dict(),
             }
+
+    def _extract_mitre_signal(self, event: Dict[str, Any]) -> Optional["MITRESignal"]:
+        """Extract MITRE signal from CyberMLEngine for ThreatAssessment fusion."""
+        try:
+            from app.ml.cyber_ml_engine import get_ml_engine
+            engine = get_ml_engine()
+            techniques = engine.map_to_mitre(event)
+            if not techniques:
+                return None
+
+            tactic_coverage = list({t.tactic for t in techniques})
+            return MITRESignal(
+                techniques=[
+                    {"id": t.technique_id, "name": t.technique_name,
+                     "tactic": t.tactic, "confidence": t.confidence}
+                    for t in techniques
+                ],
+                tactic_coverage=tactic_coverage,
+                max_confidence=max((t.confidence for t in techniques), default=0.0),
+                has_lateral_movement="lateral_movement" in tactic_coverage,
+                has_credential_access="credential_access" in tactic_coverage,
+                has_impact="impact" in tactic_coverage,
+            )
+        except Exception as e:
+            logger.debug("MITRE signal extraction failed: %s", e)
+            return None
 
     def _enrich_event(
         self,
@@ -279,12 +392,12 @@ class EventProcessor:
         confidence: float,
         reason: str,
         path: str,
-        agent_analysis: Optional[Dict] = None
+        agent_analysis: Optional[Dict] = None,
+        assessment: Optional["ThreatAssessment"] = None,
     ) -> Dict[str, Any]:
-        """Enrich event with detection metadata."""
+        """Enrich event with detection metadata and ThreatAssessment."""
         enriched = event.copy()
 
-        # ML detection info
         enriched["ml_detection"] = {
             "is_malicious": True,
             "confidence": f"{confidence:.1%}",
@@ -292,27 +405,31 @@ class EventProcessor:
             "path": path,
         }
 
-        # Agent analysis if available
         if agent_analysis:
             enriched["agent_analysis"] = agent_analysis
 
-        # Set level based on confidence
-        if confidence >= 0.8:
-            enriched["level"] = "error"
-        elif confidence >= 0.6:
-            enriched["level"] = "warn"
+        # Use ThreatAssessment severity for log level (more accurate than raw confidence)
+        if assessment:
+            severity_to_level = {
+                "critical": "error", "high": "error",
+                "medium": "warn",    "low": "info", "info": "info",
+            }
+            enriched["level"] = severity_to_level.get(assessment.severity.value, "warn")
+            enriched["threat_score"] = assessment.final_score
+            enriched["severity"] = assessment.severity.value
+            enriched["threat_assessment"] = assessment.to_dict()
         else:
-            enriched["level"] = "info"
+            enriched["level"] = "error" if confidence >= 0.8 else "warn" if confidence >= 0.6 else "info"
 
-        # Build message
         process = event.get("process_name", "unknown")
+        severity_str = f" [{assessment.severity.value.upper()}]" if assessment else ""
         if agent_analysis:
             enriched["message"] = (
-                f"THREAT [{confidence:.0%}] {process} - "
+                f"THREAT{severity_str} [{confidence:.0%}] {process} - "
                 f"Agent: {agent_analysis.get('verdict', 'N/A')} - {reason}"
             )
         else:
-            enriched["message"] = f"THREAT [{confidence:.0%}] {process} - {reason}"
+            enriched["message"] = f"THREAT{severity_str} [{confidence:.0%}] {process} - {reason}"
 
         return enriched
 

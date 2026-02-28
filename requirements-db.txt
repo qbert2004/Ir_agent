@@ -1,0 +1,6 @@
+# Database layer — async SQLAlchemy + drivers
+# Install: pip install -r requirements-db.txt
+
+sqlalchemy[asyncio]>=2.0.0
+aiosqlite>=0.20.0       # SQLite async driver (dev/test)
+asyncpg>=0.29.0         # PostgreSQL async driver (prod)

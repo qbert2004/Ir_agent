@@ -32,6 +32,12 @@ class Settings(BaseSettings):
     betterstack_token: str = Field(default="", alias="BETTER_STACK_SOURCE_TOKEN")
     send_all_to_betterstack: bool = Field(default=False, alias="SEND_ALL_TO_BETTERSTACK")
 
+    # Database
+    database_url: str = Field(
+        default="sqlite+aiosqlite:///./ir_agent.db",
+        alias="DATABASE_URL",
+    )
+
     # Security
     cors_origins: str = Field(
         default="http://localhost:3000,http://localhost:9000",

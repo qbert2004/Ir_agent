@@ -71,3 +71,52 @@ async def readiness():
         "status": "ready" if ready else "not_ready",
         "components": components
     }
+
+
+@router.get("/metrics", tags=["Observability"])
+async def prometheus_metrics():
+    """
+    Prometheus-compatible metrics endpoint.
+
+    Returns text/plain in Prometheus exposition format.
+    Scrape with: prometheus.yml job target pointing to /metrics
+    """
+    from fastapi.responses import PlainTextResponse
+    from app.services.metrics import metrics_service
+    from app.services.event_processor import get_event_processor
+
+    proc = get_event_processor()
+    m = proc.get_metrics()
+
+    lines = [
+        "# HELP ir_agent_events_total Total events processed",
+        "# TYPE ir_agent_events_total counter",
+        f'ir_agent_events_total {m.get("total_processed", 0)}',
+        "",
+        "# HELP ir_agent_benign_filtered_total Benign events filtered",
+        "# TYPE ir_agent_benign_filtered_total counter",
+        f'ir_agent_benign_filtered_total {m.get("benign_filtered", 0)}',
+        "",
+        "# HELP ir_agent_malicious_detected_total Malicious events detected",
+        "# TYPE ir_agent_malicious_detected_total counter",
+        f'ir_agent_malicious_detected_total {m.get("malicious_detected", 0)}',
+        "",
+        "# HELP ir_agent_agent_invocations_total Deep-path agent invocations",
+        "# TYPE ir_agent_agent_invocations_total counter",
+        f'ir_agent_agent_invocations_total {m.get("agent_invocations", 0)}',
+        "",
+        "# HELP ir_agent_fast_path_total Fast-path (high confidence) events",
+        "# TYPE ir_agent_fast_path_total counter",
+        f'ir_agent_fast_path_total {m.get("fast_path_count", 0)}',
+        "",
+        "# HELP ir_agent_deep_path_total Deep-path (uncertain) events",
+        "# TYPE ir_agent_deep_path_total counter",
+        f'ir_agent_deep_path_total {m.get("deep_path_count", 0)}',
+        "",
+        "# HELP ir_agent_betterstack_sent_total Events forwarded to Better Stack",
+        "# TYPE ir_agent_betterstack_sent_total counter",
+        f'ir_agent_betterstack_sent_total {m.get("betterstack", {}).get("sent", 0)}',
+        "",
+    ]
+
+    return PlainTextResponse("\n".join(lines), media_type="text/plain; version=0.0.4")

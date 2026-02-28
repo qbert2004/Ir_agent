@@ -2,11 +2,12 @@
 Security and observability middleware.
 
 - API key authentication
-- Rate limiting (in-memory, per-IP)
+- Rate limiting (Redis if REDIS_URL set, else in-memory per-instance)
 - Request ID injection for tracing
 """
 from __future__ import annotations
 
+import os
 import time
 import uuid
 import logging
@@ -22,7 +23,58 @@ from app.core.config import settings
 logger = logging.getLogger("ir-agent")
 
 # Paths that do NOT require authentication
-PUBLIC_PATHS = {"/", "/health", "/health/live", "/health/ready", "/docs", "/openapi.json", "/redoc"}
+PUBLIC_PATHS = {"/", "/health", "/health/live", "/health/ready", "/openapi.json"}
+
+
+# ---------------------------------------------------------------------------
+# Redis-backed rate limiter (optional, falls back to in-memory)
+# ---------------------------------------------------------------------------
+
+class _RateLimitBackend:
+    def is_allowed(self, key: str, max_requests: int, window: int) -> bool:
+        raise NotImplementedError
+
+
+class _InMemoryBackend(_RateLimitBackend):
+    def __init__(self):
+        self._requests: dict[str, list[float]] = defaultdict(list)
+
+    def is_allowed(self, key: str, max_requests: int, window: int) -> bool:
+        now = time.time()
+        self._requests[key] = [t for t in self._requests[key] if now - t < window]
+        if len(self._requests[key]) >= max_requests:
+            return False
+        self._requests[key].append(now)
+        return True
+
+
+class _RedisBackend(_RateLimitBackend):
+    def __init__(self, redis_url: str):
+        import redis as redis_lib
+        self._redis = redis_lib.from_url(redis_url, decode_responses=True)
+        logger.info("Rate limiter: Redis backend (%s)", redis_url.split("@")[-1])
+
+    def is_allowed(self, key: str, max_requests: int, window: int) -> bool:
+        now = time.time()
+        pipe = self._redis.pipeline()
+        pipe.zremrangebyscore(key, 0, now - window)
+        pipe.zadd(key, {str(now): now})
+        pipe.zcard(key)
+        pipe.expire(key, window)
+        results = pipe.execute()
+        return results[2] <= max_requests
+
+
+def _build_rate_limit_backend() -> _RateLimitBackend:
+    redis_url = os.getenv("REDIS_URL", "")
+    if redis_url:
+        try:
+            return _RedisBackend(redis_url)
+        except ImportError:
+            logger.warning("redis package not installed — using in-memory rate limiter")
+        except Exception as e:
+            logger.warning("Redis unavailable (%s) — using in-memory rate limiter", e)
+    return _InMemoryBackend()
 
 
 # ---------------------------------------------------------------------------
@@ -73,15 +125,14 @@ class AuthMiddleware(BaseHTTPMiddleware):
 # ---------------------------------------------------------------------------
 class RateLimitMiddleware(BaseHTTPMiddleware):
     """
-    Simple in-memory sliding-window rate limiter.
-    Limits requests per IP per minute.
+    Sliding-window rate limiter.
+    Uses Redis if REDIS_URL env var is set, otherwise in-memory (single-instance).
     """
 
     def __init__(self, app, max_requests: int = 60):
         super().__init__(app)
         self.max_requests = max_requests
-        # ip -> list of timestamps
-        self._requests: dict[str, list[float]] = defaultdict(list)
+        self._backend = _build_rate_limit_backend()
 
     async def dispatch(self, request: Request, call_next: Callable) -> Response:
         path = request.url.path.rstrip("/") or "/"
@@ -89,21 +140,15 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
             return await call_next(request)
 
         client_ip = request.client.host if request.client else "unknown"
-        now = time.time()
-        window = 60.0  # 1 minute
+        key = f"rl:{client_ip}"
 
-        # Prune old entries
-        timestamps = self._requests[client_ip]
-        self._requests[client_ip] = [t for t in timestamps if now - t < window]
-
-        if len(self._requests[client_ip]) >= self.max_requests:
+        if not self._backend.is_allowed(key, self.max_requests, window=60):
             return JSONResponse(
                 status_code=429,
                 content={"detail": "Rate limit exceeded. Try again later."},
                 headers={"Retry-After": "60"},
             )
 
-        self._requests[client_ip].append(now)
         return await call_next(request)
 
 

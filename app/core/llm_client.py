@@ -1,25 +1,182 @@
 """
-Shared Groq LLM client with retry, timeout, and connection reuse.
+LLM client with multi-provider support and automatic fallback.
+
+Provider priority (based on available API keys in .env):
+    1. Groq    — LLM_API_KEY         (fast, free tier)
+    2. OpenAI  — OPENAI_API_KEY      (reliable, paid)
+    3. Ollama  — OLLAMA_BASE_URL     (local, offline)
+
+If a provider fails during a request, the next available provider is tried.
 """
 
 from __future__ import annotations
 
+import os
 import time
 import logging
-from typing import Dict, List, Optional
+from typing import Iterator, Optional
 
-from groq import Groq
 from app.core.config import settings
 
 logger = logging.getLogger("ir-agent")
 
 MAX_RETRIES = 3
 RETRY_BACKOFF = (1.0, 2.0, 4.0)
-DEFAULT_TIMEOUT = 30.0  # seconds
+DEFAULT_TIMEOUT = 30.0
 
+
+# ── Provider base ─────────────────────────────────────────────────────────────
+
+class _BaseProvider:
+    name: str = "base"
+
+    def is_available(self) -> bool:
+        return False
+
+    def chat(self, messages: list[dict], model: str, temperature: float, max_tokens: int) -> str:
+        raise NotImplementedError
+
+    def chat_stream(self, messages: list[dict], model: str, temperature: float) -> Iterator[str]:
+        raise NotImplementedError
+
+
+# ── Groq provider ─────────────────────────────────────────────────────────────
+
+class _GroqProvider(_BaseProvider):
+    name = "groq"
+
+    def __init__(self):
+        self._client = None
+        if settings.groq_api_key:
+            try:
+                from groq import Groq
+                self._client = Groq(api_key=settings.groq_api_key, timeout=DEFAULT_TIMEOUT)
+                logger.info("LLM provider: Groq (model=%s)", settings.ai_model)
+            except ImportError:
+                logger.warning("groq package not installed")
+
+    def is_available(self) -> bool:
+        return self._client is not None
+
+    def chat(self, messages, model, temperature, max_tokens) -> str:
+        resp = self._client.chat.completions.create(
+            model=model or settings.ai_model,
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        return resp.choices[0].message.content or ""
+
+    def chat_stream(self, messages, model, temperature) -> Iterator[str]:
+        resp = self._client.chat.completions.create(
+            model=model or settings.ai_model,
+            messages=messages,
+            temperature=temperature,
+            stream=True,
+        )
+        for chunk in resp:
+            text = chunk.choices[0].delta.content or ""
+            if text:
+                yield text
+
+
+# ── OpenAI provider ────────────────────────────────────────────────────────────
+
+class _OpenAIProvider(_BaseProvider):
+    name = "openai"
+    _DEFAULT_MODEL = "gpt-4o-mini"
+
+    def __init__(self):
+        self._client = None
+        api_key = os.getenv("OPENAI_API_KEY", "")
+        if api_key:
+            try:
+                from openai import OpenAI
+                self._client = OpenAI(api_key=api_key, timeout=DEFAULT_TIMEOUT)
+                logger.info("LLM provider: OpenAI available as fallback")
+            except ImportError:
+                logger.debug("openai package not installed — skipping OpenAI fallback")
+
+    def is_available(self) -> bool:
+        return self._client is not None
+
+    def chat(self, messages, model, temperature, max_tokens) -> str:
+        resp = self._client.chat.completions.create(
+            model=model or self._DEFAULT_MODEL,
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        return resp.choices[0].message.content or ""
+
+    def chat_stream(self, messages, model, temperature) -> Iterator[str]:
+        resp = self._client.chat.completions.create(
+            model=model or self._DEFAULT_MODEL,
+            messages=messages,
+            temperature=temperature,
+            stream=True,
+        )
+        for chunk in resp:
+            text = chunk.choices[0].delta.content or ""
+            if text:
+                yield text
+
+
+# ── Ollama provider ────────────────────────────────────────────────────────────
+
+class _OllamaProvider(_BaseProvider):
+    name = "ollama"
+    _DEFAULT_MODEL = "llama3.2"
+
+    def __init__(self):
+        self._base_url = os.getenv("OLLAMA_BASE_URL", "")
+        self._client = None
+        if self._base_url:
+            try:
+                from openai import OpenAI  # Ollama uses OpenAI-compatible API
+                self._client = OpenAI(
+                    base_url=f"{self._base_url.rstrip('/')}/v1",
+                    api_key="ollama",  # required but ignored by Ollama
+                    timeout=DEFAULT_TIMEOUT,
+                )
+                logger.info("LLM provider: Ollama available as fallback (%s)", self._base_url)
+            except ImportError:
+                pass
+
+    def is_available(self) -> bool:
+        return self._client is not None
+
+    def chat(self, messages, model, temperature, max_tokens) -> str:
+        resp = self._client.chat.completions.create(
+            model=model or self._DEFAULT_MODEL,
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        return resp.choices[0].message.content or ""
+
+    def chat_stream(self, messages, model, temperature) -> Iterator[str]:
+        resp = self._client.chat.completions.create(
+            model=model or self._DEFAULT_MODEL,
+            messages=messages,
+            temperature=temperature,
+            stream=True,
+        )
+        for chunk in resp:
+            text = chunk.choices[0].delta.content or ""
+            if text:
+                yield text
+
+
+# ── LLMClient with fallback ────────────────────────────────────────────────────
 
 class LLMClient:
-    """Singleton Groq client with retry logic."""
+    """
+    Multi-provider LLM client with automatic fallback.
+
+    Tries providers in order: Groq → OpenAI → Ollama.
+    If a provider fails, the next available provider is used automatically.
+    """
 
     _instance: Optional["LLMClient"] = None
 
@@ -33,19 +190,23 @@ class LLMClient:
         if self._initialized:
             return
         self._initialized = True
-        self._client: Optional[Groq] = None
-        if settings.groq_api_key:
-            self._client = Groq(
-                api_key=settings.groq_api_key,
-                timeout=DEFAULT_TIMEOUT,
-            )
-            logger.info("LLMClient initialized (model=%s)", settings.ai_model)
+        self._providers: list[_BaseProvider] = [
+            _GroqProvider(),
+            _OpenAIProvider(),
+            _OllamaProvider(),
+        ]
+        available = [p.name for p in self._providers if p.is_available()]
+        if available:
+            logger.info("LLM providers available: %s", available)
         else:
-            logger.warning("LLMClient: no API key, LLM calls will fail")
+            logger.warning("LLMClient: no providers configured — LLM calls will fail")
 
     @property
     def available(self) -> bool:
-        return self._client is not None
+        return any(p.is_available() for p in self._providers)
+
+    def _active_providers(self) -> list[_BaseProvider]:
+        return [p for p in self._providers if p.is_available()]
 
     def chat(
         self,
@@ -54,54 +215,44 @@ class LLMClient:
         temperature: float = 0.2,
         max_tokens: int = 1024,
     ) -> str:
-        """Send a chat completion request with retry."""
-        if not self._client:
-            raise RuntimeError("LLM API key not configured")
+        """Send a chat completion with retry and cross-provider fallback."""
+        providers = self._active_providers()
+        if not providers:
+            raise RuntimeError("No LLM providers configured (set LLM_API_KEY, OPENAI_API_KEY, or OLLAMA_BASE_URL)")
 
-        model = model or settings.ai_model
+        last_error: Exception = RuntimeError("unknown")
 
-        for attempt in range(MAX_RETRIES):
-            try:
-                response = self._client.chat.completions.create(
-                    model=model,
-                    messages=messages,
-                    temperature=temperature,
-                    max_tokens=max_tokens,
-                )
-                return response.choices[0].message.content or ""
-            except Exception as e:
-                wait = RETRY_BACKOFF[attempt] if attempt < len(RETRY_BACKOFF) else RETRY_BACKOFF[-1]
-                logger.warning(
-                    "LLM call failed (attempt %d/%d): %s — retrying in %.1fs",
-                    attempt + 1, MAX_RETRIES, e, wait,
-                )
-                if attempt == MAX_RETRIES - 1:
-                    raise
-                time.sleep(wait)
+        for provider in providers:
+            for attempt in range(MAX_RETRIES):
+                try:
+                    result = provider.chat(messages, model, temperature, max_tokens)
+                    if provider.name != self._providers[0].name:
+                        logger.info("LLM request served by fallback provider: %s", provider.name)
+                    return result
+                except Exception as e:
+                    last_error = e
+                    wait = RETRY_BACKOFF[min(attempt, len(RETRY_BACKOFF) - 1)]
+                    logger.warning(
+                        "[%s] LLM call failed (attempt %d/%d): %s",
+                        provider.name, attempt + 1, MAX_RETRIES, e,
+                    )
+                    if attempt < MAX_RETRIES - 1:
+                        time.sleep(wait)
+            logger.warning("Provider %s exhausted, trying next...", provider.name)
 
-        raise RuntimeError("LLM call failed after retries")  # unreachable
+        raise RuntimeError(f"All LLM providers failed. Last error: {last_error}")
 
     def chat_stream(
         self,
         messages: list[dict],
         model: Optional[str] = None,
         temperature: float = 0.2,
-    ):
-        """Streaming chat completion (no retry — streams are not retryable)."""
-        if not self._client:
-            raise RuntimeError("LLM API key not configured")
-
-        model = model or settings.ai_model
-        response = self._client.chat.completions.create(
-            model=model,
-            messages=messages,
-            temperature=temperature,
-            stream=True,
-        )
-        for chunk in response:
-            text = chunk.choices[0].delta.content or ""
-            if text:
-                yield text
+    ) -> Iterator[str]:
+        """Streaming chat (uses first available provider, no cross-provider fallback)."""
+        providers = self._active_providers()
+        if not providers:
+            raise RuntimeError("No LLM providers configured")
+        yield from providers[0].chat_stream(messages, model, temperature)
 
 
 def get_llm_client() -> LLMClient:

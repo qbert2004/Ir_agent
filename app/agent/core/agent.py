@@ -1,5 +1,6 @@
 """CyberAgent - ReAct reasoning loop with tools, memory, and RAG."""
 
+import asyncio
 import uuid
 import logging
 from typing import Optional
@@ -176,6 +177,14 @@ class CyberAgent:
             total_steps=MAX_STEPS,
             session_id=session_id,
         )
+
+    async def arun(self, query: str, session_id: Optional[str] = None) -> AgentResponse:
+        """Async wrapper around run() — offloads blocking LLM calls to a thread pool.
+
+        Allows FastAPI's event loop to remain responsive while the ReAct loop
+        waits for LLM responses (each call may take 1-3 seconds × MAX_STEPS).
+        """
+        return await asyncio.to_thread(self.run, query, session_id)
 
     def _call_llm(self, system_prompt: str, user_prompt: str) -> str:
         """Call the LLM via shared client with retry/timeout."""

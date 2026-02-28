@@ -17,6 +17,7 @@ from app.agent.tools.mitre_lookup import MitreLookupTool
 from app.agent.tools.lookup_ioc import LookupIoCTool
 from app.agent.tools.query_siem import QuerySIEMTool
 from app.agent.tools.investigate import InvestigateTool
+from app.agent.tools.ml_classify import MLClassifyTool
 from app.agent.schemas import AgentResponse
 
 logger = logging.getLogger(__name__)
@@ -71,22 +72,19 @@ class AgentService:
         self._tool_registry.register(LookupIoCTool())
         self._tool_registry.register(QuerySIEMTool())
         self._tool_registry.register(InvestigateTool())
+        self._tool_registry.register(MLClassifyTool())  # ML Engine as a ReAct tool
 
         # Agent
         self._agent = CyberAgent(self._tool_registry, self._memory)
         logger.info(f"AgentService initialized with {len(self._tool_registry.list_tools())} tools")
 
     def query(self, query: str, session_id: str = None) -> AgentResponse:
-        """Process a user query through the agent.
-
-        Args:
-            query: User's question.
-            session_id: Optional session ID for continuity.
-
-        Returns:
-            AgentResponse with answer and reasoning steps.
-        """
+        """Synchronous query (kept for backwards-compatibility and tests)."""
         return self._agent.run(query, session_id)
+
+    async def aquery(self, query: str, session_id: str = None) -> AgentResponse:
+        """Async query — non-blocking, safe to call from FastAPI handlers."""
+        return await self._agent.arun(query, session_id)
 
     def ingest_document(self, title: str, content: str, source: str = "") -> int:
         """Ingest a document into the knowledge base.

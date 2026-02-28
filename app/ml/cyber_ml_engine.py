@@ -448,7 +448,65 @@ class CyberMLEngine:
             1102,
         }
 
+        # Load extended MITRE patterns (498 techniques from enterprise-attack.json)
+        self._extended_mitre: dict = {}
+        self._load_extended_mitre()
+
         logger.info("CyberMLEngine initialized")
+
+    def _load_extended_mitre(self):
+        """Load extended MITRE ATT&CK patterns built from enterprise-attack.json."""
+        candidates = [
+            "knowledge_base/mitre_attack/patterns_extended.json",
+            os.path.join(os.path.dirname(__file__), "..", "..", "knowledge_base", "mitre_attack", "patterns_extended.json"),
+        ]
+        for path in candidates:
+            if os.path.exists(path):
+                try:
+                    with open(path, encoding="utf-8") as f:
+                        self._extended_mitre = json.load(f)
+                    logger.info(
+                        "Extended MITRE patterns loaded: %d techniques", len(self._extended_mitre)
+                    )
+                    return
+                except Exception as e:
+                    logger.warning("Failed to load extended MITRE patterns: %s", e)
+        logger.warning(
+            "Extended MITRE patterns not found. Run: py scripts/build_mitre_patterns.py"
+        )
+
+    def _map_extended_mitre(self, event: dict) -> list:
+        """
+        Map event to MITRE techniques using extended patterns_extended.json.
+        Returns list of dicts: {id, name, tactic, confidence}.
+        """
+        if not self._extended_mitre:
+            return []
+
+        cmdline = str(event.get("command_line", "")).lower()
+        process = str(event.get("process_name", "")).lower()
+        script  = str(event.get("script_block_text", "")).lower()
+        combined = f"{cmdline} {process} {script}"
+
+        hits = []
+        for tech_id, info in self._extended_mitre.items():
+            score = 0
+            for kw in info.get("keywords", []):
+                if kw and len(kw) > 3 and kw in combined:
+                    score += 1
+
+            if score >= 2:  # require at least 2 keyword hits
+                hits.append({
+                    "id": tech_id,
+                    "name": info["name"],
+                    "tactic": info["tactic"],
+                    "confidence": min(score / 5.0, 1.0),
+                    "source": "extended_mitre",
+                })
+
+        # Sort by confidence desc, cap at 10
+        hits.sort(key=lambda x: -x["confidence"])
+        return hits[:10]
 
     def _load_models(self):
         """Load trained ML models."""
@@ -749,6 +807,19 @@ class CyberMLEngine:
                     confidence=min(confidence, 1.0),
                     evidence=evidence
                 ))
+
+        # Also add matches from extended MITRE (498 techniques)
+        existing_ids = {t.technique_id for t in techniques}
+        for hit in self._map_extended_mitre(event):
+            if hit["id"] not in existing_ids:
+                techniques.append(MITRETechnique(
+                    technique_id=hit["id"],
+                    technique_name=hit["name"],
+                    tactic=hit["tactic"],
+                    confidence=hit["confidence"],
+                    evidence=[f"keyword match (extended MITRE)"],
+                ))
+                existing_ids.add(hit["id"])
 
         return sorted(techniques, key=lambda x: x.confidence, reverse=True)
 
