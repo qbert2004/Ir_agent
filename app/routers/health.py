@@ -73,6 +73,32 @@ async def readiness():
     }
 
 
+@router.get("/health/ml", tags=["ML"], status_code=status.HTTP_200_OK)
+async def ml_health():
+    """
+    ML pipeline health: model status, drift detection, recent metrics.
+    """
+    try:
+        from app.services.ml_detector import get_detector
+        detector = get_detector()
+        ml_stats = detector.get_stats()
+    except Exception as e:
+        ml_stats = {"error": str(e)}
+
+    try:
+        from app.services.drift_detector import get_drift_detector
+        drift = get_drift_detector()
+        drift_status = drift.get_status()
+    except Exception as e:
+        drift_status = {"error": str(e)}
+
+    return {
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "ml_model": ml_stats,
+        "drift": drift_status,
+    }
+
+
 @router.get("/metrics", tags=["Observability"])
 async def prometheus_metrics():
     """

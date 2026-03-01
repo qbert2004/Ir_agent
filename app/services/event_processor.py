@@ -123,6 +123,17 @@ class EventProcessor:
             # Step 1: Fast-path ML classification
             is_malicious, confidence, reason = self._ml_detector.predict(event)
 
+            # Step 1.1: Update drift detector (async-safe, non-blocking)
+            try:
+                from app.services.drift_detector import get_drift_detector
+                from app.services.ml_detector import MLAttackDetector
+                drift_det = get_drift_detector()
+                if self._ml_detector._model_version == "production_v3":
+                    feat_v3 = self._ml_detector._extract_features_v3(event)
+                    drift_det.update(feat_v3, confidence)
+            except Exception:
+                pass  # drift detector failure must never block event processing
+
             # BENIGN - discard
             if not is_malicious:
                 self.metrics["benign_filtered"] += 1

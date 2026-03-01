@@ -1,0 +1,72 @@
+{
+  "analysis_time": "2026-03-01T22:12:27",
+  "n_events_processed": 400,
+  "final_status": {
+    "drift_detected": true,
+    "n_processed": 400,
+    "window_filled": "400/500",
+    "last_check_time": 1772385147.705798,
+    "last_drift_time": null,
+    "recent_mean_score": 0.5210670662833086,
+    "recent_score_std": 0.37791090385236,
+    "last_drift_level": "CRITICAL",
+    "last_alarms": [
+      "CRITICAL feature drift: kw_count_norm(PSI=0.347)",
+      "CRITICAL score distribution shift (PSI=13.618)"
+    ]
+  },
+  "last_psi_report": {
+    "n_processed": 400,
+    "window_size": 400,
+    "ph_drift": true,
+    "psi_features": {
+      "eid_1": 0.0,
+      "eid_3": 0.0,
+      "eid_5": 0.0,
+      "eid_6": 0.0,
+      "eid_7": 0.0,
+      "eid_8": 0.0,
+      "eid_10": 0.0,
+      "eid_11": 0.0,
+      "eid_12": 0.0,
+      "eid_13": 0.0,
+      "eid_22": 0.0,
+      "eid_4624": 0.0,
+      "eid_4625": 0.0,
+      "eid_4648": 0.0,
+      "eid_4672": 0.0,
+      "eid_4688": 0.0,
+      "eid_4698": 0.0,
+      "eid_4720": 0.0,
+      "eid_7045": 0.0,
+      "eid_4104": 0.0,
+      "kw_count_norm": 0.3466,
+      "susp_process_exact": 0.0,
+      "susp_process_partial": 0.0,
+      "base64_encoded": 0.0,
+      "lsass_credential": 0.0,
+      "powershell_bypass": 0.0,
+      "network_download": 0.0,
+      "persistence": 0.0,
+      "defense_evasion": 0.0,
+      "lateral_movement": 0.0,
+      "has_dest_ip": 0.0,
+      "suspicious_port": 0.0,
+      "suspicious_path": 0.0,
+      "suspicious_parent": 0.0,
+      "network_logon": 0.0,
+      "external_src_ip": 0.0,
+      "registry_op": 0.0,
+      "driver_load": 0.0,
+      "process_injection": 0.0,
+      "has_hashes": 0.0,
+      "high_entropy_cmdline": 0.0
+    },
+    "psi_scores": 13.6177,
+    "drift_level": "CRITICAL",
+    "alarms": [
+      "CRITICAL feature drift: kw_count_norm(PSI=0.347)",
+      "CRITICAL score distribution shift (PSI=13.618)"
+    ]
+  }
+}
