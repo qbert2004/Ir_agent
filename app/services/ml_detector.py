@@ -1,9 +1,16 @@
 """
-Unified ML Attack Detector for IR-Agent (v2 - Hardened)
+Unified ML Attack Detector for IR-Agent (v3 - Production)
 Filters incoming events - only malicious go to Better Stack
-Trained on EVTX-ATTACK-SAMPLES dataset (4,633 real attack events)
 
-v2 Changes:
+v3 Changes (production model):
+- Source-stratified training: EVTX + synthetic -> train, real APT recordings -> val
+- Feature engineering v3: 41 features, no structural artifacts
+- SMOTE oversampling for minority classes
+- Probability calibration via Platt scaling (CalibratedClassifierCV)
+- No cmdline_length_norm artifact (was 99.56% Gini importance in v1)
+- Prioritizes gradient_boosting_production.pkl if available
+
+v2 Changes (heuristic hardening):
 - Unicode normalization (homoglyph defense)
 - Extended LOLBins (python, java, go, schtasks, wmic, etc.)
 - script_block_text, image_loaded, original_filename analysis
@@ -19,11 +26,15 @@ import re
 import pickle
 import logging
 import unicodedata
-from typing import Tuple, Dict, Any, Optional
+from collections import Counter
+from typing import Tuple, Dict, Any, Optional, List
 
 logger = logging.getLogger("ir-agent")
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "..", "models", "gradient_boosting_model.pkl")
+_BASE_DIR = os.path.join(os.path.dirname(__file__), "..", "..")
+# Priority: production model (source-stratified, calibrated) > legacy model
+MODEL_PATH = os.path.join(_BASE_DIR, "models", "gradient_boosting_production.pkl")
+MODEL_PATH_LEGACY = os.path.join(_BASE_DIR, "models", "gradient_boosting_model.pkl")
 
 
 _HOMOGLYPH_MAP = {
@@ -63,6 +74,7 @@ class MLAttackDetector:
     """
     ML-based attack detector for Windows security events.
     Hardened against evasion techniques (Unicode, concat, env vars, LOLBins).
+    v3: Source-stratified production model with calibrated probability scores.
     """
 
     def __init__(self, threshold: float = 0.5):
@@ -71,6 +83,8 @@ class MLAttackDetector:
         self.scaler = None
         self.metrics = {}
         self._loaded = False
+        self._model_version = "unknown"
+        self._feature_names: List[str] = []  # populated when production model is loaded
 
         # --- Extended keyword list ---
         self.suspicious_keywords = [
@@ -158,14 +172,16 @@ class MLAttackDetector:
         self._load_model()
 
     def _load_model(self) -> bool:
-        """Load trained model."""
+        """Load trained model. Prioritizes production (v3) model."""
         paths = [
-            MODEL_PATH,
-            "models/gradient_boosting_model.pkl",
-            "models/random_forest_model.pkl",
+            (MODEL_PATH, "production_v3"),
+            (MODEL_PATH_LEGACY, "legacy_v1"),
+            ("models/gradient_boosting_production.pkl", "production_v3"),
+            ("models/gradient_boosting_model.pkl", "legacy_v1"),
+            ("models/random_forest_model.pkl", "legacy_rf"),
         ]
 
-        for path in paths:
+        for path, version in paths:
             if os.path.exists(path):
                 try:
                     with open(path, 'rb') as f:
@@ -173,14 +189,171 @@ class MLAttackDetector:
                     self.model = data['model']
                     self.scaler = data['scaler']
                     self.metrics = data.get('metrics', {})
+                    self._feature_names = data.get('feature_names', [])
+                    self._model_version = version
                     self._loaded = True
-                    logger.info(f"ML Detector loaded: {path}")
+                    split = data.get('split_strategy', 'random')
+                    acc = self.metrics.get('accuracy', 0)
+                    auc = self.metrics.get('roc_auc', 0)
+                    logger.info(
+                        f"ML Detector loaded: {path} [{version}] "
+                        f"split={split} acc={acc:.4f} auc={auc:.4f}"
+                    )
                     return True
                 except Exception as e:
                     logger.warning(f"Failed to load {path}: {e}")
 
         logger.warning("No ML model found - using heuristic detection")
         return False
+
+    # --------------------------------------------------------------------------- #
+    # Feature extraction v3 (production model)
+    # --------------------------------------------------------------------------- #
+
+    _TOP_EVENT_IDS = [
+        1, 3, 5, 6, 7, 8, 10, 11, 12, 13, 22,
+        4624, 4625, 4648, 4672, 4688,
+        4698, 4720, 7045, 4104,
+    ]
+    _V3_SUSPICIOUS_KEYWORDS = [
+        'mimikatz', 'sekurlsa', 'lsadump', 'lsass', 'procdump', 'comsvcs',
+        'ntds.dit', 'dumpcreds', 'invoke-', 'iex', 'downloadstring',
+        'webclient', 'frombase64', 'reflection', 'powersploit', 'empire',
+        'bypass', 'hidden', '-enc', 'base64', '-nop', 'amsi', 'etw',
+        'cobalt', 'meterpreter', 'payload', 'beacon', 'shellcode',
+        'nc.exe', 'netcat', 'psexec', 'winrs', 'wmic process',
+        'schtasks /create', 'sc create', 'reg add',
+        'certutil -urlcache', 'bitsadmin /transfer',
+        'mshta', 'rundll32', 'regsvr32', 'installutil', 'msbuild',
+    ]
+    _V3_SUSPICIOUS_PROCESSES = [
+        'powershell', 'pwsh', 'wscript', 'cscript', 'mshta',
+        'rundll32', 'regsvr32', 'certutil', 'bitsadmin',
+        'installutil', 'msbuild', 'wmic', 'psexec',
+        'mimikatz', 'procdump',
+    ]
+
+    def _extract_features_v3(self, event: Dict[str, Any]) -> List[float]:
+        """Feature engineering v3: 41 features matching production model."""
+        cmdline = _normalize_unicode(str(event.get('command_line', event.get('CommandLine', '')) or '')).lower()
+        process = _normalize_unicode(str(event.get('process_name', event.get('Image', '')) or '')).lower()
+        script  = _normalize_unicode(str(event.get('script_block_text', '') or '')).lower()
+        parent  = _normalize_unicode(str(event.get('parent_image', event.get('ParentImage', '')) or '')).lower()
+        hashes  = str(event.get('hashes', '') or '')
+        dest_ip = str(event.get('destination_ip', '') or '')
+        src_ip  = str(event.get('source_ip', '') or '')
+
+        try:
+            event_id = int(event.get('event_id', event.get('EventID', 0)) or 0)
+        except (ValueError, TypeError):
+            event_id = 0
+        try:
+            port = int(event.get('destination_port', event.get('DestinationPort', 0)) or 0)
+        except (ValueError, TypeError):
+            port = 0
+
+        all_text = f"{cmdline} {script} {process}"
+        features: List[float] = []
+
+        # F01-F20: event_id one-hot
+        for eid in self._TOP_EVENT_IDS:
+            features.append(float(event_id == eid))
+
+        # F21: keyword density
+        kw_count = sum(1 for kw in self._V3_SUSPICIOUS_KEYWORDS if kw in all_text)
+        features.append(min(kw_count / 5.0, 1.0))
+
+        # F22: suspicious process exact match
+        proc_name = process.split('/')[-1].split('\\')[-1]
+        features.append(float(any(sp == proc_name for sp in self._V3_SUSPICIOUS_PROCESSES)))
+
+        # F23: suspicious process partial match
+        features.append(float(any(sp in proc_name for sp in self._V3_SUSPICIOUS_PROCESSES)))
+
+        # F24: base64/encoded
+        features.append(float(
+            '-enc' in cmdline or 'base64' in cmdline or
+            'frombase64' in all_text or 'encodedcommand' in cmdline
+        ))
+
+        # F25: LSASS/credential
+        features.append(float(
+            'lsass' in all_text or 'sekurlsa' in all_text or
+            'procdump' in all_text or 'comsvcs' in all_text
+        ))
+
+        # F26: PowerShell bypass
+        features.append(float(
+            'powershell' in process and
+            any(f in cmdline for f in ['-enc', '-nop', 'bypass', 'hidden', 'windowstyle'])
+        ))
+
+        # F27: network download
+        features.append(float(any(kw in all_text for kw in [
+            'webclient', 'downloadstring', 'invoke-webrequest',
+            'urlcache', 'bitsadmin', 'wget', 'curl'
+        ])))
+
+        # F28: persistence
+        features.append(float(any(kw in all_text for kw in [
+            'schtasks /create', 'reg add', 'sc create',
+            'runonce', 'onlogon', 'hkcu\\software\\microsoft\\windows\\currentversion\\run'
+        ])))
+
+        # F29: defense evasion
+        features.append(float(any(kw in all_text for kw in [
+            'bypass', 'amsi', 'etw', '-nop', 'hidden',
+            'mshta', 'installutil', 'regsvr32', 'cmstp'
+        ])))
+
+        # F30: lateral movement
+        features.append(float(any(kw in all_text for kw in [
+            'psexec', 'winrs', 'wmic process', 'invoke-wmimethod', 'dcom'
+        ])))
+
+        # F31: has destination IP
+        features.append(float(bool(dest_ip) and dest_ip not in ('0.0.0.0', '127.0.0.1', '')))
+
+        # F32: suspicious port
+        features.append(float(port in {4444, 1337, 8080, 9090, 3333, 31337, 5555, 6666, 7777}))
+
+        # F33: suspicious process path
+        is_system = any(p in process for p in ['windows\\system32', 'windows\\syswow64', 'program files'])
+        is_susp_path = any(p in process for p in ['appdata', 'temp', 'downloads', 'public', 'programdata'])
+        features.append(float(not is_system and is_susp_path))
+
+        # F34: suspicious parent
+        features.append(float(any(sp in parent for sp in [
+            'outlook', 'winword', 'excel', 'powerpnt', 'iexplore', 'firefox', 'chrome'
+        ])))
+
+        # F35: network logon
+        features.append(float(str(event.get('logon_type', event.get('LogonType', ''))) in ('3', '10')))
+
+        # F36: external source IP
+        is_internal = src_ip.startswith(('10.', '192.168.', '172.', '127.', '::1', ''))
+        features.append(float(bool(src_ip) and not is_internal))
+
+        # F37: registry op
+        features.append(float(event_id in {12, 13, 14}))
+
+        # F38: driver/image load
+        features.append(float(event_id in {6, 7}))
+
+        # F39: process injection
+        features.append(float(event_id in {8, 10}))
+
+        # F40: has hashes
+        features.append(float(bool(hashes and len(hashes) > 10)))
+
+        # F41: high entropy cmdline
+        if len(cmdline) > 20:
+            unique_ratio = len(set(cmdline)) / len(cmdline)
+            features.append(float(unique_ratio > 0.6 and len(cmdline) > 50))
+        else:
+            features.append(0.0)
+
+        return features
 
     def _get_all_text_fields(self, event: Dict[str, Any]) -> str:
         """Combine ALL text fields for analysis, with Unicode normalization."""
@@ -419,24 +592,34 @@ class MLAttackDetector:
         """
         Predict if event is malicious.
         Combines ML model + heuristics + advanced indicator checks.
+        Uses v3 features when production model is loaded.
 
         Returns:
             (is_malicious, confidence, reason)
         """
-        features = self._extract_features(event)
-
         # Base prediction
         if self._loaded and self.model is not None:
             try:
                 import numpy as np
-                X = np.array([features])
-                X_scaled = self.scaler.transform(X)
-                base_score = float(self.model.predict_proba(X_scaled)[0][1])
-                base_reason = self._build_reason(features, base_score)
+                # Use v3 features for production model, legacy for others
+                if self._model_version == "production_v3":
+                    feat_v3 = self._extract_features_v3(event)
+                    X = np.array([feat_v3], dtype=np.float32)
+                    X_scaled = self.scaler.transform(X)
+                    base_score = float(self.model.predict_proba(X_scaled)[0][1])
+                    base_reason = self._build_reason_v3(feat_v3, base_score)
+                else:
+                    features = self._extract_features(event)
+                    X = np.array([features])
+                    X_scaled = self.scaler.transform(X)
+                    base_score = float(self.model.predict_proba(X_scaled)[0][1])
+                    base_reason = self._build_reason(features, base_score)
             except Exception as e:
                 logger.error(f"ML prediction failed: {e}")
+                features = self._extract_features(event)
                 _, base_score, base_reason = self._heuristic_predict(features)
         else:
+            features = self._extract_features(event)
             _, base_score, base_reason = self._heuristic_predict(features)
 
         # Advanced indicators
@@ -492,7 +675,7 @@ class MLAttackDetector:
         return is_malicious, score, reason
 
     def _build_reason(self, features: list, confidence: float) -> str:
-        """Build explanation string."""
+        """Build explanation string (legacy v1 features)."""
         indicators = []
         if features[5] > 0:
             indicators.append(f"{features[5]} malicious keywords")
@@ -510,8 +693,60 @@ class MLAttackDetector:
             indicators.append(f"C2 port {features[14]}")
 
         if indicators:
-            return f"ML ({confidence:.0%}): {', '.join(indicators)}"
-        return f"ML ({confidence:.0%}): pattern match"
+            return f"ML-v1 ({confidence:.0%}): {', '.join(indicators)}"
+        return f"ML-v1 ({confidence:.0%}): pattern match"
+
+    def _build_reason_v3(self, features: List[float], confidence: float) -> str:
+        """Build explanation string (production v3 features)."""
+        indicators = []
+        # F21: kw_count_norm (index 20)
+        if features[20] > 0:
+            kw_cnt = int(features[20] * 5)
+            indicators.append(f"{kw_cnt} suspicious keyword(s)")
+        # F22/23: process match (index 21, 22)
+        if features[21] or features[22]:
+            indicators.append("suspicious process")
+        # F24: base64 (index 23)
+        if features[23]:
+            indicators.append("base64/encoded")
+        # F25: lsass (index 24)
+        if features[24]:
+            indicators.append("credential access")
+        # F26: powershell bypass (index 25)
+        if features[25]:
+            indicators.append("PowerShell bypass")
+        # F27: network download (index 26)
+        if features[26]:
+            indicators.append("network download")
+        # F28: persistence (index 27)
+        if features[27]:
+            indicators.append("persistence")
+        # F29: defense evasion (index 28)
+        if features[28]:
+            indicators.append("defense evasion")
+        # F30: lateral movement (index 29)
+        if features[29]:
+            indicators.append("lateral movement")
+        # F32: suspicious port (index 31)
+        if features[31]:
+            indicators.append("C2 port")
+        # F34: suspicious parent (index 33)
+        if features[33]:
+            indicators.append("Office/browser parent")
+        # F37-F39: event type flags (index 36-38)
+        if features[36]:
+            indicators.append("registry op")
+        if features[37]:
+            indicators.append("driver load")
+        if features[38]:
+            indicators.append("process injection")
+        # F41: high entropy (index 40)
+        if features[40]:
+            indicators.append("high-entropy cmdline")
+
+        if indicators:
+            return f"ML-v3 ({confidence:.0%}): {', '.join(indicators)}"
+        return f"ML-v3 ({confidence:.0%}): event-type match"
 
     @property
     def is_ready(self) -> bool:
@@ -520,8 +755,11 @@ class MLAttackDetector:
     def get_stats(self) -> Dict:
         return {
             "model_loaded": self._loaded,
+            "model_version": self._model_version,
             "threshold": self.threshold,
-            "metrics": self.metrics
+            "n_features": len(self._feature_names) if self._feature_names else "legacy",
+            "split_strategy": self.metrics.get("split_strategy", "unknown") if isinstance(self.metrics, dict) else "unknown",
+            "metrics": self.metrics,
         }
 
 
