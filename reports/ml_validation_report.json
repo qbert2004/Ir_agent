@@ -1,0 +1,264 @@
+{
+  "dataset": {
+    "train_size": 136582,
+    "val_size": 34146,
+    "train_distribution": {
+      "malicious_critical": 67844,
+      "benign": 68262,
+      "suspicious_medium": 159,
+      "suspicious_low": 167,
+      "malicious_high": 150
+    },
+    "val_distribution": {
+      "malicious_critical": 16911,
+      "benign": 17111,
+      "malicious_high": 50,
+      "suspicious_low": 33,
+      "suspicious_medium": 41
+    },
+    "class_ratio": 1.0008496674577363,
+    "imbalance_warning": false,
+    "synthetic_pct": 49.99472845696078
+  },
+  "features": {
+    "feature_stats": [
+      {
+        "name": "high_risk_event_id",
+        "benign_mean": 1.0,
+        "malicious_mean": 0.5567,
+        "separation": 0.4433
+      },
+      {
+        "name": "suspicious_keyword_count",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0905,
+        "separation": 0.0905
+      },
+      {
+        "name": "suspicious_process",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.1525,
+        "separation": 0.1525
+      },
+      {
+        "name": "base64_encoded",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0002,
+        "separation": 0.0002
+      },
+      {
+        "name": "lsass_credential_access",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0109,
+        "separation": 0.0109
+      },
+      {
+        "name": "powershell_bypass_flags",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0001,
+        "separation": 0.0001
+      },
+      {
+        "name": "cmdline_length_norm",
+        "benign_mean": 0.0166,
+        "malicious_mean": 0.0013,
+        "separation": 0.0153
+      },
+      {
+        "name": "network_indicators",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0001,
+        "separation": 0.0001
+      },
+      {
+        "name": "persistence_indicators",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0005,
+        "separation": 0.0005
+      },
+      {
+        "name": "defense_evasion",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0008,
+        "separation": 0.0008
+      },
+      {
+        "name": "lateral_movement",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0001,
+        "separation": 0.0001
+      },
+      {
+        "name": "c2_indicators",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0,
+        "separation": 0.0
+      },
+      {
+        "name": "suspicious_parent_process",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0002,
+        "separation": 0.0002
+      },
+      {
+        "name": "sysmon_event",
+        "benign_mean": 0.3336,
+        "malicious_mean": 0.5449,
+        "separation": 0.2113
+      },
+      {
+        "name": "privilege_event_id",
+        "benign_mean": 0.3327,
+        "malicious_mean": 0.0026,
+        "separation": 0.3301
+      },
+      {
+        "name": "script_length_norm",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0,
+        "separation": 0.0
+      },
+      {
+        "name": "dll_sideloading",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.0,
+        "separation": 0.0
+      },
+      {
+        "name": "network_logon_type",
+        "benign_mean": 0.0,
+        "malicious_mean": 0.002,
+        "separation": 0.002
+      }
+    ],
+    "dominant_features": [],
+    "zero_variance_features": [
+      "c2_indicators",
+      "script_length_norm",
+      "dll_sideloading"
+    ],
+    "leakage_risk": "LOW"
+  },
+  "holdout": {
+    "accuracy": 0.9978328354712118,
+    "roc_auc": 0.9993130850915817,
+    "precision": 0.9996464973781889,
+    "recall": 0.996008218373936,
+    "f1": 0.9978240414020231,
+    "false_positive_rate": 0.0003506516276079715,
+    "false_negative_rate": 0.003991781626063986,
+    "confusion_matrix": {
+      "tn": 17105,
+      "fp": 6,
+      "fn": 68,
+      "tp": 16967
+    },
+    "suspicious_accuracy": true,
+    "suspicious_auc": true
+  },
+  "cross_validation": {
+    "accuracy": {
+      "mean": 0.9981198170703962,
+      "std": 0.00023603325558784212,
+      "min": 0.9977449774497745,
+      "max": 0.9984478416212733
+    },
+    "roc_auc": {
+      "mean": 0.9994289414489435,
+      "std": 4.1698116187865894e-05,
+      "min": 0.9993645984435172,
+      "max": 0.9994912197297088
+    },
+    "f1": {
+      "mean": 0.9981164083729143,
+      "std": 0.00023682258097153358,
+      "min": 0.9977401461567811,
+      "max": 0.9984454286803742
+    },
+    "suspicious": true
+  },
+  "leakage": {
+    "feature_distribution_similarity": 15,
+    "feature_overlap_pct": 76.82,
+    "class_ratio_diff": 0.0013,
+    "leakage_verdict": "HIGH"
+  },
+  "importance": {
+    "top_features": [
+      {
+        "rank": 1,
+        "name": "cmdline_length_norm",
+        "importance": 0.4558,
+        "std": 0.0015
+      },
+      {
+        "rank": 2,
+        "name": "suspicious_process",
+        "importance": 0.0254,
+        "std": 0.0006
+      },
+      {
+        "rank": 3,
+        "name": "suspicious_keyword_count",
+        "importance": 0.015,
+        "std": 0.0004
+      },
+      {
+        "rank": 4,
+        "name": "privilege_event_id",
+        "importance": 0.0004,
+        "std": 0.0001
+      },
+      {
+        "rank": 5,
+        "name": "sysmon_event",
+        "importance": 0.0,
+        "std": 0.0
+      },
+      {
+        "rank": 6,
+        "name": "network_logon_type",
+        "importance": 0.0,
+        "std": 0.0
+      },
+      {
+        "rank": 7,
+        "name": "dll_sideloading",
+        "importance": 0.0,
+        "std": 0.0
+      },
+      {
+        "rank": 8,
+        "name": "c2_indicators",
+        "importance": 0.0,
+        "std": 0.0
+      },
+      {
+        "rank": 9,
+        "name": "script_length_norm",
+        "importance": 0.0,
+        "std": 0.0
+      },
+      {
+        "rank": 10,
+        "name": "suspicious_parent_process",
+        "importance": 0.0,
+        "std": 0.0
+      }
+    ]
+  },
+  "summary": {
+    "verdict": "NOT PRODUCTION READY вЂ” Critical leakage detected",
+    "issues": [
+      "[CRITICAL] 50% synthetic data contamination",
+      "[HIGH] Feature leakage: 76.8% feature vector overlap",
+      "[HIGH] Accuracy 0.9978 > 99% вЂ” unrealistically high for real-world threat detection"
+    ],
+    "recommendations": [
+      "Collect more real-world event data (EVTX logs, Sysmon, real SIEM data)",
+      "Use stratified split by SOURCE вЂ” train on real events, validate on synthetic (not random split)",
+      "Data generation (augment_data.py) uses same keyword patterns as feature extraction вЂ” synthetic malicious events are trivially separable. Use adversarial examples or vary syntax.",
+      "Expected realistic accuracy on production data: 85-95%"
+    ]
+  }
+}
