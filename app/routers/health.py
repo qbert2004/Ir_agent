@@ -55,22 +55,44 @@ async def readiness():
     Checks if the service is ready to accept traffic.
     Verifies that critical dependencies are available.
     """
-    ready = True
     components = {}
 
-    # Check AI analyzer
+    # Check ML model (critical — without it event processing falls back to heuristics only)
+    try:
+        from app.services.ml_detector import get_detector
+        detector = get_detector()
+        components["ml_model"] = detector.is_ready
+    except Exception:
+        components["ml_model"] = False
+
+    # Check database connectivity
+    try:
+        from sqlalchemy import text
+        from app.db.database import AsyncSessionLocal
+        async with AsyncSessionLocal() as session:
+            await session.execute(text("SELECT 1"))
+        components["database"] = True
+    except Exception:
+        components["database"] = False
+
+    # Check AI analyzer (optional — system works without LLM)
     components["ai_analyzer"] = ai_analyzer.enabled
 
-    # Check Better Stack
+    # Check Better Stack (optional)
     components["better_stack"] = betterstack_service.enabled
 
-    # Service is ready if at least one component is available
-    ready = any(components.values())
+    # Ready only when critical components are up
+    critical_ok = components["database"]
+    ready = critical_ok
 
-    return {
-        "status": "ready" if ready else "not_ready",
-        "components": components
-    }
+    from fastapi.responses import JSONResponse
+    return JSONResponse(
+        status_code=status.HTTP_200_OK if ready else status.HTTP_503_SERVICE_UNAVAILABLE,
+        content={
+            "status": "ready" if ready else "not_ready",
+            "components": components,
+        },
+    )
 
 
 @router.get("/health/ml", tags=["ML"], status_code=status.HTTP_200_OK)

@@ -63,4 +63,8 @@ vector-data/
 # Misc
 nul
 *.rar
-*.pkl
+# ML models — tracked in git (small enough; use Git LFS for large files if needed)
+# *.pkl — intentionally NOT ignored so Dockerfile can COPY models/
+# Ignore only intermediate/training artifacts:
+training/data/*.pkl
+scripts/*.pkl

@@ -6,7 +6,14 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  # Stable local tag used for the smoke-test step (avoids relying on sha tags)
+  LOCAL_IMAGE: ir-agent:ci
+
 jobs:
+  # ── 1. Lint ──────────────────────────────────────────────────────────────
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -16,7 +23,10 @@ jobs:
           python-version: "3.11"
       - run: pip install ruff
       - run: ruff check app/ tests/
+      # Verify requirements.txt is valid UTF-8 and parseable by pip
+      - run: python -c "open('requirements.txt', encoding='utf-8').read(); print('requirements.txt OK')"
 
+  # ── 2. Unit / integration tests ──────────────────────────────────────────
   test:
     runs-on: ubuntu-latest
     needs: lint
@@ -26,16 +36,79 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - run: pip install -r requirements-dev.txt
+      # requirements-dev.txt already pulls in -r requirements.txt (prod deps).
+      # requirements-db.txt adds asyncpg for PostgreSQL tests.
+      - run: pip install -r requirements-dev.txt -r requirements-db.txt
       - run: pytest tests/ -v --tb=short
         env:
           ENVIRONMENT: testing
           LLM_API_KEY: ""
           BETTER_STACK_SOURCE_TOKEN: ""
+          MY_API_TOKEN: ""
+          DATABASE_URL: "sqlite+aiosqlite:///./test_ir_agent.db"
 
+  # ── 3. Docker build → smoke-test → push ─────────────────────────────────
   docker:
     runs-on: ubuntu-latest
     needs: test
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t ir-agent:test .
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=sha-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      # Build and optionally push.
+      # Always load the image into the local Docker daemon (load: true) so the
+      # smoke-test step can reference it by LOCAL_IMAGE without needing to pull
+      # from GHCR.  The extra LOCAL_IMAGE tag is appended to the metadata tags.
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          load: true
+          tags: |
+            ${{ steps.meta.outputs.tags }}
+            ${{ env.LOCAL_IMAGE }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Smoke-test image
+        run: |
+          docker run -d --name ir-test -p 9000:9000 \
+            -e ENVIRONMENT=testing \
+            -e LLM_API_KEY="" \
+            -e MY_API_TOKEN="" \
+            -e DATABASE_URL="sqlite+aiosqlite:///./test.db" \
+            ${{ env.LOCAL_IMAGE }}
+          echo "Waiting for the server to start..."
+          for i in $(seq 1 15); do
+            if curl -sf http://localhost:9000/health/live; then
+              echo "smoke test OK"; break
+            fi
+            sleep 2
+          done
+          curl -f http://localhost:9000/health/live || (docker logs ir-test && exit 1)
+          docker rm -f ir-test

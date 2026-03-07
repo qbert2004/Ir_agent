@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IR-Agent Platform</title>
+<style>
+:root{
+  --bg:#080d18;--surface:#0d1527;--card:#111e35;--border:#1a2d4a;
+  --accent:#00d4ff;--green:#00e676;--red:#ff4444;--orange:#ff9800;
+  --purple:#b054ff;--text:#cdd9e5;--muted:#4a6a8a;
+  --font:'Courier New',Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;overflow-x:hidden;}
+
+/* HEADER */
+.header{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;
+  background:var(--surface);border-bottom:1px solid var(--border);}
+.logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:bold;
+  color:var(--accent);letter-spacing:2px;}
+.logo-ver{font-size:10px;color:var(--muted);font-weight:normal;}
+.hdr-right{display:flex;align-items:center;gap:16px;font-size:12px;}
+.status-badge{display:flex;align-items:center;gap:6px;color:var(--green);}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.tok-input{background:var(--card);border:1px solid var(--border);color:var(--text);
+  padding:4px 8px;font-family:var(--font);font-size:11px;border-radius:3px;width:220px;}
+.tok-input:focus{outline:1px solid var(--accent);}
+
+/* TABS */
+.tabs{display:flex;gap:2px;padding:0 24px;background:var(--surface);border-bottom:1px solid var(--border);}
+.tab{padding:10px 18px;cursor:pointer;font-size:12px;color:var(--muted);
+  border-bottom:2px solid transparent;transition:all .2s;user-select:none;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+/* MAIN */
+.main{padding:20px 24px;max-width:1400px;margin:0 auto;}
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* SECTION TITLE */
+.sec{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;
+  margin-bottom:14px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:14px;}
+.card-t{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+
+/* ===== ARCH TAB ===== */
+.arch-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;}
+.arch-center{display:flex;flex-direction:column;align-items:center;}
+
+.abox{background:var(--card);border:1px solid var(--border);border-radius:8px;
+  padding:12px 28px;text-align:center;position:relative;}
+.abox.acc{border-color:var(--accent);box-shadow:0 0 16px rgba(0,212,255,.12);}
+.abox.grn{border-color:var(--green);}
+.abox.ora{border-color:var(--orange);box-shadow:0 0 16px rgba(255,152,0,.1);}
+.abox .at{color:var(--accent);font-size:14px;font-weight:bold;}
+.abox .as{color:var(--muted);font-size:10px;margin-top:3px;}
+.abox.grn .at{color:var(--green);}
+.abox.ora .at{color:var(--orange);}
+
+.arr{width:2px;height:28px;background:var(--border);margin:0 auto;position:relative;}
+.arr::after{content:'▼';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+  font-size:9px;color:var(--muted);}
+
+.react-row{display:flex;align-items:center;justify-content:center;gap:0;
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;
+  width:100%;margin:0 0 14px;}
+.rst{background:var(--card);border:1px solid var(--border);border-radius:6px;
+  padding:10px 16px;text-align:center;min-width:90px;}
+.rst.hi{border-color:var(--accent);}
+.rst .ri{font-size:18px;display:block;margin-bottom:3px;}
+.rst .rl{font-size:11px;font-weight:bold;}
+.rst.hi .rl{color:var(--accent);}
+.rst.fin{border-color:var(--green);}
+.rst.fin .rl{color:var(--green);}
+.rarr{color:var(--muted);font-size:18px;padding:0 6px;}
+
+.side3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;width:100%;margin-bottom:14px;}
+.mbox{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 12px;}
+.mbox .mt{font-weight:bold;margin-bottom:3px;font-size:11px;}
+.mbox .ms{color:var(--muted);font-size:10px;line-height:1.5;}
+.mbox.grn .mt{color:var(--green);}
+.mbox.pur .mt{color:var(--purple);}
+.mbox.cyn .mt{color:var(--accent);}
+
+.tchips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:12px;width:100%;margin-bottom:14px;}
+.chip{background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  padding:5px 11px;font-size:11px;cursor:default;transition:all .15s;}
+.chip:hover{border-color:var(--accent);color:var(--accent);}
+
+.sigs{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
+.sig{flex:1;min-width:100px;background:var(--card);border:1px solid var(--border);
+  border-radius:6px;padding:10px;text-align:center;}
+.sig .sp{font-size:22px;font-weight:bold;}
+.sig .sn{font-size:10px;color:var(--muted);margin-top:3px;}
+.sig .sb{height:3px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden;}
+.sig .sf{height:100%;border-radius:2px;}
+
+/* ===== QUERY TAB ===== */
+.ql{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;height:calc(100vh - 170px);}
+.qleft{display:flex;flex-direction:column;gap:10px;}
+.qtxt{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);
+  font-family:var(--font);font-size:12px;padding:10px;border-radius:6px;resize:none;
+  flex:1;min-height:140px;}
+.qtxt:focus{outline:1px solid var(--accent);}
+.qmeta{display:flex;gap:8px;align-items:center;}
+.qsess{flex:1;background:var(--card);border:1px solid var(--border);color:var(--muted);
+  font-family:var(--font);font-size:11px;padding:5px 8px;border-radius:4px;}
+.btn{padding:7px 18px;border:none;border-radius:4px;cursor:pointer;
+  font-family:var(--font);font-size:12px;transition:all .15s;}
+.btn-p{background:var(--accent);color:#000;font-weight:bold;}
+.btn-p:hover{background:#00eeff;}
+.btn-p:disabled{background:var(--muted);cursor:not-allowed;}
+.btn-s{padding:5px 10px;font-size:11px;background:var(--card);color:var(--muted);
+  border:1px solid var(--border);}
+.btn-s:hover{color:var(--text);}
+.qqlist{display:flex;flex-direction:column;gap:5px;}
+.qq{background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  padding:7px 10px;font-size:11px;color:var(--muted);cursor:pointer;transition:all .15s;}
+.qq:hover{border-color:var(--accent);color:var(--text);}
+.qql{color:var(--accent);font-size:10px;margin-bottom:2px;}
+.qright{background:var(--surface);border:1px solid var(--border);border-radius:6px;
+  display:flex;flex-direction:column;overflow:hidden;}
+.ohdr{display:flex;align-items:center;justify-content:space-between;
+  padding:9px 12px;border-bottom:1px solid var(--border);background:var(--card);}
+.ohdr-t{font-size:11px;color:var(--muted);}
+.obody{flex:1;overflow-y:auto;padding:12px;font-size:12px;line-height:1.6;}
+.obody::-webkit-scrollbar{width:5px;}
+.obody::-webkit-scrollbar-track{background:var(--surface);}
+.obody::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+.step-blk{margin-bottom:12px;animation:fi .3s ease;}
+@keyframes fi{from{opacity:0;transform:translateY(3px);}to{opacity:1;transform:none;}}
+.shdr{display:flex;align-items:center;gap:7px;margin-bottom:5px;}
+.snum{background:var(--border);color:var(--accent);border-radius:3px;padding:1px 6px;font-size:10px;}
+.sbadge{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);color:var(--accent);
+  border-radius:3px;padding:1px 7px;font-size:10px;}
+.thought{color:var(--muted);font-size:11px;font-style:italic;
+  padding-left:10px;border-left:2px solid var(--border);margin-bottom:4px;}
+.obs{background:rgba(0,230,118,.05);border-left:2px solid var(--green);
+  padding:5px 8px;font-size:11px;white-space:pre-wrap;color:var(--text);}
+.ans-blk{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);
+  border-radius:6px;padding:12px;margin-top:6px;animation:fi .5s ease;}
+.ans-hdr{color:var(--accent);font-size:11px;margin-bottom:7px;}
+.ans-txt{color:var(--text);font-size:12px;line-height:1.7;white-space:pre-wrap;}
+.tool-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+.tbadge{background:rgba(176,84,255,.1);border:1px solid rgba(176,84,255,.3);
+  color:var(--purple);border-radius:3px;padding:2px 7px;font-size:10px;}
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;color:var(--muted);gap:8px;}
+.empty-ico{font-size:38px;opacity:.4;}
+.ldots::after{content:'...';animation:dots 1s steps(3,end) infinite;}
+@keyframes dots{0%,20%{content:'.';}40%{content:'..';}60%,100%{content:'...';}}
+
+/* ===== TOOLS TAB ===== */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;
+  transition:border-color .2s,box-shadow .2s;}
+.tcard:hover{border-color:var(--accent);box-shadow:0 0 12px rgba(0,212,255,.1);}
+.tcard-hdr{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+.tico{font-size:20px;}
+.tname{color:var(--accent);font-size:13px;font-weight:bold;}
+.ttype{color:var(--muted);font-size:10px;margin-top:1px;}
+.tdesc{color:var(--text);font-size:11px;line-height:1.5;margin-bottom:9px;}
+.tpl{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.tp{display:flex;align-items:baseline;gap:5px;font-size:11px;margin-bottom:2px;}
+.tpn{color:var(--orange);}
+.tpt{color:var(--muted);font-size:10px;}
+.tpr{color:var(--red);font-size:9px;}
+
+/* ===== METRICS TAB ===== */
+.mcard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center;}
+.mico{font-size:26px;margin-bottom:6px;}
+.mval{font-size:28px;font-weight:bold;color:var(--accent);}
+.mlbl{font-size:10px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:1px;}
+.mlcard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;}
+.ml-t{font-weight:bold;margin-bottom:10px;font-size:12px;}
+.mlr{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;font-size:12px;}
+.mlr .k{color:var(--muted);}
+.mlr .v{color:var(--text);}
+.mlr .v.g{color:var(--green);}
+.pbar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:5px;}
+.pfill{height:100%;border-radius:3px;background:var(--accent);transition:width .5s;}
+.pfill.g{background:var(--green);}
+.pfill.o{background:var(--orange);}
+
+/* ===== COMPARE TAB ===== */
+.cmp2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.ccard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;}
+.ctitle{font-size:13px;font-weight:bold;margin-bottom:3px;}
+.ctitle.ir{color:var(--accent);}
+.ctitle.sq{color:var(--orange);}
+.csub{color:var(--muted);font-size:11px;margin-bottom:12px;}
+.flow{display:flex;align-items:center;gap:5px;flex-wrap:wrap;font-size:11px;margin:10px 0;}
+.fnode{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:4px 9px;}
+.fnode.hi{border-color:var(--accent);color:var(--accent);}
+.fnode.hio{border-color:var(--orange);color:var(--orange);}
+.fa{color:var(--muted);font-size:13px;}
+.codeblk{background:#040810;border:1px solid var(--border);border-radius:5px;
+  padding:10px;font-size:11px;line-height:1.6;overflow-x:auto;white-space:pre;}
+.kw{color:#569cd6;}.fn{color:#dcdcaa;}.str{color:#ce9178;}
+.cmt{color:#6a9955;}.cls{color:#4ec9b0;}.par{color:#9cdcfe;}
+.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
+.ctbl th{text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;
+  letter-spacing:1px;padding:7px;border-bottom:1px solid var(--border);}
+.ctbl td{padding:7px;border-bottom:1px solid rgba(26,45,74,.4);vertical-align:top;}
+.ctbl .asp{color:var(--orange);}
+.ctbl .irc{color:var(--accent);}
+.ctbl .sqc{color:#ff9800;}
+.sbadge2{display:inline-block;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);
+  color:var(--green);border-radius:3px;padding:1px 5px;font-size:10px;}
+.dbadge{display:inline-block;background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.3);
+  color:var(--red);border-radius:3px;padding:1px 5px;font-size:10px;}
+.insight{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);
+  border-radius:8px;padding:14px;margin-top:14px;}
+.insight-t{color:var(--accent);font-size:12px;font-weight:bold;margin-bottom:7px;}
+.insight-b{color:var(--text);font-size:12px;line-height:1.75;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">🛡️ IR-AGENT PLATFORM <span class="logo-ver">v1.0.0</span></div>
+  <div class="hdr-right">
+    <input type="password" class="tok-input" id="tokenInput"
+           placeholder="Bearer Token..." value="WAhV9fBn2sRyuOXLv6MNlwT4gHFbYKPS"/>
+    <div class="status-badge" id="statusBadge">
+      <div class="status-dot"></div>
+      <span id="statusText">CHECKING...</span>
+    </div>
+  </div>
+</header>
+
+<!-- TABS -->
+<nav class="tabs">
+  <div class="tab active" data-tab="arch">🏗 Архитектура</div>
+  <div class="tab" data-tab="query">💬 Live Query</div>
+  <div class="tab" data-tab="tools">🔧 Инструменты</div>
+  <div class="tab" data-tab="metrics">📊 Метрики</div>
+  <div class="tab" data-tab="compare">⚖️ Сравнение проектов</div>
+</nav>
+
+<div class="main">
+
+<!-- ═══════════════════ TAB: ARCHITECTURE ═══════════════════ -->
+<div class="panel active" id="panel-arch">
+  <div class="sec">ReAct Agent — Архитектура системы</div>
+  <div class="arch-wrap">
+    <div class="arch-center">
+
+      <!-- Input -->
+      <div class="abox" style="min-width:280px;border-color:var(--muted);background:var(--surface);">
+        <div class="at" style="color:var(--text);font-size:12px;">📥 USER QUERY</div>
+        <div class="as">POST /agent/query &nbsp;|&nbsp; POST /agent/query/stream</div>
+      </div>
+      <div class="arr"></div>
+
+      <!-- Core agent -->
+      <div class="abox acc" style="min-width:340px;">
+        <div class="at">🤖 CYBER AGENT</div>
+        <div class="as">ReAct Loop · MAX_STEPS=8 · TIMEOUT=120s</div>
+        <div class="as" style="color:var(--accent);margin-top:5px;font-size:10px;">
+          CyberAgent.arun(query, session_id)
+        </div>
+      </div>
+      <div class="arr"></div>
+
+      <!-- ReAct loop steps -->
+      <div class="react-row">
+        <div style="color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1px;
+             position:absolute;top:8px;left:14px;">ReAct Loop (итеративный)</div>
+        <div style="position:relative;display:flex;align-items:center;justify-content:center;
+             gap:0;padding-top:8px;width:100%;">
+          <div class="rst hi"><span class="ri">🤔</span><div class="rl">THINK</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">LLM reasoning</div></div>
+          <div class="rarr">→</div>
+          <div class="rst hi"><span class="ri">⚡</span><div class="rl">ACT</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">Tool call</div></div>
+          <div class="rarr">→</div>
+          <div class="rst hi"><span class="ri">👁</span><div class="rl">OBSERVE</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">Tool result</div></div>
+          <div class="rarr" style="color:var(--accent);">↺</div>
+          <div class="rst fin"><span class="ri">✅</span><div class="rl">ANSWER</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">Final response</div></div>
+        </div>
+      </div>
+
+      <!-- LLM / Memory / RAG -->
+      <div class="side3">
+        <div class="mbox cyn">
+          <div class="mt">🧠 LLM CLIENT</div>
+          <div class="ms">Groq llama-3.3-70b (primary)<br/>OpenAI (fallback)<br/>Ollama (fallback)<br/>Retry 3x · Backoff 1/2/4s</div>
+        </div>
+        <div class="mbox grn">
+          <div class="mt">🗄️ MEMORY MANAGER</div>
+          <div class="ms">Short-term: conversation<br/>Long-term: investigations<br/>Session-based isolation</div>
+        </div>
+        <div class="mbox pur">
+          <div class="mt">📚 RAG / FAISS</div>
+          <div class="ms">33 vectors · dim=384<br/>all-MiniLM-L6-v2<br/>IndexFlatIP · AVX2</div>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="tchips">
+        <div style="width:100%;color:var(--muted);font-size:10px;text-transform:uppercase;
+             letter-spacing:1px;margin-bottom:5px;">🔧 Tool Registry — 9 инструментов</div>
+        <div class="chip">📚 knowledge_search</div>
+        <div class="chip">🔍 search_logs</div>
+        <div class="chip">🤖 classify_event</div>
+        <div class="chip">🧠 analyze_event</div>
+        <div class="chip">🗺️ mitre_lookup</div>
+        <div class="chip">🌐 lookup_ioc</div>
+        <div class="chip">📡 query_siem</div>
+        <div class="chip">🔬 investigate</div>
+        <div class="chip">⚙️ ml_classify</div>
+      </div>
+
+      <div class="arr"></div>
+
+      <!-- Assessment engine -->
+      <div class="abox ora" style="width:100%;padding:14px 20px;">
+        <div class="at">⚖️ THREAT ASSESSMENT ENGINE</div>
+        <div class="sigs">
+          <div class="sig"><div class="sp" style="color:var(--accent);">35%</div>
+            <div class="sn">ML Classifier</div>
+            <div class="sb"><div class="sf" style="width:35%;background:var(--accent);"></div></div></div>
+          <div class="sig"><div class="sp" style="color:var(--green);">30%</div>
+            <div class="sn">IoC Lookup</div>
+            <div class="sb"><div class="sf" style="width:30%;background:var(--green);"></div></div></div>
+          <div class="sig"><div class="sp" style="color:var(--orange);">20%</div>
+            <div class="sn">MITRE ATT&amp;CK</div>
+            <div class="sb"><div class="sf" style="width:20%;background:var(--orange);"></div></div></div>
+          <div class="sig"><div class="sp" style="color:var(--purple);">15%</div>
+            <div class="sn">Agent</div>
+            <div class="sb"><div class="sf" style="width:15%;background:var(--purple);"></div></div></div>
+        </div>
+        <div class="as" style="margin-top:8px;">Arbitration rules R1–R7 · Score 0–100 · INFO→LOW→MEDIUM→HIGH→CRITICAL</div>
+      </div>
+
+      <div class="arr"></div>
+
+      <!-- Output -->
+      <div class="abox grn" style="min-width:280px;">
+        <div class="at">📤 STRUCTURED RESPONSE</div>
+        <div class="as">AgentResponse: answer, steps[], tools_used, total_steps, session_id</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ML Pipeline modes -->
+  <div class="sec" style="margin-top:20px;">ML Processing Pipeline</div>
+  <div class="g3">
+    <div class="card">
+      <div class="card-t">⚡ Fast Path (≥80% conf.)</div>
+      <div style="font-size:12px;color:var(--text);line-height:1.6;">
+        ML only · ~5ms<br/>GradientBoosting prediction<br/>→ Direct alert to Better Stack
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-t">🔬 Deep Path (50–80% conf.)</div>
+      <div style="font-size:12px;color:var(--text);line-height:1.6;">
+        CyberAgent analysis · ~1–2s<br/>ReAct loop with tools<br/>→ Enriched verdict + report
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-t">🚫 Filtered (&lt;50% conf.)</div>
+      <div style="font-size:12px;color:var(--text);line-height:1.6;">
+        Benign events skipped<br/>Reduces SOC noise<br/>→ No action needed
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: LIVE QUERY ═══════════════════ -->
+<div class="panel" id="panel-query">
+  <div class="ql">
+    <div class="qleft">
+      <div class="sec" style="margin-bottom:6px;">Запрос к агенту</div>
+      <textarea class="qtxt" id="queryText"
+        placeholder="Введите запрос для CyberAgent...&#10;&#10;Ctrl+Enter — отправить"></textarea>
+      <div class="qmeta">
+        <input type="text" class="qsess" id="sessionId"/>
+        <button class="btn btn-s" onclick="newSession()">↻</button>
+        <button class="btn btn-p" id="sendBtn" onclick="sendQuery()">▶ Отправить</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">
+        Режим:
+        <label style="cursor:pointer;"><input type="radio" name="mode" value="stream" checked/> Streaming</label>
+        &nbsp;<label style="cursor:pointer;"><input type="radio" name="mode" value="sync"/> Sync</label>
+      </div>
+      <div class="sec" style="margin-top:14px;margin-bottom:6px;">Быстрые запросы</div>
+      <div class="qqlist">
+        <div class="qq" onclick="setQ(this)">
+          <div class="qql">🌐 IoC Check</div>
+          Check IoC 185.220.101.1 — is this IP malicious?
+        </div>
+        <div class="qq" onclick="setQ(this)">
+          <div class="qql">🗺️ MITRE Lookup</div>
+          Look up MITRE technique T1003.001 and explain OS Credential Dumping
+        </div>
+        <div class="qq" onclick="setQ(this)">
+          <div class="qql">🔍 Log Search + Classify</div>
+          Search logs for mimikatz on WORKSTATION-07 and classify if malicious
+        </div>
+        <div class="qq" onclick="setQ(this)">
+          <div class="qql">🔬 Full Investigation</div>
+          Investigate: powershell.exe ran sekurlsa::logonpasswords on HOST-01 then connected to 45.142.212.100:4444. MITRE techniques?
+        </div>
+        <div class="qq" onclick="setQ(this)">
+          <div class="qql">📚 Knowledge Base</div>
+          Search knowledge base for ransomware incident response playbook
+        </div>
+      </div>
+    </div>
+
+    <div class="qright">
+      <div class="ohdr">
+        <span class="ohdr-t">🖥 Agent Output — chain of thought</span>
+        <button class="btn btn-s" onclick="clearOut()">✕ Clear</button>
+      </div>
+      <div class="obody" id="outBody">
+        <div class="empty">
+          <div class="empty-ico">🤖</div>
+          <div>CyberAgent готов к работе</div>
+          <div style="font-size:11px;">Введите запрос слева и нажмите ▶</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: TOOLS ═══════════════════ -->
+<div class="panel" id="panel-tools">
+  <div class="sec">Инструменты ReAct агента — <span id="tools-count">загрузка...</span></div>
+  <div class="tgrid" id="toolsGrid">
+    <div style="color:var(--muted);font-size:12px;padding:16px;">Загрузка...</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: METRICS ═══════════════════ -->
+<div class="panel" id="panel-metrics">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+    <div class="sec" style="margin:0;">Live метрики</div>
+    <span style="font-size:11px;color:var(--muted);" id="mts">—</span>
+  </div>
+  <div class="g4" style="margin-bottom:14px;">
+    <div class="mcard"><div class="mico">📨</div>
+      <div class="mval" id="m-tot">—</div><div class="mlbl">Событий обработано</div></div>
+    <div class="mcard"><div class="mico">🚨</div>
+      <div class="mval" id="m-mal" style="color:var(--red);">—</div><div class="mlbl">Угроз обнаружено</div></div>
+    <div class="mcard"><div class="mico">⚡</div>
+      <div class="mval" id="m-fast" style="color:var(--green);">—</div><div class="mlbl">Fast-path</div></div>
+    <div class="mcard"><div class="mico">🔬</div>
+      <div class="mval" id="m-deep" style="color:var(--orange);">—</div><div class="mlbl">Deep-path (agent)</div></div>
+  </div>
+  <div class="g2" style="margin-bottom:14px;">
+    <div class="mlcard">
+      <div class="ml-t" style="color:var(--green);">⚙️ ML Model — decoupled_v4</div>
+      <div class="mlr"><span class="k">Тип</span><span class="v">GradientBoostingClassifier</span></div>
+      <div class="mlr"><span class="k">Точность</span><span class="v g" id="ml-acc">—</span></div>
+      <div class="mlr"><span class="k">ROC-AUC</span><span class="v g" id="ml-auc">—</span></div>
+      <div class="mlr"><span class="k">F1 Score</span><span class="v g" id="ml-f1">—</span></div>
+      <div class="mlr"><span class="k">FPR</span><span class="v" id="ml-fpr">—</span></div>
+      <div class="mlr"><span class="k">FNR</span><span class="v" id="ml-fnr">—</span></div>
+      <div class="mlr"><span class="k">Train samples</span><span class="v" id="ml-train">—</span></div>
+      <div class="mlr"><span class="k">Features</span><span class="v" id="ml-feat">—</span></div>
+      <div class="mlr"><span class="k">Threshold</span><span class="v" id="ml-thr">—</span></div>
+    </div>
+    <div class="mlcard">
+      <div class="ml-t" style="color:var(--accent);">🧠 CyberAgent</div>
+      <div class="mlr"><span class="k">LLM Provider</span><span class="v g">Groq</span></div>
+      <div class="mlr"><span class="k">Model</span><span class="v">llama-3.3-70b-versatile</span></div>
+      <div class="mlr"><span class="k">Max steps</span><span class="v">8</span></div>
+      <div class="mlr"><span class="k">Timeout</span><span class="v">120s</span></div>
+      <div class="mlr"><span class="k">Tools</span><span class="v g">9</span></div>
+      <div class="mlr"><span class="k">Knowledge vectors</span><span class="v g">33</span></div>
+      <div class="mlr"><span class="k">FAISS</span><span class="v g">AVX2 · dim=384</span></div>
+      <div class="mlr"><span class="k">Embeddings</span><span class="v">all-MiniLM-L6-v2</span></div>
+      <div class="mlr"><span class="k">Better Stack</span><span class="v g">Enabled</span></div>
+      <div class="mlr"><span class="k">Auth</span><span class="v g">Bearer Token</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-t">Processing Pipeline Distribution</div>
+    <div style="display:flex;gap:16px;font-size:12px;margin-top:8px;">
+      <div style="flex:1;">
+        <div style="color:var(--muted);margin-bottom:3px;">Fast Path</div>
+        <div class="pbar"><div class="pfill g" id="b-fast" style="width:0%;"></div></div>
+        <div style="color:var(--green);margin-top:3px;" id="bl-fast">—</div>
+      </div>
+      <div style="flex:1;">
+        <div style="color:var(--muted);margin-bottom:3px;">Deep Path</div>
+        <div class="pbar"><div class="pfill o" id="b-deep" style="width:0%;"></div></div>
+        <div style="color:var(--orange);margin-top:3px;" id="bl-deep">—</div>
+      </div>
+      <div style="flex:1;">
+        <div style="color:var(--muted);margin-bottom:3px;">Filtered Benign</div>
+        <div class="pbar"><div class="pfill" id="b-filt" style="width:0%;"></div></div>
+        <div style="color:var(--accent);margin-top:3px;" id="bl-filt">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ TAB: COMPARISON ═══════════════════ -->
+<div class="panel" id="panel-compare">
+  <div class="sec">Сравнение: IR-Agent vs SQL Injection Agent (github.com/qbert2004/Sql_injection_code)</div>
+  <div style="color:var(--muted);font-size:12px;margin-bottom:16px;">
+    Оба проекта используют <strong style="color:var(--accent);">одинаковый паттерн вызова агента</strong>:
+    HTTP запрос → FastAPI router → Singleton сервис → Метод агента → Структурированный ответ
+  </div>
+
+  <!-- Flow comparison side by side -->
+  <div class="cmp2" style="margin-bottom:16px;">
+    <div class="ccard">
+      <div class="ctitle ir">🛡️ IR-Agent (этот проект)</div>
+      <div class="csub">Incident Response · ReAct LLM Agent · iterative</div>
+      <div class="flow">
+        <div class="fnode">POST /agent/query</div><div class="fa">→</div>
+        <div class="fnode">AgentService</div><div class="fa">→</div>
+        <div class="fnode hi">aquery(query, session_id)</div><div class="fa">→</div>
+        <div class="fnode hi">CyberAgent.arun()</div><div class="fa">→</div>
+        <div class="fnode">AgentResponse{}</div>
+      </div>
+      <div class="codeblk"><span class="cmt"># app/routers/agent.py</span>
+<span class="kw">@router</span>.post(<span class="str">"/query"</span>)
+<span class="kw">async def</span> <span class="fn">agent_query</span>(<span class="par">req</span>):
+    <span class="kw">return await</span> agent_service.<span class="fn">aquery</span>(
+        <span class="par">req</span>.query, <span class="par">req</span>.session_id
+    )
+
+<span class="cmt"># app/services/agent_service.py</span>
+<span class="kw">async def</span> <span class="fn">aquery</span>(<span class="par">self</span>, query, session_id):
+    <span class="kw">return await</span> <span class="par">self</span>._agent.<span class="fn">arun</span>(
+        query, session_id
+    )
+
+<span class="cmt"># app/agent/core/agent.py</span>
+<span class="kw">async def</span> <span class="fn">arun</span>(<span class="par">self</span>, query, session_id):
+    <span class="kw">return await</span> asyncio.<span class="fn">wait_for</span>(
+        loop.<span class="fn">run_in_executor</span>(<span class="par">None</span>,
+            <span class="par">self</span>.run, query, session_id),
+        timeout=<span class="par">self</span>._timeout
+    )</div>
+    </div>
+    <div class="ccard">
+      <div class="ctitle sq">🔒 SQL Injection Agent</div>
+      <div class="csub">SQLi Detection · 7-Layer Ensemble Pipeline · sequential</div>
+      <div class="flow">
+        <div class="fnode">POST /api/check</div><div class="fa">→</div>
+        <div class="fnode">SQLiDetector</div><div class="fa">→</div>
+        <div class="fnode hio">check(text, source_ip)</div><div class="fa">→</div>
+        <div class="fnode hio">agent.evaluate()</div><div class="fa">→</div>
+        <div class="fnode">DetectionResult{}</div>
+      </div>
+      <div class="codeblk"><span class="cmt"># api_server.py</span>
+<span class="kw">@app</span>.post(<span class="str">"/api/check"</span>)
+<span class="kw">async def</span> <span class="fn">check</span>(<span class="par">payload</span>):
+    <span class="kw">return</span> detector.<span class="fn">check</span>(
+        <span class="par">payload</span>.text, client_ip,
+        endpoint, field
+    )
+
+<span class="cmt"># sql_injection_detector.py</span>
+<span class="kw">def</span> <span class="fn">check</span>(<span class="par">self</span>, text, source_ip, ...):
+    <span class="kw">return</span> <span class="par">self</span>.agent.<span class="fn">evaluate</span>(
+        text, source_ip
+    )
+
+<span class="cmt"># agent.py</span>
+<span class="kw">def</span> <span class="fn">evaluate</span>(<span class="par">self</span>, payload, source_ip):
+    <span class="cmt"># 7-layer sequential pipeline</span>
+    result = <span class="par">self</span>.<span class="fn">_run_pipeline</span>(
+        payload, source_ip
+    )
+    <span class="kw">return</span> result</div>
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <div class="card" style="margin-bottom:14px;">
+    <div class="card-t">Детальное сравнение</div>
+    <table class="ctbl">
+      <thead><tr><th>Аспект</th><th>IR-Agent</th><th>SQLi Agent</th><th>Схожесть</th></tr></thead>
+      <tbody>
+        <tr><td class="asp">Фреймворк</td><td class="irc">FastAPI</td><td class="sqc">FastAPI</td><td><span class="sbadge2">✓ одинаково</span></td></tr>
+        <tr><td class="asp">Паттерн сервиса</td><td class="irc">Singleton AgentService</td><td class="sqc">Singleton SQLiDetector</td><td><span class="sbadge2">✓ singleton</span></td></tr>
+        <tr><td class="asp">Точка входа</td><td class="irc">aquery(query, session_id)</td><td class="sqc">evaluate(payload, source_ip)</td><td><span class="sbadge2">✓ один метод</span></td></tr>
+        <tr><td class="asp">Контекст</td><td class="irc">session_id (история)</td><td class="sqc">source_ip (IP-профиль)</td><td><span class="sbadge2">✓ идентификатор</span></td></tr>
+        <tr><td class="asp">Ответ</td><td class="irc">AgentResponse (dict)</td><td class="sqc">DetectionResult (dict)</td><td><span class="sbadge2">✓ структурированный</span></td></tr>
+        <tr><td class="asp">Логика агента</td><td class="irc">ReAct loop (итеративный)</td><td class="sqc">7-layer pipeline (последовательный)</td><td><span class="dbadge">~ разный тип</span></td></tr>
+        <tr><td class="asp">LLM</td><td class="irc">Groq / OpenAI / Ollama</td><td class="sqc">Нет LLM (ML only)</td><td><span class="dbadge">✗ разное</span></td></tr>
+        <tr><td class="asp">ML модель</td><td class="irc">GradientBoosting (42 фичи)</td><td class="sqc">RF + CNN ensemble</td><td><span class="sbadge2">✓ ensemble ML</span></td></tr>
+        <tr><td class="asp">Память</td><td class="irc">Session + Long-term</td><td class="sqc">IPMemory LRU (10k IPs)</td><td><span class="sbadge2">✓ stateful</span></td></tr>
+        <tr><td class="asp">Объяснимость</td><td class="irc">explanation_trace</td><td class="sqc">contributing_factors CEF</td><td><span class="sbadge2">✓ explainable</span></td></tr>
+        <tr><td class="asp">Стриминг</td><td class="irc">NDJSON stream</td><td class="sqc">Нет стриминга</td><td><span class="dbadge">✗ разное</span></td></tr>
+        <tr><td class="asp">Knowledge store</td><td class="irc">FAISS RAG (33 vectors)</td><td class="sqc">Signature DB + SGD incremental</td><td><span class="sbadge2">✓ knowledge store</span></td></tr>
+        <tr><td class="asp">Persistence</td><td class="irc">SQLite + FAISS index</td><td class="sqc">SQLite / Redis (pluggable)</td><td><span class="sbadge2">✓ SQLite default</span></td></tr>
+        <tr><td class="asp">Rate limiting</td><td class="irc">60 req/min</td><td class="sqc">100 req/min</td><td><span class="sbadge2">✓ middleware</span></td></tr>
+        <tr><td class="asp">Auth</td><td class="irc">Bearer Token</td><td class="sqc">Optional API Key</td><td><span class="sbadge2">✓ token-based</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Insight -->
+  <div class="insight">
+    <div class="insight-t">💡 Ключевой вывод — одинаковый паттерн вызова</div>
+    <div class="insight-b">
+      Оба проекта используют <strong style="color:var(--accent);">HTTP → Router → Singleton → Agent.method(input, context_id) → dict</strong><br/><br/>
+      Разница только в <strong>типе pipeline внутри</strong>:<br/>
+      • IR-Agent: <strong style="color:var(--accent);">итеративный ReAct loop</strong> — Thought → Action → Observation × N шагов (LLM-driven)<br/>
+      • SQLi Agent: <strong style="color:var(--orange);">последовательный 7-слойный ensemble</strong> — Normalize → Lexical → ML → Semantic → Decision → Severity → Explain<br/><br/>
+      <strong style="color:var(--green);">Потенциал интеграции:</strong> IR-Agent может вызывать SQLi-агент как инструмент <code style="color:var(--orange);">check_sqli(payload)</code>
+      в своём ReAct loop — когда агент анализирует веб-атаку, он может делегировать проверку SQL-инъекций в специализированный pipeline.
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ── UTILS ──────────────────────────────────────────────────────
+const tok = () => document.getElementById('tokenInput').value.trim();
+const esc = s => String(s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+  .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const $  = id => document.getElementById(id);
+
+// ── TABS ───────────────────────────────────────────────────────
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    $('panel-' + t.dataset.tab).classList.add('active');
+    if (t.dataset.tab === 'tools')   loadTools();
+    if (t.dataset.tab === 'metrics') loadMetrics();
+  });
+});
+
+// ── STATUS ─────────────────────────────────────────────────────
+async function checkStatus() {
+  try {
+    const r = await fetch('/health', {headers:{Authorization:'Bearer '+tok()}});
+    const d = await r.json();
+    const badge = $('statusBadge'), txt = $('statusText');
+    if (r.ok) {
+      badge.style.color = 'var(--green)';
+      badge.querySelector('.status-dot').style.background = 'var(--green)';
+      txt.textContent = 'ONLINE · ' + (d.environment||'dev').toUpperCase();
+    } else { badge.style.color='var(--red)'; txt.textContent='ERROR'; }
+  } catch { $('statusText').textContent = 'OFFLINE'; }
+}
+checkStatus(); setInterval(checkStatus, 15000);
+
+// ── SESSION ────────────────────────────────────────────────────
+function newSession() {
+  $('sessionId').value = 'sess-' + Math.random().toString(36).substr(2,8);
+}
+newSession();
+
+// ── QUICK QUERIES ──────────────────────────────────────────────
+function setQ(el) {
+  const lbl = el.querySelector('.qql');
+  $('queryText').value = el.textContent.replace(lbl.textContent,'').trim();
+  $('queryText').focus();
+}
+
+// ── OUTPUT HELPERS ─────────────────────────────────────────────
+function clearOut() {
+  $('outBody').innerHTML = `<div class="empty">
+    <div class="empty-ico">🤖</div>
+    <div>CyberAgent готов к работе</div>
+    <div style="font-size:11px;">Введите запрос слева и нажмите ▶</div></div>`;
+}
+function appendOut(html) {
+  const b = $('outBody');
+  const es = b.querySelector('.empty');
+  if (es) es.remove();
+  b.insertAdjacentHTML('beforeend', html);
+  b.scrollTop = b.scrollHeight;
+}
+function setLoading() {
+  $('outBody').innerHTML = `<div style="color:var(--muted);font-size:12px;padding:20px;">
+    <span class="ldots">Агент думает</span></div>`;
+}
+
+// ── SEND QUERY ─────────────────────────────────────────────────
+async function sendQuery() {
+  const query = $('queryText').value.trim();
+  if (!query) return;
+  const sid  = $('sessionId').value;
+  const mode = document.querySelector('input[name="mode"]:checked').value;
+  const btn  = $('sendBtn');
+  btn.disabled = true; btn.textContent = '⏳ Обработка...';
+  setLoading();
+  try {
+    mode === 'stream' ? await streamQ(query, sid) : await syncQ(query, sid);
+  } catch(e) {
+    appendOut(`<div style="color:var(--red);font-size:12px;padding:8px;">❌ ${esc(e.message)}</div>`);
+  } finally {
+    btn.disabled = false; btn.textContent = '▶ Отправить';
+  }
+}
+
+async function streamQ(query, sid) {
+  $('outBody').innerHTML = '';
+  const r = await fetch('/agent/query/stream', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok()},
+    body: JSON.stringify({query, session_id: sid})
+  });
+  const reader = r.body.getReader(), dec = new TextDecoder();
+  let buf = '';
+  while (true) {
+    const {done, value} = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, {stream:true});
+    const lines = buf.split('\n'); buf = lines.pop();
+    for (const ln of lines) {
+      const t = ln.trim(); if (!t) continue;
+      try { renderEvent(JSON.parse(t)); } catch {}
+    }
+  }
+  // Flush remaining buffer after stream ends (last line may lack trailing \n)
+  if (buf.trim()) {
+    try { renderEvent(JSON.parse(buf.trim())); } catch {}
+  }
+}
+
+function renderEvent(d) {
+  const b = $('outBody');
+  const ld = b.querySelector('.ldots');
+  if (ld) ld.closest('div').remove();
+  if (d.type === 'step' || (d.action !== undefined && d.type !== 'answer')) {
+    const th = d.thought ? esc(d.thought.substring(0,220)) + (d.thought.length>220?'…':'') : '';
+    const ob = d.observation ? esc(String(d.observation)) : '';
+    appendOut(`<div class="step-blk">
+      <div class="shdr">
+        <span class="snum">STEP ${d.step||'?'}</span>
+        ${d.action ? `<span class="sbadge">🔧 ${esc(d.action)}</span>` : ''}
+      </div>
+      ${th ? `<div class="thought">💭 ${th}</div>` : ''}
+      ${ob ? `<div class="obs">👁 ${ob}</div>` : ''}
+    </div>`);
+  } else if (d.type === 'answer' || d.answer) {
+    const tools = d.tools_used || [];
+    appendOut(`<div class="ans-blk">
+      <div class="ans-hdr">✅ FINAL ANSWER · ${d.total_steps||'?'} шагов</div>
+      <div class="ans-txt">${esc(d.answer||'')}</div>
+      ${tools.length ? `<div class="tool-badges">${tools.map(t=>`<span class="tbadge">🔧 ${esc(t)}</span>`).join('')}</div>` : ''}
+    </div>`);
+  }
+}
+
+async function syncQ(query, sid) {
+  $('outBody').innerHTML = '';
+  const r = await fetch('/agent/query', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+tok()},
+    body: JSON.stringify({query, session_id: sid})
+  });
+  const d = await r.json();
+  (d.steps||[]).forEach(s => {
+    if (!s.action && !s.thought) return;
+    const th = s.thought ? esc(s.thought.substring(0,220))+(s.thought.length>220?'…':'') : '';
+    appendOut(`<div class="step-blk">
+      <div class="shdr">
+        <span class="snum">STEP ${s.step_number}</span>
+        ${s.action ? `<span class="sbadge">🔧 ${esc(s.action)}</span>` : ''}
+      </div>
+      ${th ? `<div class="thought">💭 ${th}</div>` : ''}
+      ${s.observation ? `<div class="obs">👁 ${esc(String(s.observation))}</div>` : ''}
+    </div>`);
+  });
+  if (d.answer) {
+    const tools = d.tools_used||[];
+    appendOut(`<div class="ans-blk">
+      <div class="ans-hdr">✅ FINAL ANSWER · ${d.total_steps||'?'} шагов</div>
+      <div class="ans-txt">${esc(d.answer)}</div>
+      ${tools.length ? `<div class="tool-badges">${tools.map(t=>`<span class="tbadge">🔧 ${esc(t)}</span>`).join('')}</div>` : ''}
+    </div>`);
+  }
+}
+
+$('queryText').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) sendQuery();
+});
+
+// ── LOAD TOOLS ─────────────────────────────────────────────────
+const TICONS = {
+  knowledge_search:'📚',search_logs:'🔍',classify_event:'🤖',analyze_event:'🧠',
+  mitre_lookup:'🗺️',lookup_ioc:'🌐',query_siem:'📡',investigate:'🔬',ml_classify:'⚙️'
+};
+const TTYPES = {
+  knowledge_search:'RAG · FAISS',search_logs:'Event Store',classify_event:'ML · Fast',
+  analyze_event:'LLM · Groq',mitre_lookup:'Knowledge DB',lookup_ioc:'Threat Intel',
+  query_siem:'Better Stack',investigate:'Full Pipeline',ml_classify:'ML + CyberML'
+};
+
+async function loadTools() {
+  const grid = $('toolsGrid');
+  try {
+    const r = await fetch('/agent/tools',{headers:{Authorization:'Bearer '+tok()}});
+    const data = await r.json();
+    const tools = data.tools || data || [];
+    $('tools-count').textContent = tools.length + ' инструментов';
+    grid.innerHTML = tools.map(tool => {
+      const props = tool.parameters?.properties || {};
+      const req   = tool.parameters?.required || [];
+      const pItems = Object.entries(props).slice(0,5).map(([n,s]) =>
+        `<div class="tp"><span class="tpn">${n}</span>
+         <span class="tpt">${s.type||'any'}</span>
+         ${req.includes(n)?'<span class="tpr">req</span>':''}</div>`
+      ).join('');
+      return `<div class="tcard">
+        <div class="tcard-hdr">
+          <span class="tico">${TICONS[tool.name]||'🔧'}</span>
+          <div><div class="tname">${tool.name}</div>
+          <div class="ttype">${TTYPES[tool.name]||'Tool'}</div></div>
+        </div>
+        <div class="tdesc">${esc((tool.description||'').substring(0,120))}${(tool.description||'').length>120?'…':''}</div>
+        ${Object.keys(props).length?`<div class="tpl">Параметры</div>${pItems}
+          ${Object.keys(props).length>5?`<div style="color:var(--muted);font-size:10px;">+${Object.keys(props).length-5} more</div>`:''}`:''
+        }
+      </div>`;
+    }).join('');
+  } catch(e) {
+    grid.innerHTML = `<div style="color:var(--red);font-size:12px;">Ошибка: ${esc(e.message)}</div>`;
+  }
+}
+
+// ── LOAD METRICS ───────────────────────────────────────────────
+async function loadMetrics() {
+  try {
+    const [r1, r2] = await Promise.all([
+      fetch('/ingest/metrics',   {headers:{Authorization:'Bearer '+tok()}}),
+      fetch('/ingest/ml/status', {headers:{Authorization:'Bearer '+tok()}})
+    ]);
+    const m = await r1.json(), ml = await r2.json();
+    const p = m.processing||{}, paths = m.paths||{};
+    const mlm = (ml.model||{}).metrics||{}, model = ml.model||{};
+
+    $('m-tot').textContent  = p.total_processed   || 0;
+    $('m-mal').textContent  = p.malicious_detected || 0;
+    $('m-fast').textContent = paths.fast_path_count|| 0;
+    $('m-deep').textContent = paths.deep_path_count|| 0;
+
+    $('ml-acc').textContent  = mlm.accuracy ? (mlm.accuracy*100).toFixed(2)+'%' : '—';
+    $('ml-auc').textContent  = mlm.roc_auc  ? mlm.roc_auc.toFixed(4) : '—';
+    $('ml-f1').textContent   = mlm.f1       ? mlm.f1.toFixed(4)      : '—';
+    $('ml-fpr').textContent  = mlm.fpr      ? (mlm.fpr*100).toFixed(1)+'%' : '—';
+    $('ml-fnr').textContent  = mlm.fnr      ? (mlm.fnr*100).toFixed(1)+'%' : '—';
+    $('ml-train').textContent= mlm.train_n  ? mlm.train_n.toLocaleString() : '—';
+    $('ml-feat').textContent = model.n_features  || '—';
+    $('ml-thr').textContent  = model.threshold   ?? '—';
+
+    const tot = p.total_processed || 1;
+    const fp = Math.min(100, Math.round(((paths.fast_path_count||0)/tot)*100));
+    const dp = Math.min(100, Math.round(((paths.deep_path_count||0)/tot)*100));
+    const fi = parseInt(p.filter_rate||'0');
+    $('b-fast').style.width = fp+'%'; $('bl-fast').textContent = paths.fast_path_rate||'0%';
+    $('b-deep').style.width = dp+'%'; $('bl-deep').textContent = paths.deep_path_rate||'0%';
+    $('b-filt').style.width = fi+'%'; $('bl-filt').textContent = p.filter_rate||'0%';
+    $('mts').textContent = '↻ ' + new Date().toLocaleTimeString();
+  } catch(e) { console.error('metrics', e); }
+}
+setInterval(() => {
+  if ($('panel-metrics').classList.contains('active')) loadMetrics();
+}, 5000);
+</script>
+</body>
+</html>

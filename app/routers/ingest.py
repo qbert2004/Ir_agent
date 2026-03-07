@@ -105,6 +105,12 @@ async def ingest_telemetry(request: Request, background_tasks: BackgroundTasks):
         return {"status": "error", "message": str(e)}
 
 
+@router.post("/event")
+async def ingest_event(request: Request, background_tasks: BackgroundTasks):
+    """Alias for /ingest/telemetry — accepts events at /ingest/event."""
+    return await ingest_telemetry(request, background_tasks)
+
+
 @router.get("/metrics")
 async def get_metrics():
     """

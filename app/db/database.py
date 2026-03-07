@@ -8,7 +8,9 @@ SQLAlchemy async engine — работает с SQLite (dev) и PostgreSQL (prod
 """
 from __future__ import annotations
 
+import asyncio
 import logging
+import re
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
@@ -22,6 +24,11 @@ from sqlalchemy.orm import DeclarativeBase
 from app.core.config import settings
 
 logger = logging.getLogger("ir-agent")
+
+
+def _safe_db_url(url: str) -> str:
+    """Mask credentials in DATABASE_URL before logging. postgresql+asyncpg://user:pass@host/db → ...@host/db"""
+    return re.sub(r"://[^@]+@", "://*****@", url)
 
 # ── Engine ────────────────────────────────────────────────────────────────────
 
@@ -63,11 +70,33 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 
 async def init_db() -> None:
-    """Create all tables if they don't exist."""
+    """
+    Run Alembic migrations on startup.
+
+    Applies any pending migrations automatically — safe for both fresh installs
+    (creates all tables) and upgrades (applies only new migrations).
+    Uses create_all as fallback if Alembic is unavailable (test environments).
+    """
     from app.db import models  # noqa: F401 — registers models with Base
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.create_all)
-    logger.info("Database tables created/verified: %s", settings.database_url.split("///")[-1])
+
+    try:
+        from alembic.config import Config
+        from alembic import command
+        import os
+
+        alembic_cfg = Config(
+            os.path.join(os.path.dirname(__file__), "..", "..", "alembic.ini")
+        )
+        # Run synchronously in a thread to avoid blocking the event loop
+        # asyncio.get_running_loop() is the correct API in Python 3.10+ (get_event_loop deprecated)
+        loop = asyncio.get_running_loop()
+        await loop.run_in_executor(None, lambda: command.upgrade(alembic_cfg, "head"))
+        logger.info("Database migrations applied: %s", _safe_db_url(settings.database_url))
+    except Exception as e:
+        logger.warning("Alembic migration failed (%s) — falling back to create_all", e)
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+        logger.info("Database tables created via create_all: %s", _safe_db_url(settings.database_url))
 
 
 async def close_db() -> None:

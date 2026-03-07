@@ -29,10 +29,21 @@ class EmbeddingModel:
         self._initialized = True
 
     def _load_model(self):
-        """Lazy-load the model on first use."""
-        if self._model is None:
-            from sentence_transformers import SentenceTransformer
-            self._model = SentenceTransformer(self.MODEL_NAME)
+        """Lazy-load the model on first use (thread-safe).
+
+        Uses double-checked locking so that:
+          1. Once the model is loaded the fast-path (no lock) is taken on every
+             subsequent call.
+          2. If two threads race on the very first call, only one loads the
+             model — the second waits on the lock and then skips loading because
+             self._model is already set.
+        """
+        if self._model is not None:
+            return  # fast path — no lock overhead after first load
+        with self.__class__._lock:
+            if self._model is None:  # double-checked: re-test inside the lock
+                from sentence_transformers import SentenceTransformer
+                self._model = SentenceTransformer(self.MODEL_NAME)
 
     def embed(self, texts: List[str]) -> np.ndarray:
         """Embed a list of texts into vectors.

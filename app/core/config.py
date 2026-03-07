@@ -24,6 +24,10 @@ class Settings(BaseSettings):
     # AI Configuration
     ai_provider: str = Field(default="groq", alias="LLM_PROVIDER")
     groq_api_key: str = Field(default="", alias="LLM_API_KEY")
+    # OpenAI fallback key (checked by LLM client if groq_api_key is empty)
+    openai_api_key: str = Field(default="", alias="OPENAI_API_KEY")
+    # Ollama local endpoint (non-empty means Ollama is configured as a fallback)
+    ollama_base_url: str = Field(default="", alias="OLLAMA_BASE_URL")
     ai_model: str = Field(default="llama-3.3-70b-versatile", alias="LLM_ANALYZER_MODEL")
     ai_report_model: str = Field(default="llama-3.3-70b-versatile", alias="LLM_REPORT_MODEL")
     ai_threat_threshold: int = Field(default=60, alias="AI_SUSPICIOUS_THRESHOLD")
@@ -47,7 +51,12 @@ class Settings(BaseSettings):
 
     @property
     def ai_enabled(self) -> bool:
-        return bool(self.groq_api_key)
+        """True when at least one LLM provider is configured.
+
+        Provider priority mirrors LLM client fallback chain:
+            Groq (LLM_API_KEY) → OpenAI (OPENAI_API_KEY) → Ollama (OLLAMA_BASE_URL)
+        """
+        return bool(self.groq_api_key or self.openai_api_key or self.ollama_base_url)
 
     @property
     def betterstack_enabled(self) -> bool:

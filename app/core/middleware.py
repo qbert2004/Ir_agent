@@ -22,8 +22,22 @@ from app.core.config import settings
 
 logger = logging.getLogger("ir-agent")
 
-# Paths that do NOT require authentication
-PUBLIC_PATHS = {"/", "/health", "/health/live", "/health/ready", "/openapi.json"}
+# Paths that bypass both authentication AND rate limiting.
+# Swagger/ReDoc UI paths are included so they are freely accessible in dev
+# mode and so the rate-limiter does not consume quota for browser asset requests.
+PUBLIC_PATHS = {
+    "/",
+    "/health",
+    "/health/live",
+    "/health/ready",
+    "/openapi.json",
+    "/docs",
+    "/docs/oauth2-redirect",
+    "/redoc",
+    "/favicon.ico",
+    "/dashboard",      # Platform UI — token sent by JS inside the page
+    "/report_ui",      # Legacy report UI
+}
 
 
 # ---------------------------------------------------------------------------
@@ -106,7 +120,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
 
         path = request.url.path.rstrip("/") or "/"
 
-        if path in PUBLIC_PATHS or path.startswith("/docs") or path.startswith("/redoc"):
+        # PUBLIC_PATHS covers /, /health/*, /docs, /redoc, /openapi.json
+        if path in PUBLIC_PATHS:
             return await call_next(request)
 
         auth = request.headers.get("Authorization", "")

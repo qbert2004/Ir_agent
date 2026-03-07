@@ -1,13 +1,23 @@
 """CyberAgent - ReAct reasoning loop with tools, memory, and RAG."""
 
 import asyncio
+import os
 import uuid
 import logging
-from typing import Optional
+from typing import Iterator, Optional
+
+# Maximum wall-clock seconds for a single arun() invocation.
+# If the ReAct loop does not finish within this time, asyncio.TimeoutError is
+# raised so that the FastAPI handler can return 504 Gateway Timeout instead of
+# blocking the event loop indefinitely.
+AGENT_TIMEOUT = float(os.getenv("AGENT_TIMEOUT_SECONDS", "120"))
 
 from app.agent.core.reasoning import parse_llm_output, format_observation
 from app.agent.memory.memory_manager import MemoryManager
-from app.agent.prompts.system_prompts import AGENT_SYSTEM_PROMPT, AGENT_SYSTEM_PROMPT_MINIMAL
+from app.agent.prompts.system_prompts import (
+    build_agent_system_prompt,
+    build_agent_system_prompt_minimal,
+)
 from app.agent.prompts.react_templates import (
     REACT_INSTRUCTION,
     USER_QUERY_TEMPLATE,
@@ -63,16 +73,19 @@ class CyberAgent:
                 session_id=session_id,
             )
 
-        # Build system prompt
-        system_prompt = AGENT_SYSTEM_PROMPT.format(
+        # Build system prompt (safe: uses str.replace, not str.format)
+        system_prompt = build_agent_system_prompt(
             tools_description=tools_description,
             memory_context=memory_context,
         )
 
-        # Build initial user prompt with ReAct instruction
-        user_prompt = USER_QUERY_TEMPLATE.format(
-            react_instruction=REACT_INSTRUCTION,
-            query=query,
+        # Build initial user prompt with ReAct instruction.
+        # Use str.replace() so that user-supplied query cannot inject
+        # format-string specifiers into the template.
+        user_prompt = (
+            USER_QUERY_TEMPLATE
+            .replace("{react_instruction}", REACT_INSTRUCTION)
+            .replace("{query}", query)
         )
 
         steps = []
@@ -84,9 +97,10 @@ class CyberAgent:
             if step_num == 1:
                 llm_input = user_prompt
             else:
-                llm_input = CONTINUATION_TEMPLATE.format(
-                    previous_steps=accumulated_context,
-                    observation=steps[-1].observation or "",
+                llm_input = (
+                    CONTINUATION_TEMPLATE
+                    .replace("{previous_steps}", accumulated_context)
+                    .replace("{observation}", steps[-1].observation or "")
                 )
 
             raw_output = self._call_llm(system_prompt, llm_input)
@@ -178,13 +192,199 @@ class CyberAgent:
             session_id=session_id,
         )
 
-    async def arun(self, query: str, session_id: Optional[str] = None) -> AgentResponse:
-        """Async wrapper around run() — offloads blocking LLM calls to a thread pool.
+    def run_streaming(self, query: str, session_id: Optional[str] = None) -> Iterator[dict]:
+        """Execute the ReAct loop and yield each step as a dict immediately.
 
-        Allows FastAPI's event loop to remain responsive while the ReAct loop
-        waits for LLM responses (each call may take 1-3 seconds × MAX_STEPS).
+        Each yielded dict contains:
+            step_number, thought, action, action_input, observation, is_final
+        The final item is a dict with key "final_answer" set.
+
+        This is the source for true streaming: the caller receives each step
+        as soon as the LLM + tool call for that step completes, rather than
+        waiting for the entire loop to finish.
         """
-        return await asyncio.to_thread(self.run, query, session_id)
+        if not session_id:
+            session_id = uuid.uuid4().hex[:12]
+
+        self.memory.add_user_message(session_id, query)
+        memory_context = self.memory.get_context(session_id, query)
+        tools_description = self.tools.get_tools_prompt()
+        has_tools = bool(self.tools.list_tools())
+
+        if not has_tools:
+            answer = self._call_llm_direct(query, memory_context)
+            self.memory.add_assistant_message(session_id, answer)
+            yield {
+                "type": "answer",
+                "answer": answer,
+                "tools_used": [],
+                "total_steps": 0,
+                "session_id": session_id,
+            }
+            return
+
+        system_prompt = build_agent_system_prompt(
+            tools_description=tools_description,
+            memory_context=memory_context,
+        )
+        user_prompt = (
+            USER_QUERY_TEMPLATE
+            .replace("{react_instruction}", REACT_INSTRUCTION)
+            .replace("{query}", query)
+        )
+
+        steps = []
+        tools_used = []
+        accumulated_context = ""
+
+        for step_num in range(1, MAX_STEPS + 1):
+            if step_num == 1:
+                llm_input = user_prompt
+            else:
+                llm_input = (
+                    CONTINUATION_TEMPLATE
+                    .replace("{previous_steps}", accumulated_context)
+                    .replace("{observation}", steps[-1].observation or "")
+                )
+
+            raw_output = self._call_llm(system_prompt, llm_input)
+            parsed = parse_llm_output(raw_output)
+
+            step = AgentStep(
+                step_number=step_num,
+                thought=parsed.thought,
+                action=parsed.action,
+                action_input=parsed.action_input,
+                is_final=parsed.final_answer is not None,
+            )
+
+            if parsed.final_answer:
+                step.is_final = True
+                steps.append(step)
+
+                answer = parsed.final_answer
+                self.memory.add_assistant_message(session_id, answer)
+
+                if tools_used:
+                    self.memory.store_investigation(
+                        f"Query: {query}\nAnswer: {answer[:500]}",
+                        session_id=session_id,
+                        metadata={"tools_used": tools_used},
+                    )
+
+                # Emit the intermediate step first, then the final answer event
+                yield {
+                    "type": "step",
+                    "step_number": step_num,
+                    "thought": parsed.thought,
+                    "action": parsed.action or "",
+                    "action_input": parsed.action_input,
+                    "observation": "",
+                    "is_final": True,
+                }
+                yield {
+                    "type": "answer",
+                    "answer": answer,
+                    "tools_used": tools_used,
+                    "total_steps": step_num,
+                    "session_id": session_id,
+                }
+                return
+
+            if parsed.action:
+                tool_result = self.tools.execute(parsed.action, **parsed.action_input)
+                observation = tool_result.output if tool_result.success else f"Error: {tool_result.error}"
+                step.observation = observation
+
+                if parsed.action not in tools_used:
+                    tools_used.append(parsed.action)
+
+                accumulated_context += f"\nThought: {parsed.thought}\n"
+                accumulated_context += f"Action: {parsed.action}\n"
+                accumulated_context += f"Action Input: {self._format_params(parsed.action_input)}\n"
+                accumulated_context += format_observation(observation)
+
+                # Yield this step immediately so the client sees it now
+                yield {
+                    "type": "step",
+                    "step_number": step_num,
+                    "thought": parsed.thought,
+                    "action": parsed.action,
+                    "action_input": parsed.action_input,
+                    "observation": observation,
+                    "is_final": False,
+                }
+            else:
+                step.observation = "No action specified. Providing direct answer."
+                step.is_final = True
+                steps.append(step)
+
+                answer = parsed.thought or raw_output.strip()
+                self.memory.add_assistant_message(session_id, answer)
+
+                yield {
+                    "type": "step",
+                    "step_number": step_num,
+                    "thought": parsed.thought,
+                    "action": "",
+                    "action_input": {},
+                    "observation": step.observation,
+                    "is_final": True,
+                }
+                yield {
+                    "type": "answer",
+                    "answer": answer,
+                    "tools_used": tools_used,
+                    "total_steps": step_num,
+                    "session_id": session_id,
+                }
+                return
+
+            steps.append(step)
+
+        # Max steps reached
+        answer = self._synthesize_final_answer(query, steps, system_prompt)
+        self.memory.add_assistant_message(session_id, answer)
+
+        if tools_used:
+            self.memory.store_investigation(
+                f"Query: {query}\nAnswer: {answer[:500]}",
+                session_id=session_id,
+                metadata={"tools_used": tools_used},
+            )
+
+        yield {
+            "type": "answer",
+            "answer": answer,
+            "tools_used": tools_used,
+            "total_steps": MAX_STEPS,
+            "session_id": session_id,
+        }
+
+    async def arun(self, query: str, session_id: Optional[str] = None) -> AgentResponse:
+        """Async wrapper around run() with configurable timeout.
+
+        Offloads the blocking ReAct loop to a thread-pool worker so that
+        FastAPI's event loop remains responsive while waiting for LLM calls
+        (each call may take 1-3 seconds × MAX_STEPS).
+
+        Raises:
+            asyncio.TimeoutError: if the loop does not finish within
+                AGENT_TIMEOUT_SECONDS (default 120 s).  Callers should map
+                this to HTTP 504 Gateway Timeout.
+        """
+        try:
+            return await asyncio.wait_for(
+                asyncio.to_thread(self.run, query, session_id),
+                timeout=AGENT_TIMEOUT,
+            )
+        except asyncio.TimeoutError:
+            logger.error(
+                "CyberAgent timed out after %.0f s for session=%s",
+                AGENT_TIMEOUT,
+                session_id,
+            )
+            raise
 
     def _call_llm(self, system_prompt: str, user_prompt: str) -> str:
         """Call the LLM via shared client with retry/timeout."""
@@ -209,7 +409,7 @@ class CyberAgent:
 
     def _call_llm_direct(self, query: str, memory_context: str) -> str:
         """Call LLM directly without ReAct (for simple queries with no tools)."""
-        system = AGENT_SYSTEM_PROMPT_MINIMAL.format(memory_context=memory_context)
+        system = build_agent_system_prompt_minimal(memory_context=memory_context)
         return self._call_llm(system, query)
 
     def _synthesize_final_answer(self, query: str, steps: list, system_prompt: str) -> str:

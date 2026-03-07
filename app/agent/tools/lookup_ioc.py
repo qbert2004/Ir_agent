@@ -19,6 +19,7 @@ import os
 import re
 import time
 import logging
+from collections import OrderedDict
 from typing import Dict, Optional, Tuple
 
 import httpx
@@ -28,9 +29,18 @@ from app.agent.tools.base import BaseTool, ToolParameter, ToolResult
 logger = logging.getLogger("ir-agent")
 
 # ── Cache ─────────────────────────────────────────────────────────────────────
-# {cache_key: (result_dict, expires_at)}
-_CACHE: Dict[str, Tuple[dict, float]] = {}
-CACHE_TTL = int(os.getenv("IOC_CACHE_TTL_SECONDS", "3600"))  # 1 hour default
+# LRU cache keyed by "{ioc_type}:{indicator}".
+# Each value is (result_dict, expires_at_unix_timestamp).
+#
+# Two eviction policies run together:
+#   - TTL: stale entries are skipped on read and purged on write.
+#   - LRU size cap: when the dict exceeds IOC_CACHE_MAX_SIZE the oldest
+#     (least-recently-used) entry is dropped.  This prevents unbounded growth
+#     during long-running deployments with many unique indicators.
+CACHE_TTL = int(os.getenv("IOC_CACHE_TTL_SECONDS", "3600"))        # 1 h default
+CACHE_MAX_SIZE = int(os.getenv("IOC_CACHE_MAX_SIZE", "10000"))      # max entries
+
+_CACHE: OrderedDict = OrderedDict()  # {cache_key: (result_dict, expires_at)}
 
 # ── Timeouts ──────────────────────────────────────────────────────────────────
 HTTP_TIMEOUT = 10.0  # seconds per provider
@@ -69,13 +79,24 @@ _SUSPICIOUS_PROCESSES = {
 
 def _cache_get(key: str) -> Optional[dict]:
     entry = _CACHE.get(key)
-    if entry and time.time() < entry[1]:
-        return entry[0]
+    if entry is None:
+        return None
+    result, expires_at = entry
+    if time.time() < expires_at:
+        # Promote to most-recently-used position
+        _CACHE.move_to_end(key)
+        return result
+    # Entry is expired — remove it eagerly
+    del _CACHE[key]
     return None
 
 
 def _cache_set(key: str, value: dict) -> None:
     _CACHE[key] = (value, time.time() + CACHE_TTL)
+    _CACHE.move_to_end(key)
+    # Evict least-recently-used entries when over the size cap
+    while len(_CACHE) > CACHE_MAX_SIZE:
+        _CACHE.popitem(last=False)
 
 
 def _detect_ioc_type(indicator: str) -> str:
@@ -282,6 +303,24 @@ class LookupIoCTool(BaseTool):
         return self._format_result(indicator, ioc_type, aggregated, from_cache=False)
 
     def _aggregate_confidence(self, results: list, ioc_type: str) -> float:
+        """Compute a weighted-average confidence score in [0.0, 1.0].
+
+        Each provider contributes:
+            weighted_score = provider_confidence * provider_weight
+            weighted_total = provider_weight
+
+        Provider weights (reflect reliability):
+            VirusTotal  0.60  — many independent AV engines, very reliable
+            AbuseIPDB   0.50  — crowd-sourced abuse reports, reliable for IPs
+            Local DB    0.30  — small hardcoded list, limited scope
+
+        Bug fix: the previous implementation added 0.7 to score for the local
+        provider but only 0.3 to weight_total.  This caused score/weight to
+        exceed 1.0 (2.33 after cap), effectively giving the local DB alone
+        100 % confidence.  The corrected formula caps local confidence at 0.6
+        (an offline list should never express full certainty) and scales it by
+        its weight before adding to the running total.
+        """
         score = 0.0
         weight_total = 0.0
 
@@ -289,17 +328,23 @@ class LookupIoCTool(BaseTool):
             if r["provider"] == "VirusTotal":
                 malicious = r.get("malicious_votes", 0)
                 total = r.get("total_engines", 1) or 1
-                ratio = malicious / total
-                score += ratio * 0.6
-                weight_total += 0.6
+                provider_confidence = malicious / total        # [0, 1]
+                weight = 0.6
+                score += provider_confidence * weight
+                weight_total += weight
             elif r["provider"] == "AbuseIPDB":
-                abuse = r.get("abuse_confidence_score", 0) / 100
-                score += abuse * 0.5
-                weight_total += 0.5
+                provider_confidence = r.get("abuse_confidence_score", 0) / 100  # [0, 1]
+                weight = 0.5
+                score += provider_confidence * weight
+                weight_total += weight
             elif r["provider"] == "local":
-                if r.get("is_malicious"):
-                    score += 0.7
-                weight_total += 0.3
+                # Binary signal from a small hardcoded list.
+                # Cap at 0.6 to reflect limited scope — local DB alone should
+                # produce at most ~60 % confidence, not 100 %.
+                provider_confidence = 0.6 if r.get("is_malicious") else 0.0
+                weight = 0.3
+                score += provider_confidence * weight
+                weight_total += weight
 
         if weight_total == 0:
             return 0.0

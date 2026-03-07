@@ -119,6 +119,14 @@ class EventProcessor:
 
         event_id = event.get("event_id", str(uuid.uuid4())[:8])
 
+        # Feed every event into the agent's in-memory store so that the
+        # SearchLogsTool can find it during deep-path analysis.
+        # This is a best-effort operation — a failure must never block processing.
+        try:
+            self._get_agent_service().add_event(event)
+        except Exception as _ae:
+            logger.debug("EventProcessor: failed to index event in agent store: %s", _ae)
+
         try:
             # Step 1: Fast-path ML classification
             is_malicious, confidence, reason = self._ml_detector.predict(event)
@@ -126,11 +134,14 @@ class EventProcessor:
             # Step 1.1: Update drift detector (async-safe, non-blocking)
             try:
                 from app.services.drift_detector import get_drift_detector
-                from app.services.ml_detector import MLAttackDetector
                 drift_det = get_drift_detector()
-                if self._ml_detector._model_version == "production_v3":
-                    feat_v3 = self._ml_detector._extract_features_v3(event)
-                    drift_det.update(feat_v3, confidence)
+                ver = self._ml_detector._model_version
+                if ver == "decoupled_v4":
+                    feat = self._ml_detector._extract_features_v4(event)
+                    drift_det.update(feat, confidence)
+                elif ver == "production_v3":
+                    feat = self._ml_detector._extract_features_v3(event)
+                    drift_det.update(feat, confidence)
             except Exception:
                 pass  # drift detector failure must never block event processing
 

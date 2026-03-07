@@ -32,9 +32,10 @@ from typing import Tuple, Dict, Any, Optional, List
 logger = logging.getLogger("ir-agent")
 
 _BASE_DIR = os.path.join(os.path.dirname(__file__), "..", "..")
-# Priority: production model (source-stratified, calibrated) > legacy model
-MODEL_PATH = os.path.join(_BASE_DIR, "models", "gradient_boosting_production.pkl")
-MODEL_PATH_LEGACY = os.path.join(_BASE_DIR, "models", "gradient_boosting_model.pkl")
+# Priority: decoupled > production > legacy
+MODEL_PATH_DECOUPLED   = os.path.join(_BASE_DIR, "models", "gradient_boosting_decoupled.pkl")
+MODEL_PATH             = os.path.join(_BASE_DIR, "models", "gradient_boosting_production.pkl")
+MODEL_PATH_LEGACY      = os.path.join(_BASE_DIR, "models", "gradient_boosting_model.pkl")
 
 
 _HOMOGLYPH_MAP = {
@@ -174,8 +175,10 @@ class MLAttackDetector:
     def _load_model(self) -> bool:
         """Load trained model. Prioritizes production (v3) model."""
         paths = [
+            (MODEL_PATH_DECOUPLED, "decoupled_v4"),
             (MODEL_PATH, "production_v3"),
             (MODEL_PATH_LEGACY, "legacy_v1"),
+            ("models/gradient_boosting_decoupled.pkl", "decoupled_v4"),
             ("models/gradient_boosting_production.pkl", "production_v3"),
             ("models/gradient_boosting_model.pkl", "legacy_v1"),
             ("models/random_forest_model.pkl", "legacy_rf"),
@@ -205,6 +208,191 @@ class MLAttackDetector:
 
         logger.warning("No ML model found - using heuristic detection")
         return False
+
+    # --------------------------------------------------------------------------- #
+    # Feature extraction v4 (decoupled model — behavioral-dominant, 42 features)
+    # --------------------------------------------------------------------------- #
+
+    _INTERNAL_PREFIXES = ("10.", "192.168.", "172.16.", "172.17.", "172.18.", "172.19.",
+                          "172.20.", "172.21.", "172.22.", "172.23.", "172.24.", "172.25.",
+                          "172.26.", "172.27.", "172.28.", "172.29.", "172.30.", "172.31.",
+                          "127.", "::1", "169.254.", "0.")
+
+    _TOP_EIDS_V4 = [1, 3, 5, 6, 7, 12, 13, 22, 4624, 4688]
+
+    _SUSPICIOUS_REG = [
+        r"software\microsoft\windows\currentversion\run",
+        r"software\microsoft\windows\currentversion\runonce",
+        r"system\currentcontrolset\services",
+        r"software\microsoft\windows nt\currentversion\winlogon",
+        r"software\microsoft\windows nt\currentversion\image file execution options",
+        r"software\classes\clsid", r"sam\sam", r"security\policy\secrets",
+    ]
+    _BENIGN_REG = [
+        r"windows defender", r"windowsupdate", r"windows update",
+        r"currentversion\uninstall", r"explorer\recentdocs",
+        r"fontsubstitutes", r"fonts", r"dhcp", r"tcpip\parameters\interfaces",
+        r"eventlog", r"print\printers",
+    ]
+
+    def _extract_features_v4(self, event: Dict[str, Any]) -> List[float]:
+        """Feature engineering v4: 42 features, behavioral-dominant, reduced EID coupling."""
+        cmdline    = _normalize_unicode(str(event.get('command_line', event.get('CommandLine', '')) or '')).lower()
+        process    = _normalize_unicode(str(event.get('process_name', event.get('Image', '')) or '')).lower()
+        script     = _normalize_unicode(str(event.get('script_block_text', '') or '')).lower()
+        parent     = _normalize_unicode(str(event.get('parent_image', event.get('ParentImage', '')) or '')).lower()
+        hashes     = str(event.get('hashes', '') or '')
+        dest_ip    = str(event.get('destination_ip', '') or '')
+        src_ip     = str(event.get('source_ip', '') or '')
+        img_loaded = str(event.get('image_loaded', '') or '').lower()
+        target_reg = str(event.get('target_object', '') or '').lower()
+        signed     = event.get('signed', None)
+
+        try:
+            event_id = int(event.get('event_id', event.get('EventID', 0)) or 0)
+        except (ValueError, TypeError):
+            event_id = 0
+        try:
+            port = int(event.get('destination_port', event.get('DestinationPort', 0)) or 0)
+        except (ValueError, TypeError):
+            port = 0
+
+        all_text = f"{cmdline} {script} {process}"
+        f: List[float] = []
+
+        # F01-F10: reduced EID one-hot (10 shared EIDs)
+        for eid in self._TOP_EIDS_V4:
+            f.append(float(event_id == eid))
+
+        # F11-F18: EID semantic groups
+        f.append(float(event_id == 1))                       # process_create
+        f.append(float(event_id == 3))                       # network
+        f.append(float(event_id == 5))                       # process_end
+        f.append(float(event_id == 6))                       # driver_load
+        f.append(float(event_id == 7))                       # image_load
+        f.append(float(event_id in {12, 13, 14}))            # registry
+        f.append(float(event_id in {8, 10}))                 # process_inject
+        f.append(float(event_id == 22))                      # dns
+
+        # F19: signed_binary
+        path_check = img_loaded or process
+        if signed is True or signed == "true" or signed == "True":
+            f.append(1.0)
+        elif signed is False or signed == "false" or signed == "False":
+            f.append(0.0)
+        else:
+            is_sys = any(p in path_check for p in [
+                "windows\\system32", "windows\\syswow64",
+                "program files\\windows defender", "program files\\google\\chrome"
+            ])
+            f.append(1.0 if is_sys else 0.5)
+
+        # F20: system_path_binary
+        f.append(float(any(p in path_check for p in [
+            "windows\\system32", "windows\\syswow64",
+            "program files", "program files (x86)"
+        ])))
+
+        # F21: user_appdata_path
+        f.append(float(any(p in path_check for p in [
+            "appdata", "\\temp\\", "\\tmp\\", "downloads",
+            "public", "programdata", "\\users\\public\\"
+        ])))
+
+        # F22: registry_suspicious_key
+        f.append(float(any(rk in target_reg for rk in self._SUSPICIOUS_REG) if target_reg else False))
+
+        # F23: registry_benign_key
+        f.append(float(any(rk in target_reg for rk in self._BENIGN_REG) if target_reg else False))
+
+        # F24: dest_is_internal
+        f.append(float(bool(dest_ip) and dest_ip.startswith(self._INTERNAL_PREFIXES)))
+
+        # F25: dest_is_external
+        is_ext = bool(dest_ip) and not dest_ip.startswith(self._INTERNAL_PREFIXES) and dest_ip != "0.0.0.0"
+        f.append(float(is_ext))
+
+        # F26: dest_suspicious_port
+        f.append(float(port in {4444, 1337, 31337, 9090, 3333, 5555, 6666, 7777, 8888}))
+
+        # F27: dest_common_port (benign)
+        f.append(float(port in {80, 443, 53, 389, 636, 88, 123, 445, 22, 3389}))
+
+        # F28: kw_count_norm
+        kw_count = sum(1 for kw in self._V3_SUSPICIOUS_KEYWORDS if kw in all_text)
+        f.append(min(kw_count / 5.0, 1.0))
+
+        # F29: susp_process_exact
+        proc_name = process.split('/')[-1].split('\\')[-1]
+        f.append(float(any(sp == proc_name for sp in self._V3_SUSPICIOUS_PROCESSES)))
+
+        # F30: susp_process_partial
+        f.append(float(any(sp in proc_name for sp in self._V3_SUSPICIOUS_PROCESSES)))
+
+        # F31: base64_encoded
+        f.append(float(
+            '-enc' in cmdline or 'base64' in cmdline or
+            'frombase64' in all_text or 'encodedcommand' in cmdline
+        ))
+
+        # F32: lsass_credential
+        f.append(float(
+            'lsass' in all_text or 'sekurlsa' in all_text or
+            'procdump' in all_text or 'comsvcs' in all_text
+        ))
+
+        # F33: powershell_bypass
+        f.append(float(
+            'powershell' in process and
+            any(x in cmdline for x in ['-enc', '-nop', 'bypass', 'hidden', 'windowstyle'])
+        ))
+
+        # F34: network_download
+        f.append(float(any(kw in all_text for kw in [
+            'webclient', 'downloadstring', 'invoke-webrequest',
+            'urlcache', 'bitsadmin', 'wget', 'curl'
+        ])))
+
+        # F35: persistence_kw
+        f.append(float(any(kw in all_text for kw in [
+            'schtasks /create', 'reg add', 'sc create',
+            'runonce', 'onlogon', 'hkcu\\software\\microsoft\\windows\\currentversion\\run'
+        ])))
+
+        # F36: defense_evasion
+        f.append(float(any(kw in all_text for kw in [
+            'bypass', 'amsi', 'etw', '-nop', 'hidden',
+            'mshta', 'installutil', 'regsvr32', 'cmstp'
+        ])))
+
+        # F37: lateral_movement
+        f.append(float(any(kw in all_text for kw in [
+            'psexec', 'winrs', 'wmic process', 'invoke-wmimethod', 'dcom'
+        ])))
+
+        # F38: has_hashes
+        f.append(float(bool(hashes and len(hashes) > 10)))
+
+        # F39: high_entropy_cmdline
+        if len(cmdline) > 20:
+            unique_ratio = len(set(cmdline)) / len(cmdline)
+            f.append(float(unique_ratio > 0.6 and len(cmdline) > 50))
+        else:
+            f.append(0.0)
+
+        # F40: suspicious_parent
+        f.append(float(any(sp in parent for sp in [
+            'outlook', 'winword', 'excel', 'powerpnt', 'iexplore', 'firefox', 'chrome'
+        ])))
+
+        # F41: network_logon
+        f.append(float(str(event.get('logon_type', event.get('LogonType', ''))) in ('3', '10')))
+
+        # F42: external_src_ip
+        is_src_internal = src_ip.startswith(self._INTERNAL_PREFIXES)
+        f.append(float(bool(src_ip) and not is_src_internal))
+
+        return f
 
     # --------------------------------------------------------------------------- #
     # Feature extraction v3 (production model)
@@ -602,7 +790,13 @@ class MLAttackDetector:
             try:
                 import numpy as np
                 # Use v3 features for production model, legacy for others
-                if self._model_version == "production_v3":
+                if self._model_version == "decoupled_v4":
+                    feat_v4 = self._extract_features_v4(event)
+                    X = np.array([feat_v4], dtype=np.float32)
+                    X_scaled = self.scaler.transform(X)
+                    base_score = float(self.model.predict_proba(X_scaled)[0][1])
+                    base_reason = self._build_reason_v3(feat_v4, base_score)  # compatible subset
+                elif self._model_version == "production_v3":
                     feat_v3 = self._extract_features_v3(event)
                     X = np.array([feat_v3], dtype=np.float32)
                     X_scaled = self.scaler.transform(X)

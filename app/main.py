@@ -63,8 +63,9 @@ try:
 except ImportError:
     logger.warning("logtail-python not installed — Better Stack logging disabled")
 
-# ── Report UI file ───────────────────────────────────────────────────────
-UI_FILE = Path(__file__).with_name("report_ui.html")
+# ── UI files ─────────────────────────────────────────────────────────────
+UI_FILE        = Path(__file__).with_name("report_ui.html")
+DASHBOARD_FILE = Path(__file__).with_name("dashboard.html")
 
 
 # ── Lifespan (replaces deprecated on_event) ─────────────────────────────
@@ -85,7 +86,19 @@ async def lifespan(app: FastAPI):
     else:
         logger.warning("Better Stack: Disabled")
 
-    logger.info("Auth: %s", "Enabled (API token)" if settings.api_token else "Disabled (dev mode)")
+    if settings.api_token:
+        logger.info("Auth: Enabled (API token)")
+    elif settings.environment == "production":
+        logger.critical(
+            "SECURITY WARNING: MY_API_TOKEN is not set in production! "
+            "All API endpoints are publicly accessible. Set MY_API_TOKEN in .env immediately."
+        )
+    else:
+        logger.warning("Auth: Disabled (dev mode — set MY_API_TOKEN for production)")
+    if not os.getenv("REDIS_URL"):
+        logger.warning(
+            "Rate limiter: in-memory backend. Set REDIS_URL for multi-worker deployments."
+        )
     logger.info("CORS origins: %s", settings.cors_origins_list)
     logger.info("Rate limit: %d req/min", settings.rate_limit_per_minute)
     logger.info("Threshold: %d  Port: %d", settings.ai_threat_threshold, settings.api_port)
@@ -96,9 +109,9 @@ async def lifespan(app: FastAPI):
 
     # Database
     try:
-        from app.db.database import init_db
+        from app.db.database import init_db, _safe_db_url
         await init_db()
-        logger.info("Database: %s", settings.database_url.split("///")[-1])
+        logger.info("Database: %s", _safe_db_url(settings.database_url))
     except Exception as e:
         logger.error("Database init failed: %s", e)
 
@@ -169,7 +182,7 @@ app.add_middleware(
     allow_origins=settings.cors_origins_list,
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE"],
-    allow_headers=["*"],
+    allow_headers=["Authorization", "Content-Type", "X-Request-ID"],
 )
 
 # ── Routers ──────────────────────────────────────────────────────────────
@@ -183,25 +196,33 @@ app.include_router(assessment.router)
 
 
 # ── Extra endpoints ──────────────────────────────────────────────────────
-@app.get("/report_ui", response_class=HTMLResponse)
+@app.get("/report_ui", response_class=HTMLResponse, include_in_schema=False)
 async def report_ui():
+    """Report UI — protected by AuthMiddleware (same as all non-public endpoints)."""
     return UI_FILE.read_text(encoding="utf-8")
 
 
-@app.get("/ai/test")
-def ai_test():
-    """Test Groq API connection."""
-    try:
-        reply = ask("Say 'Groq API works!' and nothing else.", max_tokens=16)
-        return {"status": "success", "reply": reply}
-    except Exception as e:
-        return {"status": "error", "message": str(e)}
+@app.get("/dashboard", response_class=HTMLResponse, include_in_schema=False)
+async def dashboard():
+    """Agent Platform Dashboard — architecture, live query, tools, metrics, comparison."""
+    return DASHBOARD_FILE.read_text(encoding="utf-8")
 
 
-@app.get("/ai/stream")
-def ai_stream(q: str = "Hello"):
-    """Test streaming response from Groq."""
-    return StreamingResponse(stream(q), media_type="text/plain")
+# Debug endpoints — exposed only outside production to avoid unnecessary attack surface
+if settings.environment != "production":
+    @app.get("/ai/test", tags=["Debug"])
+    def ai_test():
+        """Test Groq API connection. Disabled in production."""
+        try:
+            reply = ask("Say 'Groq API works!' and nothing else.", max_tokens=16)
+            return {"status": "success", "reply": reply}
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+
+    @app.get("/ai/stream", tags=["Debug"])
+    def ai_stream(q: str = "Hello"):
+        """Test streaming response from Groq. Disabled in production."""
+        return StreamingResponse(stream(q), media_type="text/plain")
 
 
 # ── Entry point ──────────────────────────────────────────────────────────

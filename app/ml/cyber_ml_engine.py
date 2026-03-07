@@ -887,7 +887,7 @@ class CyberMLEngine:
                 return True
             if parts[0] == 127:
                 return True
-        except:
+        except (ValueError, IndexError, AttributeError):
             pass
         return False
 

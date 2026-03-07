@@ -1,7 +1,10 @@
 """Singleton agent service that initializes and manages the CyberAgent."""
 
+import asyncio
 import logging
-from typing import Optional
+import queue
+from collections import deque
+from typing import AsyncIterator, Optional
 
 from app.agent.core.agent import CyberAgent
 from app.agent.memory.memory_manager import MemoryManager
@@ -45,7 +48,9 @@ class AgentService:
         self._knowledge_store: Optional[VectorStore] = None
         self._ingestion: Optional[IngestionPipeline] = None
         self._tool_registry: Optional[ToolRegistry] = None
-        self._event_store: list = []
+        # deque with a fixed maxlen gives O(1) append *and* automatic LRU eviction,
+        # unlike a plain list where pop(0) costs O(n) per event when over the cap.
+        self._event_store: deque = deque(maxlen=10_000)
         self._setup()
 
     def _setup(self):
@@ -86,6 +91,39 @@ class AgentService:
         """Async query — non-blocking, safe to call from FastAPI handlers."""
         return await self._agent.arun(query, session_id)
 
+    async def astream(self, query: str, session_id: str = None) -> AsyncIterator[dict]:
+        """True streaming query — yields each ReAct step as it completes.
+
+        The agent's synchronous run_streaming() generator is executed in a
+        thread-pool worker so the event loop stays responsive.  Steps are
+        passed back to the async caller via a thread-safe queue so the client
+        starts receiving JSON events before the ReAct loop finishes.
+        """
+        step_queue: queue.Queue = queue.Queue()
+        loop = asyncio.get_event_loop()
+
+        def _run_in_thread():
+            try:
+                for step_dict in self._agent.run_streaming(query, session_id):
+                    step_queue.put(("step", step_dict))
+                step_queue.put(("done", None))
+            except Exception as exc:
+                step_queue.put(("error", str(exc)))
+
+        future = loop.run_in_executor(None, _run_in_thread)
+
+        while True:
+            kind, data = await loop.run_in_executor(None, step_queue.get)
+            if kind == "done":
+                break
+            elif kind == "error":
+                yield {"type": "error", "error": data}
+                break
+            else:
+                yield data
+
+        await future
+
     def ingest_document(self, title: str, content: str, source: str = "") -> int:
         """Ingest a document into the knowledge base.
 
@@ -97,11 +135,12 @@ class AgentService:
         return added
 
     def add_event(self, event: dict):
-        """Add an event to the in-memory event store for log search."""
+        """Add an event to the in-memory event store for log search.
+
+        The deque has maxlen=10_000 so Python automatically discards the oldest
+        entry when the store is full — no explicit eviction code needed.
+        """
         self._event_store.append(event)
-        # Keep max 10000 events in memory
-        if len(self._event_store) > 10000:
-            self._event_store.pop(0)
 
     def get_tools(self) -> list:
         """List all available tools."""

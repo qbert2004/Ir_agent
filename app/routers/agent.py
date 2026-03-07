@@ -1,5 +1,6 @@
 """Agent API endpoints."""
 
+import asyncio
 import json
 import uuid
 from typing import AsyncIterator, List, Optional
@@ -43,6 +44,14 @@ async def agent_query(request: AgentQueryRequest):
             tools_used=response.tools_used,
             total_steps=response.total_steps,
         )
+    except asyncio.TimeoutError:
+        raise HTTPException(
+            status_code=504,
+            detail=(
+                "Agent timed out. The investigation exceeded the maximum allowed time. "
+                "Try a simpler query or increase AGENT_TIMEOUT_SECONDS."
+            ),
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Agent error: {str(e)}")
 
@@ -64,29 +73,24 @@ async def agent_query_stream(request: AgentQueryRequest):
 
     async def _stream() -> AsyncIterator[str]:
         try:
-            # Run agent in thread pool (ReAct loop is synchronous)
-            import asyncio
-            response = await service.aquery(request.query, session_id)
+            async for event in service.astream(request.query, session_id):
+                # Normalise step events so the wire format stays stable
+                if event.get("type") == "step":
+                    yield json.dumps({
+                        "type": "step",
+                        "step": event.get("step_number", 0),
+                        "thought": event.get("thought", ""),
+                        "action": event.get("action", ""),
+                        "observation": str(event.get("observation", ""))[:500],
+                    }) + "\n"
+                else:
+                    yield json.dumps(event) + "\n"
 
-            # Emit each reasoning step
-            for step in (response.steps or []):
-                yield json.dumps({
-                    "type": "step",
-                    "step": getattr(step, "step_number", 0),
-                    "thought": getattr(step, "thought", ""),
-                    "action": getattr(step, "action", ""),
-                    "observation": str(getattr(step, "observation", ""))[:500],
-                }) + "\n"
-
-            # Emit final answer
+        except asyncio.TimeoutError:
             yield json.dumps({
-                "type": "answer",
-                "answer": response.answer,
-                "tools_used": response.tools_used,
-                "total_steps": response.total_steps,
-                "session_id": response.session_id,
+                "type": "error",
+                "error": "Agent timed out. Try a simpler query or increase AGENT_TIMEOUT_SECONDS.",
             }) + "\n"
-
         except Exception as e:
             yield json.dumps({"type": "error", "error": str(e)}) + "\n"
 

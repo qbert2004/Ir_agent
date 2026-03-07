@@ -11,7 +11,6 @@ If a provider fails during a request, the next available provider is tried.
 
 from __future__ import annotations
 
-import os
 import time
 import logging
 from typing import Iterator, Optional
@@ -88,7 +87,7 @@ class _OpenAIProvider(_BaseProvider):
 
     def __init__(self):
         self._client = None
-        api_key = os.getenv("OPENAI_API_KEY", "")
+        api_key = settings.openai_api_key
         if api_key:
             try:
                 from openai import OpenAI
@@ -129,7 +128,7 @@ class _OllamaProvider(_BaseProvider):
     _DEFAULT_MODEL = "llama3.2"
 
     def __init__(self):
-        self._base_url = os.getenv("OLLAMA_BASE_URL", "")
+        self._base_url = settings.ollama_base_url
         self._client = None
         if self._base_url:
             try:

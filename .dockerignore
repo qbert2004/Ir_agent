@@ -1,20 +1,46 @@
-.venv/
-venv/
-__pycache__/
-*.pyc
+# VCS
 .git/
+.gitignore
+
+# IDE
 .idea/
 .vscode/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 *.egg-info/
-datasets/
-training/
-scripts/
-*.md
-*.rar
-nul
-.env
-.env.*
-*.log
+.eggs/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# Tests (not needed at runtime)
+tests/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Dev/training artifacts
+datasets/
+training/
+scripts/
+
+# Secrets — never bake into image
+.env
+.env.*
+
+# Logs
+*.log
+
+# Misc
+*.rar
+nul
+*.md
+
+# CI
+.github/

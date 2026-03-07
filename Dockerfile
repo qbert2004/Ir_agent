@@ -26,4 +26,6 @@ EXPOSE 9000
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
     CMD python -c "import httpx; r=httpx.get('http://localhost:9000/health/live'); r.raise_for_status()"
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "9000", "--workers", "2"]
+# Single worker: ML/incident singletons are in-memory — no shared state between processes.
+# Scale via docker-compose --scale or Kubernetes replicas (each replica is independent).
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "9000", "--workers", "1"]
