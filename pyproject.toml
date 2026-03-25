@@ -10,6 +10,14 @@ testpaths = ["tests"]
 asyncio_mode = "auto"
 filterwarnings = ["ignore::DeprecationWarning"]
 
+[tool.coverage.run]
+source = ["app", "cli", "tui"]
+omit   = ["tests/*", "*/conftest.py", "scripts/*", "training/*"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under   = 55
+
 [tool.ruff]
 line-length = 120
 target-version = "py310"

@@ -1,5 +1,9 @@
 # IR-Agent
 
+![CI](https://github.com/qbert2004/Ir_agent/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.11%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 **Autonomous AI-powered Cyber Incident Response Platform**
 
 IR-Agent is a production-ready FastAPI service that combines a GradientBoosting ML classifier, a ReAct LLM agent, IoC threat-intelligence lookups, and a MITRE ATT&CK mapper into a unified pipeline for real-time security event triage and investigation.
@@ -73,7 +77,7 @@ Security Event
 ### 1. Clone and install
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/qbert2004/Ir_agent
 cd Ir_agent
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
@@ -300,8 +304,11 @@ Full list: [`.env.example`](.env.example)
 | [docs/api.md](docs/api.md) | Complete endpoint reference with request/response examples |
 | [docs/architecture.md](docs/architecture.md) | System design, ReAct loop, ML pipeline, signal fusion |
 | [docs/deployment.md](docs/deployment.md) | Production deployment guide, security checklist, scaling |
+| [docs/EVALUATION.md](docs/EVALUATION.md) | ML model evolution, production metrics, fusion weights justification, limitations |
 | [ML_ARCHITECTURE.md](ML_ARCHITECTURE.md) | ML model training, features, MITRE mapping details |
 | [INVESTIGATION_GUIDE.md](INVESTIGATION_GUIDE.md) | Step-by-step investigation workflows |
+| [DIPLOMA_DOCUMENTATION.md](DIPLOMA_DOCUMENTATION.md) | Полная документация для защиты диплома |
+| [CHANGELOG.md](CHANGELOG.md) | История версий |
 
 ---
 

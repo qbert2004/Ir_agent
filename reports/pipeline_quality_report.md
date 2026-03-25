@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-01
 **Version:** Production (post-source-stratified retraining)
-**Author:** Automated analysis (Claude + IR-Agent team)
+**Author:** IR-Agent project
 
 ---
 
