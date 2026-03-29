@@ -7,7 +7,13 @@ DATABASE_URL is read from app.core.config — same source as the application.
 from __future__ import annotations
 
 import asyncio
+import sys
+import os
 from logging.config import fileConfig
+
+# Ensure the project root (Ir_agent/) is on sys.path so `app` is importable
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
