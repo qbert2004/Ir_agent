@@ -195,6 +195,10 @@ class MLAttackDetector:
                     self._feature_names = data.get('feature_names', [])
                     self._model_version = version
                     self._loaded = True
+                    # Use saved threshold if available (Youden J optimized)
+                    saved_threshold = data.get('threshold')
+                    if saved_threshold is not None:
+                        self.threshold = float(saved_threshold)
                     split = data.get('split_strategy', 'random')
                     acc = self.metrics.get('accuracy', 0)
                     auc = self.metrics.get('roc_auc', 0)

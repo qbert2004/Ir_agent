@@ -309,40 +309,37 @@ def main():
 
     print("=" * 60)
     print("  IR-Agent Production ML Retraining")
-    print("  Strategy: Source-Stratified Split")
+    print("  Strategy: Pre-split (real_benign vs real attacks, no synthetic)")
     print("=" * 60)
 
     # ------------------------------------------------------------------ #
     # 1. Load data
     # ------------------------------------------------------------------ #
-    section("1. Loading and splitting by source")
-    print("\nLoading all events...")
-    all_events, all_labels, all_sources = load_all_data()
-    print(f"  Total: {len(all_events):,} events")
+    section("1. Loading pre-split data (rebuild_dataset.py output)")
+    print("\nLoading train/val from pre-built JSON files...")
 
-    source_counter = Counter(all_sources)
-    for src, cnt in sorted(source_counter.items(), key=lambda x: -x[1]):
-        pct = cnt / len(all_events) * 100
-        print(f"  {src:20s}: {cnt:6d} ({pct:.1f}%)")
+    with open(TRAIN_EVENTS, encoding="utf-8") as f:
+        train_events_split = json.load(f)
+    with open(TRAIN_LABELS, encoding="utf-8") as f:
+        train_labels_split = [_to_int(l) for l in json.load(f)]
+    with open(VAL_EVENTS, encoding="utf-8") as f:
+        val_events_split = json.load(f)
+    with open(VAL_LABELS, encoding="utf-8") as f:
+        val_labels_split = [_to_int(l) for l in json.load(f)]
 
-    # Source-stratified split:
-    #   TRAIN = evtx (real) + synthetic (for volume)
-    #   VAL   = unknown (purplesharp/petitpotam real events -- different source)
-    print("\nSplit strategy:")
-    print("  TRAIN: source_type in {evtx, synthetic}")
-    print("  VAL:   source_type in {unknown} (real APT recordings)")
-    print("  NOTE: 'unknown' = purplesharp_ad_playbook, PetiPotam, etc.")
-
-    train_idx = [i for i, s in enumerate(all_sources) if s in ("evtx", "synthetic")]
-    val_idx   = [i for i, s in enumerate(all_sources) if s not in ("evtx", "synthetic")]
-
-    train_events_split = [all_events[i] for i in train_idx]
-    train_labels_split = [all_labels[i] for i in train_idx]
-    val_events_split   = [all_events[i] for i in val_idx]
-    val_labels_split   = [all_labels[i] for i in val_idx]
+    train_src = Counter(e.get("source_type", "unknown") for e in train_events_split)
+    val_src   = Counter(e.get("source_type", "unknown") for e in val_events_split)
 
     print(f"\n  Train: {len(train_events_split):,} events")
-    print(f"  Val:   {len(val_events_split):,} events")
+    for src, cnt in sorted(train_src.items(), key=lambda x: -x[1]):
+        print(f"    {src:20s}: {cnt:,}")
+
+    print(f"\n  Val:   {len(val_events_split):,} events")
+    for src, cnt in sorted(val_src.items(), key=lambda x: -x[1]):
+        print(f"    {src:20s}: {cnt:,}")
+
+    print("\n  Strategy: real_benign (benign) vs evtx+unknown (malicious)")
+    print("  Synthetic data: REMOVED (eliminates source-label artifact)")
 
     train_class_dist = Counter(train_labels_split)
     val_class_dist   = Counter(val_labels_split)

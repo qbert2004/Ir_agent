@@ -8,10 +8,12 @@ All analysis is done by ML engine, LLM only for report generation.
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
+import logging
 
 from app.ml.investigator import get_investigator, MLInvestigator
 from app.ml.cyber_ml_engine import get_ml_engine
 
+logger = logging.getLogger("ml-router")
 router = APIRouter(prefix="/ml", tags=["ML Investigation"])
 
 
@@ -86,6 +88,13 @@ class IoCResult(BaseModel):
     value: str
     confidence: float
     context: str
+
+
+class ExplainRequest(BaseModel):
+    """Request for ML explainability via LIME."""
+    event: Dict[str, Any] = Field(..., description="Security event to explain")
+    num_features: int = Field(default=10, ge=1, le=41, description="Top features to show")
+    num_samples: int = Field(default=500, ge=100, le=2000, description="LIME sample count")
 
 
 # ============================================================================
@@ -243,6 +252,156 @@ async def get_engine_info():
     """Get ML engine information."""
     engine = get_ml_engine()
     return engine.get_model_info()
+
+
+@router.post("/explain")
+async def explain_prediction(request: ExplainRequest):
+    """
+    Explain ML model prediction using LIME (Local Interpretable Model-agnostic Explanations).
+
+    Returns top feature contributions that led to the prediction for this event.
+    Useful for understanding WHY the model classified an event as malicious/benign.
+
+    Example response:
+    {
+      "prediction": "malicious",
+      "confidence": 0.87,
+      "top_features": [
+        {"feature": "base64_encoded", "value": 1.0, "contribution": 0.31, "direction": "malicious"},
+        {"feature": "susp_process_partial", "value": 1.0, "contribution": 0.18, "direction": "malicious"},
+        {"feature": "eid_1", "value": 0.0, "contribution": -0.05, "direction": "benign"}
+      ]
+    }
+    """
+    try:
+        import numpy as np
+        import pickle
+        import os
+        from pathlib import Path
+    except ImportError as e:
+        raise HTTPException(status_code=500, detail=f"Import error: {e}")
+
+    try:
+        from lime.lime_tabular import LimeTabularExplainer
+    except ImportError:
+        raise HTTPException(
+            status_code=501,
+            detail="LIME not installed. Run: pip install lime"
+        )
+
+    # Load model and feature extractor
+    ROOT = Path(__file__).parent.parent.parent
+    model_path = ROOT / "models" / "gradient_boosting_production.pkl"
+    if not model_path.exists():
+        raise HTTPException(status_code=503, detail="Production ML model not found")
+
+    try:
+        with open(model_path, "rb") as f:
+            payload = pickle.load(f)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to load model: {e}")
+
+    model = payload["model"]
+    scaler = payload["scaler"]
+    feature_names = payload.get("feature_names", [f"f{i}" for i in range(41)])
+    threshold = payload.get("threshold", 0.6)
+
+    # Import feature extractor
+    try:
+        import sys
+        sys.path.insert(0, str(ROOT))
+        from scripts.retrain_source_split import extract_features_v3, FEATURE_NAMES_V3
+        feature_names = FEATURE_NAMES_V3
+    except ImportError:
+        pass
+
+    # Extract features for the event
+    try:
+        event_vector = np.array(extract_features_v3(request.event), dtype=np.float32)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Feature extraction failed: {e}")
+
+    event_scaled = scaler.transform(event_vector.reshape(1, -1))
+
+    # Current prediction
+    prob = float(model.predict_proba(event_scaled)[0, 1])
+    prediction = "malicious" if prob >= threshold else "benign"
+
+    # Load training data sample for LIME background distribution
+    train_path = ROOT / "training" / "data" / "train_events.json"
+    try:
+        import json
+        with open(train_path, encoding="utf-8") as f:
+            train_events_sample = json.load(f)
+        # Use a random sample for LIME background
+        import random
+        rng = random.Random(42)
+        sample_size = min(200, len(train_events_sample))
+        bg_events = rng.sample(train_events_sample, sample_size)
+        X_bg = np.array([extract_features_v3(e) for e in bg_events], dtype=np.float32)
+        X_bg_scaled = scaler.transform(X_bg)
+    except Exception as e:
+        logger.warning(f"Could not load background data: {e}, using zeros")
+        X_bg_scaled = np.zeros((100, len(feature_names)), dtype=np.float32)
+
+    # Run LIME
+    try:
+        explainer = LimeTabularExplainer(
+            training_data=X_bg_scaled,
+            feature_names=feature_names,
+            class_names=["benign", "malicious"],
+            mode="classification",
+            discretize_continuous=False,
+            random_state=42,
+        )
+
+        explanation = explainer.explain_instance(
+            data_row=event_scaled[0],
+            predict_fn=model.predict_proba,
+            num_features=request.num_features,
+            num_samples=request.num_samples,
+        )
+
+        # Extract feature contributions
+        lime_list = explanation.as_list(label=1)  # contributions toward "malicious"
+        top_features = []
+        for feat_name, weight in lime_list:
+            # Find original feature value
+            feat_idx = None
+            for i, fn in enumerate(feature_names):
+                if fn in feat_name or feat_name in fn:
+                    feat_idx = i
+                    break
+            feat_val = float(event_vector[feat_idx]) if feat_idx is not None else None
+
+            top_features.append({
+                "feature": feat_name,
+                "value": feat_val,
+                "contribution": round(float(weight), 4),
+                "direction": "malicious" if weight > 0 else "benign",
+            })
+
+    except Exception as e:
+        logger.error(f"LIME explanation failed: {e}")
+        raise HTTPException(status_code=500, detail=f"LIME failed: {e}")
+
+    return {
+        "prediction": prediction,
+        "confidence": round(prob, 4),
+        "threshold": threshold,
+        "num_features_shown": len(top_features),
+        "top_features": top_features,
+        "interpretation": (
+            f"Model classified this event as '{prediction}' with {prob*100:.1f}% confidence. "
+            f"The top contributing feature is '{top_features[0]['feature'] if top_features else 'N/A'}' "
+            f"which pushes toward '{top_features[0]['direction'] if top_features else 'N/A'}'."
+        ),
+        "event_summary": {
+            "event_id": request.event.get("event_id"),
+            "process_name": request.event.get("process_name", ""),
+            "command_line": (request.event.get("command_line", "") or "")[:80],
+        },
+    }
 
 
 @router.post("/investigate/example")

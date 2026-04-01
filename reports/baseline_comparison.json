@@ -1,0 +1,50 @@
+{
+  "val_size": 32957,
+  "val_benign": 20000,
+  "val_malicious": 12957,
+  "threshold": 0.6,
+  "results": {
+    "rule_based": {
+      "accuracy": 0.6069,
+      "precision": 1.0,
+      "recall": 0.0002,
+      "f1": 0.0003,
+      "roc_auc": 0.5001,
+      "fpr": 0.0,
+      "fnr": 0.9998,
+      "tp": 2,
+      "fp": 0,
+      "tn": 20000,
+      "fn": 12955
+    },
+    "ml_only": {
+      "accuracy": 0.9181,
+      "precision": 0.8925,
+      "recall": 0.9002,
+      "f1": 0.8963,
+      "roc_auc": 0.9396,
+      "fpr": 0.0702,
+      "fnr": 0.0998,
+      "tp": 11664,
+      "fp": 1405,
+      "tn": 18595,
+      "fn": 1293
+    },
+    "ml_mitre_fusion": {
+      "accuracy": 0.9174,
+      "precision": 0.8923,
+      "recall": 0.8984,
+      "f1": 0.8953,
+      "roc_auc": 0.9424,
+      "fpr": 0.0702,
+      "fnr": 0.1016,
+      "tp": 11640,
+      "fp": 1405,
+      "tn": 18595,
+      "fn": 1317
+    }
+  },
+  "markdown_table": "## 9. Baseline Comparison\n\nEvaluation on the same validation set (32,957 events: 20,000 benign, 12,957 malicious).\n\n| Approach | Accuracy | Precision | Recall | F1 | ROC-AUC | FPR |\n|---|---|---|---|---|---|---|\n| Rule-based (keywords/event_id) | 0.6069 | 1.0000 | 0.0002 | 0.0003 | N/A | 0.0% |\n| ML-only (GradientBoosting) | 0.9181 | 0.8925 | 0.9002 | 0.8963 | 0.9396 | 7.0% |\n| **ML + MITRE fusion (this work)** | **0.9174** | **0.8923** | **0.8984** | **0.8953** | **0.9424** | **7.0%** |\n\nDataset: real_benign (Sysmon operational logs) vs evtx+unknown (EVTX-ATTACK-SAMPLES + PurpleSharp/PetiPotam).\nNo synthetic data. Threshold optimized via Youden J = 0.6.\n",
+  "f1_gain_over_rules_pct": 89500.0,
+  "f1_gain_over_ml_pct": -0.11
+}

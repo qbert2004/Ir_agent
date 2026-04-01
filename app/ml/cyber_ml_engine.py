@@ -173,7 +173,7 @@ MITRE_PATTERNS = {
     "T1204.002": {
         "name": "Malicious File",
         "tactic": "execution",
-        "patterns": ["\.exe$", "\.dll$", "\.scr$", "\.bat$", "\.ps1$"],
+        "patterns": [r"\.exe$", r"\.dll$", r"\.scr$", r"\.bat$", r"\.ps1$"],
         "parent_processes": ["outlook.exe", "winword.exe", "excel.exe"],
         "event_ids": [4688, 11],
     },
@@ -571,54 +571,83 @@ class CyberMLEngine:
         return self._heuristic_classify(features, feature_names)
 
     def _extract_event_features(self, event: Dict[str, Any]) -> List[float]:
-        """Extract numerical features from event for ML model."""
-        event_id = int(event.get('event_id', event.get('EventID', 0)) or 0)
+        """Extract numerical features from event for ML model.
+
+        Feature set matches scripts/train_gb_model.py (18 features).
+        """
+        try:
+            event_id = int(event.get('event_id', event.get('EventID', 0)) or 0)
+        except (ValueError, TypeError):
+            event_id = 0
+
         process = str(event.get('process_name', event.get('ProcessName', event.get('Image', '')))).lower()
         cmdline = str(event.get('command_line', event.get('CommandLine', ''))).lower()
-        parent = str(event.get('parent_image', event.get('ParentImage', ''))).lower()
-        user = str(event.get('user', event.get('SubjectUserName', event.get('TargetUserName', '')))).upper()
-        logon_type = int(event.get('logon_type', event.get('LogonType', 0)) or 0)
-        dest_port = int(event.get('destination_port', event.get('DestinationPort', 0)) or 0)
-        channel = str(event.get('channel', event.get('Channel', 'Security')))
+        script = str(event.get('script_block_text', '')).lower()
+        parent = str(event.get('parent_image', event.get('parent_process', event.get('ParentImage', '')))).lower()
+        image_loaded = str(event.get('image_loaded', '')).lower()
+
+        all_text = f"{cmdline} {script} {process} {image_loaded}"
 
         return [
-            float(event_id),
+            # 0: high-risk event_id
             float(event_id in self.high_risk_event_ids),
-            float(hash(channel) % 12),
-            float(any(p in process for p in self.suspicious_processes)),
-            float(len(cmdline)),
-            float(sum(1 for kw in self.suspicious_keywords if kw in cmdline)),
-            float(any(x in cmdline for x in ['-enc', '-e ', 'base64', 'frombase64'])),
-            float(any(x in cmdline for x in ['download', 'webclient', 'invoke-webrequest'])),
-            float(any(x in cmdline for x in ['-w hidden', '-windowstyle h', 'hidden'])),
-            float(any(p in parent for p in self.suspicious_processes)),
-            float(logon_type),
-            float(logon_type in [3, 10]),
-            float(user in ['SYSTEM', 'LOCAL SERVICE', 'NETWORK SERVICE']),
-            float('ADMIN' in user),
-            float(dest_port),
-            float(dest_port in KNOWN_C2_PORTS),
+            # 1: suspicious keyword count
+            float(sum(1 for kw in self.suspicious_keywords if kw in all_text)),
+            # 2: suspicious process
+            float(any(sp in process for sp in self.suspicious_processes)),
+            # 3: base64 encoded content
+            float("-enc" in cmdline or "base64" in cmdline or "frombase64" in all_text),
+            # 4: LSASS / credential access
+            float("lsass" in all_text or "sekurlsa" in all_text or "procdump" in all_text),
+            # 5: PowerShell with bypass flags
+            float("powershell" in process and any(f in cmdline for f in ["-enc", "-nop", "bypass", "hidden"])),
+            # 6: cmdline length (normalized 0-1, cap at 1000)
+            min(len(cmdline) / 1000.0, 1.0),
+            # 7: network indicators
+            float(any(kw in all_text for kw in ["socket", "connect", "webclient", "downloadstring"])),
+            # 8: persistence indicators
+            float(any(kw in all_text for kw in ["schtasks", "reg add", "sc create", "runonce", "onlogon"])),
+            # 9: defense evasion
+            float(any(kw in all_text for kw in ["bypass", "amsi", "etw", "-nop", "hidden", "mshta"])),
+            # 10: lateral movement
+            float(any(kw in all_text for kw in ["psexec", "winrs", "wmic process"])),
+            # 11: C2 indicators
+            float(any(kw in all_text for kw in ["cobalt", "beacon", "meterpreter", "shellcode"])),
+            # 12: suspicious parent process
+            float(any(sp in parent for sp in ["outlook", "winword", "excel", "powerpnt", "iexplore", "firefox"])),
+            # 13: Sysmon event
+            float(event_id in {1, 3, 7, 8, 10, 11, 12, 13, 15, 22, 23, 25}),
+            # 14: privilege-related event
+            float(event_id in {4672, 4648, 4624}),
+            # 15: script content length (normalized)
+            min(len(script) / 2000.0, 1.0),
+            # 16: DLL sideloading (suspicious path)
+            float(any(p in image_loaded for p in ["users/public", "appdata/local/temp", "downloads"])),
+            # 17: logon type 3 or 10 (network/RDP)
+            float(str(event.get("logon_type", event.get("LogonType", ""))) in ("3", "10")),
         ]
 
     def _get_feature_names(self) -> List[str]:
-        """Get human-readable feature names."""
+        """Get human-readable feature names (matches 18-feature training schema)."""
         return [
-            "event_id",
             "is_high_risk_event",
-            "channel_hash",
-            "is_suspicious_process",
-            "cmdline_length",
             "suspicious_keyword_count",
+            "is_suspicious_process",
             "has_base64_encoding",
-            "has_download_command",
-            "has_hidden_window",
-            "parent_is_suspicious",
-            "logon_type",
-            "is_network_or_rdp_logon",
-            "is_system_user",
-            "is_admin_user",
-            "destination_port",
-            "is_c2_port",
+            "has_lsass_access",
+            "has_ps_bypass_flags",
+            "cmdline_length_norm",
+            "has_network_indicators",
+            "has_persistence_indicators",
+            "has_defense_evasion",
+            "has_lateral_movement",
+            "has_c2_indicators",
+            "has_suspicious_parent",
+            "is_sysmon_event",
+            "is_privilege_event",
+            "script_length_norm",
+            "has_dll_sideloading",
+            "is_network_rdp_logon",
         ]
 
     def _explain_classification(self, features: List[float], names: List[str], confidence: float) -> str:

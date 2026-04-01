@@ -1,0 +1,397 @@
+{
+  "total_cases": 30,
+  "malicious_cases": 19,
+  "benign_cases": 11,
+  "metrics": {
+    "accuracy": 0.7,
+    "precision": 0.6923,
+    "recall": 0.9474,
+    "f1": 0.8,
+    "fpr": 0.7273,
+    "fnr": 0.0526,
+    "technique_recall": 0.95
+  },
+  "confusion_matrix": {
+    "tp": 18,
+    "fp": 8,
+    "tn": 3,
+    "fn": 1
+  },
+  "results": [
+    {
+      "id": "TC-001",
+      "description": "Mimikatz credential dumping",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9809,
+      "correct": true,
+      "expected_techniques": [
+        "T1003"
+      ],
+      "detected_techniques": [
+        "T1003"
+      ]
+    },
+    {
+      "id": "TC-002",
+      "description": "PowerShell encoded command download and execute",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.995,
+      "correct": true,
+      "expected_techniques": [
+        "T1059.001"
+      ],
+      "detected_techniques": [
+        "T1059.001"
+      ]
+    },
+    {
+      "id": "TC-003",
+      "description": "Ransomware: vssadmin shadow delete",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9951,
+      "correct": true,
+      "expected_techniques": [
+        "T1490"
+      ],
+      "detected_techniques": [
+        "T1490"
+      ]
+    },
+    {
+      "id": "TC-004",
+      "description": "PsExec lateral movement",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9829,
+      "correct": true,
+      "expected_techniques": [
+        "T1021"
+      ],
+      "detected_techniques": [
+        "T1021"
+      ]
+    },
+    {
+      "id": "TC-005",
+      "description": "Certutil download",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9976,
+      "correct": true,
+      "expected_techniques": [
+        "T1105"
+      ],
+      "detected_techniques": [
+        "T1105"
+      ]
+    },
+    {
+      "id": "TC-006",
+      "description": "Scheduled task persistence",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9911,
+      "correct": true,
+      "expected_techniques": [
+        "T1053"
+      ],
+      "detected_techniques": [
+        "T1053"
+      ]
+    },
+    {
+      "id": "TC-007",
+      "description": "LSASS memory access (process injection)",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9875,
+      "correct": true,
+      "expected_techniques": [
+        "T1003"
+      ],
+      "detected_techniques": [
+        "T1003"
+      ]
+    },
+    {
+      "id": "TC-008",
+      "description": "MSHTA executing remote script",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9937,
+      "correct": true,
+      "expected_techniques": [
+        "T1218"
+      ],
+      "detected_techniques": [
+        "T1218"
+      ]
+    },
+    {
+      "id": "TC-009",
+      "description": "Regsvr32 COM scriptlet execution",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9937,
+      "correct": true,
+      "expected_techniques": [
+        "T1218"
+      ],
+      "detected_techniques": [
+        "T1218"
+      ]
+    },
+    {
+      "id": "TC-010",
+      "description": "Procdump LSASS dump",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9809,
+      "correct": true,
+      "expected_techniques": [
+        "T1003"
+      ],
+      "detected_techniques": [
+        "T1003"
+      ]
+    },
+    {
+      "id": "TC-011",
+      "description": "WMI remote code execution",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9977,
+      "correct": true,
+      "expected_techniques": [
+        "T1047"
+      ],
+      "detected_techniques": [
+        "T1047",
+        "T1082"
+      ]
+    },
+    {
+      "id": "TC-012",
+      "description": "Malicious DLL load from temp",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9636,
+      "correct": true,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-013",
+      "description": "Reverse shell via nc.exe",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.6196,
+      "correct": true,
+      "expected_techniques": [
+        "T1059"
+      ],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-014",
+      "description": "New local admin account",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9951,
+      "correct": true,
+      "expected_techniques": [
+        "T1136"
+      ],
+      "detected_techniques": [
+        "T1136"
+      ]
+    },
+    {
+      "id": "TC-015",
+      "description": "Base64 PowerShell download cradle",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9769,
+      "correct": true,
+      "expected_techniques": [
+        "T1059.001"
+      ],
+      "detected_techniques": [
+        "T1059.001"
+      ]
+    },
+    {
+      "id": "TC-016",
+      "description": "Normal user login",
+      "expected_label": 0,
+      "predicted_label": 1,
+      "confidence": 0.9863,
+      "correct": false,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-017",
+      "description": "Chrome browser process",
+      "expected_label": 0,
+      "predicted_label": 1,
+      "confidence": 0.9823,
+      "correct": false,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-018",
+      "description": "Windows Update service",
+      "expected_label": 0,
+      "predicted_label": 0,
+      "confidence": 0.5324,
+      "correct": true,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-019",
+      "description": "Word document opened",
+      "expected_label": 0,
+      "predicted_label": 1,
+      "confidence": 0.9823,
+      "correct": false,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-020",
+      "description": "Python developer script",
+      "expected_label": 0,
+      "predicted_label": 1,
+      "confidence": 0.9823,
+      "correct": false,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-021",
+      "description": "Git pull operation",
+      "expected_label": 0,
+      "predicted_label": 1,
+      "confidence": 0.9823,
+      "correct": false,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-022",
+      "description": "antivirus scan process",
+      "expected_label": 0,
+      "predicted_label": 0,
+      "confidence": 0.1389,
+      "correct": true,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-023",
+      "description": "Normal network connection to internal server",
+      "expected_label": 0,
+      "predicted_label": 0,
+      "confidence": 0.022,
+      "correct": true,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-024",
+      "description": "Registry read by explorer",
+      "expected_label": 0,
+      "predicted_label": 1,
+      "confidence": 0.872,
+      "correct": false,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-025",
+      "description": "Scheduled task Windows Defender update (legitimate)",
+      "expected_label": 0,
+      "predicted_label": 1,
+      "confidence": 0.9951,
+      "correct": false,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-026",
+      "description": "PowerShell admin script (benign admin task)",
+      "expected_label": 0,
+      "predicted_label": 1,
+      "confidence": 0.981,
+      "correct": false,
+      "expected_techniques": [],
+      "detected_techniques": []
+    },
+    {
+      "id": "TC-027",
+      "description": "Cobalt Strike beacon network activity",
+      "expected_label": 1,
+      "predicted_label": 0,
+      "confidence": 0.0346,
+      "correct": false,
+      "expected_techniques": [
+        "T1071"
+      ],
+      "detected_techniques": [
+        "T1071"
+      ]
+    },
+    {
+      "id": "TC-028",
+      "description": "Empire framework agent",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9938,
+      "correct": true,
+      "expected_techniques": [
+        "T1059.001"
+      ],
+      "detected_techniques": [
+        "T1059.001"
+      ]
+    },
+    {
+      "id": "TC-029",
+      "description": "Multi-stage attack: recon + lateral + credential",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.9951,
+      "correct": true,
+      "expected_techniques": [
+        "T1082",
+        "T1021",
+        "T1003"
+      ],
+      "detected_techniques": [
+        "T1003",
+        "T1082",
+        "T1021"
+      ]
+    },
+    {
+      "id": "TC-030",
+      "description": "Windows Defender exclusion via PowerShell",
+      "expected_label": 1,
+      "predicted_label": 1,
+      "confidence": 0.981,
+      "correct": true,
+      "expected_techniques": [
+        "T1562"
+      ],
+      "detected_techniques": [
+        "T1562"
+      ]
+    }
+  ]
+}
