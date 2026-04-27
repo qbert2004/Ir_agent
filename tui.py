@@ -101,9 +101,14 @@ RichLog {
 /* Metrics */
 #metrics-log { height: 1fr; }
 
-/* IoC / MITRE / Investigate */
-#ioc-input, #mitre-input, #invest-input { margin-bottom: 1; }
-#ioc-log, #mitre-log, #invest-log       { height: 1fr; }
+/* IoC / MITRE */
+#ioc-input, #mitre-input  { margin-bottom: 1; }
+#ioc-log, #mitre-log      { height: 1fr; }
+
+/* Incidents */
+#invest-buttons { height: 3; margin-bottom: 1; }
+#invest-input   { margin-bottom: 1; }
+#invest-log     { height: 1fr; }
 
 /* Assess */
 .assess-row { height: 3; margin-bottom: 1; }
@@ -173,9 +178,12 @@ class IrAgentTUI(App):
                 )
                 yield RichLog(id="mitre-log", highlight=True, markup=True)
 
-            with TabPane("Investigate [7]", id="invest"):
+            with TabPane("Incidents [7]", id="invest"):
+                with Horizontal(id="invest-buttons"):
+                    yield Button("List All", id="list-incidents-btn", variant="default")
+                    yield Button("Investigate", id="do-investigate-btn", variant="warning")
                 yield Input(
-                    placeholder="Investigation ID...  (Enter to fetch report)",
+                    placeholder="Incident ID (IR-20260427-XXXXXX)...  Enter to view report",
                     id="invest-input",
                 )
                 yield RichLog(id="invest-log", highlight=True, markup=True)
@@ -268,7 +276,7 @@ class IrAgentTUI(App):
         t2.add_column("Value", style="white", min_width=30)
         t2.add_row("LLM",       "[green]Groq / llama-3.3-70b[/green]")
         t2.add_row("FAISS",     "[green]AVX2  dim=384[/green]")
-        t2.add_row("Tools",     "[green]9 registered[/green]")
+        t2.add_row("Tools",     "[green]11 registered[/green]")
         t2.add_row("Vectors",   "[green]33 knowledge entries[/green]")
         t2.add_row("Max steps", "8")
         self._log_write(lid, t2)
@@ -286,15 +294,17 @@ class IrAgentTUI(App):
 
         tools = data.get("tools", data) if isinstance(data, dict) else data
         TYPES = {
-            "knowledge_search": "RAG / FAISS",
-            "search_logs":      "Event Store",
-            "classify_event":   "ML  Fast",
-            "analyze_event":    "LLM / Groq",
-            "mitre_lookup":     "Knowledge DB",
-            "lookup_ioc":       "Threat Intel",
-            "query_siem":       "Better Stack",
-            "investigate":      "Full Pipeline",
-            "ml_classify":      "ML + CyberML",
+            "knowledge_search":    "RAG / FAISS",
+            "search_logs":         "Event Store",
+            "classify_event":      "ML  Fast",
+            "analyze_event":       "LLM / Groq",
+            "mitre_lookup":        "Knowledge DB",
+            "lookup_ioc":          "Threat Intel",
+            "query_siem":          "Better Stack",
+            "investigate":         "Full Pipeline",
+            "ml_classify":         "ML + CyberML",
+            "get_incident":        "Incident Manager",
+            "get_incident_events": "Incident Manager",
         }
 
         dt = self.query_one("#tools-table", DataTable)
@@ -341,9 +351,11 @@ class IrAgentTUI(App):
         t1.add_row("Threats found", str(proc.get("malicious_detected", 0)))
         t1.add_row("Fast-path",     str(paths.get("fast_path_count",   0)))
         t1.add_row("Deep-path",     str(paths.get("deep_path_count",   0)))
-        t1.add_row("Fast rate",     paths.get("fast_path_rate", "0%"))
-        t1.add_row("Deep rate",     paths.get("deep_path_rate", "0%"))
-        t1.add_row("Filter rate",   proc.get("filter_rate", "0%"))
+        t1.add_row("Fast rate",            paths.get("fast_path_rate", "0%"))
+        t1.add_row("Deep rate",            paths.get("deep_path_rate", "0%"))
+        t1.add_row("Filter rate",          proc.get("filter_rate", "0%"))
+        t1.add_row("Agent invocations",    str(paths.get("agent_invocations", 0)))
+        t1.add_row("Background invest.",   str(paths.get("background_investigations", 0)))
         self._log_write(lid, t1)
 
         self._log_write(lid, Rule("[green]ML Model[/green]"))
@@ -560,7 +572,7 @@ class IrAgentTUI(App):
                 self._log_write(lid, Text(evt["answer"], style="white"))
 
     # ════════════════════════════════════════════════════════════════════════
-    #  INVESTIGATE
+    #  INCIDENTS
     # ════════════════════════════════════════════════════════════════════════
     @on(Input.Submitted, "#invest-input")
     def _on_invest_submit(self, event: Input.Submitted) -> None:
@@ -568,55 +580,169 @@ class IrAgentTUI(App):
         if not inc_id:
             return
         event.input.value = ""
-        log = self.query_one("#invest-log", RichLog)
-        log.write(Rule(f"[red]{inc_id}[/red]"))
-        self._fetch_report(inc_id)
+        self.query_one("#invest-log", RichLog).write(Rule(f"[cyan]{inc_id}[/cyan]"))
+        self._fetch_incident_report(inc_id)
+
+    @on(Button.Pressed, "#list-incidents-btn")
+    def _on_list_btn(self, _: Button.Pressed) -> None:
+        self._list_incidents()
+
+    @on(Button.Pressed, "#do-investigate-btn")
+    def _on_do_investigate_btn(self, _: Button.Pressed) -> None:
+        inc_id = self.query_one("#invest-input", Input).value.strip()
+        if not inc_id:
+            self._log_write("#invest-log", "[red]Enter an incident ID first.[/red]")
+            return
+        self.query_one("#invest-input", Input).value = ""
+        self.query_one("#invest-log", RichLog).write(
+            Rule(f"[yellow]Investigating {inc_id}...[/yellow]")
+        )
+        self._run_incident_investigation(inc_id)
 
     @work(thread=True)
-    def _fetch_report(self, incident_id: str) -> None:
+    def _list_incidents(self) -> None:
         lid = "#invest-log"
-        self._log_write(lid, "[dim]Fetching report...[/dim]")
+        self._log_clear(lid)
+        self._log_write(lid, "[dim]Loading incidents...[/dim]")
         try:
-            with _client(timeout=30) as c:
-                r = c.get(f"{BASE}/investigation/{incident_id}/report")
+            with _client() as c:
+                data = c.get(f"{BASE}/ingest/incidents").json()
         except Exception as e:
             self._log_write(lid, f"[red]{e}[/red]")
             return
 
-        if r.status_code == 404:
-            self._log_write(lid, f"[red]Investigation '{incident_id}' not found.[/red]")
-            try:
-                with _client() as c:
-                    ids = c.get(f"{BASE}/investigation/list").json().get("investigations", [])
-                if ids:
-                    self._log_write(lid, Text(f"Available: {', '.join(ids)}", style="dim"))
-            except Exception:
-                pass
+        incidents = data.get("incidents", [])
+        stats     = data.get("stats", {})
+
+        self._log_clear(lid)
+        self._log_write(
+            lid,
+            Rule(
+                f"[cyan]Incidents — total: {stats.get('total_incidents', len(incidents))}, "
+                f"active: {stats.get('active_incidents', '?')}[/cyan]"
+            ),
+        )
+
+        if not incidents:
+            self._log_write(lid, "[dim]No incidents yet.[/dim]")
             return
 
-        report = r.json().get("report", "No report available.")
+        t = RichTable(box=None, show_header=True, padding=(0, 2))
+        t.add_column("ID",             style="cyan",  min_width=22)
+        t.add_column("Host",           style="white", min_width=14)
+        t.add_column("Severity",       style="white", min_width=10)
+        t.add_column("Events",         style="white", min_width=6)
+        t.add_column("Status",         style="white", min_width=12)
+        t.add_column("Classification", style="dim",   min_width=30)
+
+        for inc in incidents:
+            sev = inc.get("severity", "info")
+            st  = sev_style(sev)
+            t.add_row(
+                inc.get("id", "?"),
+                inc.get("host", "?"),
+                Text(sev.upper(), style=f"bold {st}"),
+                str(inc.get("event_count", 0)),
+                inc.get("status", "?"),
+                (inc.get("classification") or "")[:45],
+            )
+
+        self._log_write(lid, t)
+        self._log_write(lid, Text(
+            "\nTip: enter an incident ID and press Enter to view report, "
+            "or press [Investigate] to run AI analysis.",
+            style="dim",
+        ))
+
+    @work(thread=True)
+    def _fetch_incident_report(self, incident_id: str) -> None:
+        lid = "#invest-log"
+        self._log_write(lid, "[dim]Fetching report...[/dim]")
+        try:
+            with _client(timeout=30) as c:
+                r = c.get(f"{BASE}/ingest/incidents/{incident_id}/report")
+        except Exception as e:
+            self._log_write(lid, f"[red]{e}[/red]")
+            return
+
+        if r.status_code != 200 or r.json().get("status") == "error":
+            self._log_write(lid, f"[red]Incident '{incident_id}' not found.[/red]")
+            self._list_incidents()
+            return
+
+        report = r.json().get("report", "")
         self._log_clear(lid)
 
-        SECTIONS = {
-            "EXECUTIVE SUMMARY", "ATTACK TIMELINE", "INDICATORS OF COMPROMISE",
-            "TTP ANALYSIS", "ROOT CAUSE ANALYSIS", "IMPACT ASSESSMENT",
-            "CONTAINMENT ACTIONS", "REMEDIATION STEPS", "LESSONS LEARNED",
+        BOLD_SECTIONS = {
+            "INCIDENT INVESTIGATION REPORT",
+            "ATTACK TIMELINE", "INDICATORS OF COMPROMISE",
+            "MITRE ATT&CK MAPPING", "ROOT CAUSE ANALYSIS",
+            "IMPACT ASSESSMENT", "RECOMMENDED RESPONSE",
+            "KEY FINDINGS", "AI AGENT INVESTIGATION", "INCIDENT SUMMARY",
         }
         for line in report.splitlines():
             s = line.strip()
-            if s.startswith(("====", "----")):
+            if not s:
+                continue
+            if s.startswith("="):
+                self._log_write(lid, Rule(style="dim cyan"))
+            elif s.startswith("-"):
                 self._log_write(lid, Rule(style="dim"))
-            elif any(m in s for m in SECTIONS):
+            elif any(sec in s for sec in BOLD_SECTIONS):
                 self._log_write(lid, Text(s, style="bold cyan"))
-            elif "CYBER INCIDENT INVESTIGATION REPORT" in s:
-                self._log_write(
-                    lid,
-                    Rule("[bold red]CYBER INCIDENT INVESTIGATION REPORT[/bold red]"),
-                )
-            elif s.startswith(("Incident ID:", "Title:", "Type:", "Investigation Date:")):
-                self._log_write(lid, Text(s, style="dim"))
-            elif s:
+            elif s.startswith("Incident ID"):
+                self._log_write(lid, Text(s, style="bold white"))
+            elif s.startswith(("Severity:", "Confidence:", "Status:")):
+                key, _, val = s.partition(":")
+                sev_val = val.strip().lower().rstrip(".")
+                st = sev_style(sev_val)
+                txt = Text()
+                txt.append(f"{key}:", style="dim")
+                txt.append(f" {val.strip()}", style=f"bold {st}")
+                self._log_write(lid, txt)
+            elif s.startswith("Verdict:") or "MALICIOUS" in s or "SUSPICIOUS" in s:
+                self._log_write(lid, Text(s, style=sev_style("malicious") if "MALICIOUS" in s else "yellow"))
+            elif s.startswith(("Tools used:", "ReAct steps:", "Summary:")):
+                self._log_write(lid, Text(s, style="dim green"))
+            else:
                 self._log_write(lid, Text(s))
+
+    @work(thread=True)
+    def _run_incident_investigation(self, incident_id: str) -> None:
+        lid = "#invest-log"
+        self._log_write(lid, "[yellow]Running AI agent investigation (may take 5-30s)...[/yellow]")
+        try:
+            with _client(timeout=120) as c:
+                r = c.post(f"{BASE}/ingest/incidents/{incident_id}/investigate")
+        except Exception as e:
+            self._log_write(lid, f"[red]{e}[/red]")
+            return
+
+        data = r.json()
+        if data.get("status") == "error":
+            self._log_write(lid, f"[red]{data.get('message', 'Error')}[/red]")
+            return
+
+        verdict    = data.get("agent_verdict", "?")
+        confidence = data.get("agent_confidence", 0)
+        tools      = data.get("tools_used", [])
+        steps      = data.get("agent_steps", 0)
+        st         = sev_style(verdict.lower())
+
+        self._log_write(lid, Rule(f"[{st}]Agent Verdict: {verdict}[/{st}]"))
+        summary = Text()
+        summary.append("Verdict:     ", style="dim")
+        summary.append(f"{verdict}\n", style=f"bold {st}")
+        summary.append("Confidence:  ", style="dim")
+        summary.append(f"{confidence:.0%}\n", style="white")
+        summary.append("Tools used:  ", style="dim")
+        summary.append(f"{', '.join(tools)}\n", style="green")
+        summary.append("ReAct steps: ", style="dim")
+        summary.append(f"{steps}\n", style="white")
+        self._log_write(lid, summary)
+
+        # Now fetch the full report
+        self._fetch_incident_report(incident_id)
 
     # ════════════════════════════════════════════════════════════════════════
     #  ASSESS

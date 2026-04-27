@@ -76,6 +76,7 @@ class EventProcessor:
             "malicious_fast_path": 0,
             "malicious_deep_path": 0,
             "agent_invocations": 0,
+            "background_investigations": 0,
             "sent_to_betterstack": 0,
             "failed": 0,
             "last_event_time": None,
@@ -171,25 +172,28 @@ class EventProcessor:
 
             # Step 2: Determine processing path
             if confidence >= self.THRESHOLD_CERTAIN:
-                # HIGH CONFIDENCE — fast forward with ML-only assessment
+                # HIGH CONFIDENCE — fast forward, then auto-investigate incident in background
                 assessment = self._assessment_engine.assess(ml=ml_signal)
                 result = await self._fast_path_forward(
-                    event, confidence, reason, assessment=assessment
+                    event, confidence, reason,
+                    incident_id=incident_id, assessment=assessment
                 )
                 self.metrics["malicious_fast_path"] += 1
             else:
                 # UNCERTAIN (50-80%) — check if truly anomalous
                 if self._is_anomalous(event):
-                    # ANOMALOUS — deep Agent analysis + full ThreatAssessment fusion
+                    # ANOMALOUS — deep Agent analysis on full incident context
                     result = await self._deep_path_analyze(
-                        event, confidence, reason, event_id, ml_signal=ml_signal
+                        event, incident_id, confidence, reason, event_id,
+                        ml_signal=ml_signal,
                     )
                     self.metrics["malicious_deep_path"] += 1
                 else:
-                    # NOT ANOMALOUS — fast forward with ML-only assessment
+                    # NOT ANOMALOUS — fast forward, then auto-investigate incident in background
                     assessment = self._assessment_engine.assess(ml=ml_signal)
                     result = await self._fast_path_forward(
-                        event, confidence, reason, assessment=assessment
+                        event, confidence, reason,
+                        incident_id=incident_id, assessment=assessment
                     )
                     self.metrics["malicious_fast_path"] += 1
 
@@ -208,16 +212,25 @@ class EventProcessor:
         event: Dict[str, Any],
         confidence: float,
         reason: str,
+        incident_id: Optional[str] = None,
         assessment: Optional["ThreatAssessment"] = None,
     ) -> Dict[str, Any]:
         """
         Fast-path: High-confidence malicious events go directly to Better Stack.
-        Includes ThreatAssessment in enriched event payload.
+        Schedules background agent investigation of the correlated incident.
         """
         enriched = self._enrich_event(
             event, confidence, reason, path="fast", assessment=assessment
         )
         success = await self._forward_to_betterstack(enriched)
+
+        # Schedule background agent investigation for this incident (non-blocking)
+        if incident_id:
+            incident_obj = self._incident_manager._incidents.get(incident_id)
+            if incident_obj and incident_obj.agent_analysis is None:
+                import asyncio
+                asyncio.create_task(self._background_investigate_incident(incident_id))
+                self.metrics["background_investigations"] += 1
 
         severity = assessment.severity.value if assessment else "unknown"
         logger.info(
@@ -234,6 +247,7 @@ class EventProcessor:
                 ml_label="malicious",
                 ml_reason=reason,
                 processing_path="fast",
+                incident_id=incident_id,
                 threat_score=assessment.final_score if assessment else None,
                 threat_severity=assessment.severity.value if assessment else None,
                 assessment_json=json.dumps(assessment.to_dict()) if assessment else None,
@@ -256,36 +270,58 @@ class EventProcessor:
     async def _deep_path_analyze(
         self,
         event: Dict[str, Any],
+        incident_id: str,
         ml_confidence: float,
         ml_reason: str,
         event_id: str,
         ml_signal: Optional["MLSignal"] = None,
     ) -> Dict[str, Any]:
         """
-        Deep-path: CyberAgent analysis + full ThreatAssessment fusion.
+        Deep-path: CyberAgent analysis on full INCIDENT context + ThreatAssessment fusion.
 
-        Combines ML signal, Agent verdict, and MITRE data into
-        a unified ThreatAssessment via the assessment engine.
+        The agent receives all correlated events (not just this one) so it can reason
+        about the full attack chain across multiple logs.
         """
         self.metrics["agent_invocations"] += 1
 
         try:
             agent = self._get_agent_service()
 
-            event_summary = self._build_event_summary(event)
-            prompt = (
-                f"Investigate this security event that has {ml_confidence:.0%} ML confidence:\n\n"
-                f"{event_summary}\n\n"
-                f"ML Initial Assessment: {ml_reason}\n\n"
-                f"Use ml_classify, lookup_ioc, mitre_lookup and other tools to determine "
-                f"if this is truly malicious. "
-                f"Provide your final verdict: MALICIOUS, SUSPICIOUS, or FALSE_POSITIVE."
-            )
+            # Build full incident context: timeline, IoCs, MITRE across ALL correlated events
+            incident_dict = self._incident_manager.investigate(incident_id)
+            if incident_dict and incident_dict.get("event_count", 0) > 0:
+                prompt = self._build_incident_prompt(
+                    incident_dict, incident_id, ml_confidence, ml_reason
+                )
+            else:
+                # Fallback: single event (incident not ready yet)
+                event_summary = self._build_event_summary(event)
+                prompt = (
+                    f"Investigate this security event ({ml_confidence:.0%} ML confidence):\n\n"
+                    f"{event_summary}\n\n"
+                    f"ML Assessment: {ml_reason}\n\n"
+                    f"Use ml_classify, lookup_ioc, mitre_lookup and other tools. "
+                    f"Verdict: MALICIOUS, SUSPICIOUS, or FALSE_POSITIVE."
+                )
 
-            session_id = f"event-{event_id}-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}"
+            # Reuse session per incident so the agent retains reasoning across events
+            session_id = f"incident-{incident_id}"
             response = await agent.aquery(prompt, session_id=session_id)
 
             agent_verdict, agent_confidence = self._parse_agent_response(response.answer)
+
+            # Persist agent findings back into the incident object
+            self._incident_manager.store_agent_analysis(
+                incident_id,
+                {
+                    "verdict": agent_verdict,
+                    "agent_confidence": agent_confidence,
+                    "summary": response.answer[:1000],
+                    "tools_used": response.tools_used,
+                    "steps": response.total_steps,
+                    "timestamp": datetime.utcnow().isoformat() + "Z",
+                },
+            )
 
             # ── Build full ThreatAssessment with all available signals ──────
             agent_sig = AgentSignal(
@@ -335,17 +371,24 @@ class EventProcessor:
 
             # ── Persist to DB ────────────────────────────────────────────────
             try:
-                from app.db.event_store import event_store
+                from app.db.event_store import event_store, incident_repo
                 await event_store.save_event(
                     event=event,
                     ml_confidence=ml_confidence,
                     ml_label=agent_verdict.lower(),
                     ml_reason=ml_reason,
                     processing_path="deep",
+                    incident_id=incident_id,
                     threat_score=assessment.final_score,
                     threat_severity=assessment.severity.value,
                     assessment_json=json.dumps(assessment.to_dict()),
                 )
+                # Persist the full incident (with agent_analysis) to DB
+                incident_dict = self._incident_manager.get_incident(incident_id)
+                if incident_dict:
+                    incident_dict["threat_score"] = assessment.final_score
+                    incident_dict["assessment"] = assessment.to_dict()
+                    await incident_repo.save_incident(incident_dict)
             except Exception as db_err:
                 logger.warning("EventProcessor: DB save failed (deep-path): %s", db_err)
 
@@ -526,6 +569,82 @@ class EventProcessor:
 
         return False
 
+    def _build_incident_prompt(
+        self,
+        incident: Dict,
+        incident_id: str,
+        ml_confidence: float,
+        ml_reason: str,
+    ) -> str:
+        """Build rich LLM prompt with full incident context across all correlated events."""
+        lines = []
+        lines.append("=" * 60)
+        lines.append("SECURITY INCIDENT INVESTIGATION")
+        lines.append("=" * 60)
+        lines.append(f"Incident ID   : {incident_id}")
+        lines.append(f"Host          : {incident['host']}")
+        lines.append(f"Events        : {incident['event_count']} correlated log entries")
+        lines.append(f"ML Detection  : {ml_confidence:.0%} confidence — {ml_reason}")
+        lines.append(f"Affected Hosts: {', '.join(incident.get('affected_hosts', []))}")
+        lines.append(f"Affected Users: {', '.join(incident.get('affected_users', []))}")
+        lines.append("")
+
+        # Timeline
+        timeline = incident.get("timeline", [])
+        if timeline:
+            lines.append(f"ATTACK TIMELINE ({len(timeline)} events):")
+            for entry in timeline[:20]:
+                ts = entry["timestamp"][:19] if len(entry.get("timestamp", "")) >= 19 else entry.get("timestamp", "")
+                lines.append(f"  [{entry['phase']}] {ts} — {entry['description'][:100]}")
+                if entry.get("mitre_techniques"):
+                    lines.append(f"    MITRE: {', '.join(entry['mitre_techniques'])}")
+            lines.append("")
+
+        # IoCs
+        iocs = incident.get("iocs", [])
+        if iocs:
+            lines.append(f"INDICATORS OF COMPROMISE ({len(iocs)} found):")
+            for ioc in iocs[:10]:
+                lines.append(f"  {ioc['type']}: {ioc['value']}")
+            lines.append("")
+
+        # MITRE
+        techniques = incident.get("mitre_techniques", [])
+        if techniques:
+            lines.append(f"MITRE ATT&CK TECHNIQUES ({len(techniques)} identified):")
+            for tech in techniques:
+                lines.append(f"  {tech['id']} — {tech['name']} [{tech.get('tactic', '')}]")
+            lines.append("")
+
+        # Rule-based prelim
+        lines.append(f"PRELIMINARY CLASSIFICATION: {incident.get('classification', 'Unknown')}")
+        lines.append(f"PRELIMINARY ROOT CAUSE: {incident.get('root_cause', 'Not determined')}")
+        lines.append("")
+
+        lines.append("=" * 60)
+        lines.append("INVESTIGATION TASK")
+        lines.append("=" * 60)
+        lines.append(
+            f"Analyze this incident involving {incident['event_count']} correlated events. "
+            f"Use available tools to enrich and verify the findings:"
+        )
+        lines.append(f"  • get_incident(incident_id='{incident_id}') — full incident details")
+        lines.append(f"  • get_incident_events(incident_id='{incident_id}') — raw event data")
+        lines.append("  • lookup_ioc — verify indicators against threat intel")
+        lines.append("  • search_logs — find related events on the same host/user")
+        lines.append("  • mitre_lookup — get technique details and context")
+        lines.append("  • ml_classify — re-classify specific suspicious events")
+        lines.append("")
+        lines.append("Answer the following questions:")
+        lines.append("  1. Is this a TRUE ATTACK, SUSPICIOUS activity, or FALSE POSITIVE?")
+        lines.append(f"  2. What is the complete attack chain across all {incident['event_count']} events?")
+        lines.append("  3. What is the attacker's most likely objective?")
+        lines.append("  4. What systems or data are at risk?")
+        lines.append("")
+        lines.append("End your response with one of: MALICIOUS / SUSPICIOUS / FALSE_POSITIVE")
+
+        return "\n".join(lines)
+
     def _build_event_summary(self, event: Dict[str, Any]) -> str:
         """Build human-readable event summary for agent prompt."""
         lines = []
@@ -576,6 +695,97 @@ class EventProcessor:
         # Default to suspicious if no clear verdict
         return "SUSPICIOUS", 0.5
 
+    async def run_incident_investigation(self, incident_id: str) -> Dict[str, Any]:
+        """
+        Public API: run full agent investigation on a correlated incident.
+        Called from API endpoints (manual trigger) and background auto-investigation.
+        """
+        incident_obj = self._incident_manager._incidents.get(incident_id)
+        if not incident_obj:
+            return {"status": "error", "message": f"Incident {incident_id} not found"}
+
+        # Build rule-based context first: timeline, IoCs, MITRE across all events
+        incident_dict = self._incident_manager.investigate(incident_id)
+        if not incident_dict:
+            return {"status": "error", "message": "Failed to build incident investigation"}
+
+        # Use the highest-confidence event as ML context reference
+        best_event = max(
+            incident_obj.events,
+            key=lambda e: e.get("_ml_confidence", 0),
+            default={},
+        )
+        ml_confidence = best_event.get("_ml_confidence", 0.7)
+        ml_reason = best_event.get("_ml_reason", "Correlated incident investigation")
+
+        try:
+            agent = self._get_agent_service()
+            prompt = self._build_incident_prompt(
+                incident_dict, incident_id, ml_confidence, ml_reason
+            )
+
+            session_id = f"incident-{incident_id}"
+            response = await agent.aquery(prompt, session_id=session_id)
+
+            agent_verdict, agent_confidence = self._parse_agent_response(response.answer)
+
+            analysis = {
+                "verdict": agent_verdict,
+                "agent_confidence": agent_confidence,
+                "summary": response.answer[:1000],
+                "tools_used": response.tools_used,
+                "steps": response.total_steps,
+                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "triggered_by": "api",
+            }
+            self._incident_manager.store_agent_analysis(incident_id, analysis)
+            self.metrics["agent_invocations"] += 1
+
+            # Persist full incident (with agent_analysis) to DB
+            try:
+                from app.db.event_store import incident_repo
+                incident_dict = self._incident_manager.get_incident(incident_id)
+                if incident_dict:
+                    await incident_repo.save_incident(incident_dict)
+            except Exception as db_err:
+                logger.warning("EventProcessor: DB incident save failed: %s", db_err)
+
+            logger.info(
+                f"Incident investigation done: {incident_id} → {agent_verdict} "
+                f"({agent_confidence:.0%}, tools={response.tools_used})"
+            )
+
+            return {
+                "status": "success",
+                "incident_id": incident_id,
+                "agent_verdict": agent_verdict,
+                "agent_confidence": agent_confidence,
+                "summary": response.answer[:500],
+                "tools_used": response.tools_used,
+                "steps": response.total_steps,
+            }
+
+        except Exception as e:
+            logger.error(f"Incident investigation error ({incident_id}): {e}")
+            return {"status": "error", "message": str(e), "incident_id": incident_id}
+
+    async def _background_investigate_incident(self, incident_id: str):
+        """Auto-investigate a fast-path incident without blocking the ingest pipeline."""
+        try:
+            incident_obj = self._incident_manager._incidents.get(incident_id)
+            if not incident_obj:
+                return
+            # Another coroutine may have investigated already — skip
+            if incident_obj.agent_analysis is not None:
+                return
+
+            result = await self.run_incident_investigation(incident_id)
+
+            if result.get("status") == "success" and incident_obj.agent_analysis:
+                incident_obj.agent_analysis["triggered_by"] = "background_auto"
+        except Exception as e:
+            logger.error(f"Background incident investigation failed ({incident_id}): {e}")
+
     def get_metrics(self) -> Dict[str, Any]:
         """Get processing metrics."""
         total = self.metrics["total_events"]
@@ -590,6 +800,7 @@ class EventProcessor:
             "fast_path_count": fast,
             "deep_path_count": deep,
             "agent_invocations": self.metrics["agent_invocations"],
+            "background_investigations": self.metrics["background_investigations"],
             "filter_rate": f"{benign/total*100:.1f}%" if total > 0 else "0%",
             "deep_path_rate": f"{deep/(fast+deep)*100:.1f}%" if (fast+deep) > 0 else "0%",
             "betterstack": {

@@ -121,9 +121,12 @@ class Incident:
     affected_users: List[str] = field(default_factory=list)
     created_at: str = ""
     updated_at: str = ""
+    # Agent analysis results (populated after LLM investigation)
+    agent_analysis: Optional[Dict] = field(default=None)
+    incident_summary: str = ""
 
     def to_dict(self) -> Dict:
-        return {
+        d = {
             "id": self.id,
             "host": self.host,
             "status": self.status.value,
@@ -144,6 +147,11 @@ class Incident:
             "created_at": self.created_at,
             "updated_at": self.updated_at,
         }
+        if self.agent_analysis:
+            d["agent_analysis"] = self.agent_analysis
+        if self.incident_summary:
+            d["incident_summary"] = self.incident_summary
+        return d
 
     def to_report(self) -> str:
         """Generate human-readable investigation report."""
@@ -229,6 +237,29 @@ class Incident:
         lines.append("-" * 70)
         for i, rec in enumerate(self.recommendations, 1):
             lines.append(f"  {i}. {rec}")
+
+        # Agent Analysis
+        if self.agent_analysis:
+            lines.append("-" * 70)
+            lines.append("AI AGENT INVESTIGATION")
+            lines.append("-" * 70)
+            lines.append(f"  Verdict:    {self.agent_analysis.get('verdict', 'N/A')}")
+            lines.append(f"  Confidence: {self.agent_analysis.get('agent_confidence', 0):.0%}")
+            lines.append(f"  Tools used: {', '.join(self.agent_analysis.get('tools_used', []))}")
+            lines.append(f"  ReAct steps: {self.agent_analysis.get('steps', 0)}")
+            if self.agent_analysis.get("summary"):
+                lines.append("")
+                lines.append("  Summary:")
+                for line in self.agent_analysis["summary"].split("\n"):
+                    lines.append(f"    {line}")
+            lines.append("")
+
+        if self.incident_summary:
+            lines.append("-" * 70)
+            lines.append("INCIDENT SUMMARY")
+            lines.append("-" * 70)
+            lines.append(f"  {self.incident_summary}")
+            lines.append("")
 
         lines.append("")
         lines.append("=" * 70)
@@ -408,6 +439,18 @@ class IncidentManager:
     def get_incident(self, incident_id: str) -> Optional[Dict]:
         incident = self._incidents.get(incident_id)
         return incident.to_dict() if incident else None
+
+    def store_agent_analysis(self, incident_id: str, analysis: Dict):
+        """Persist agent investigation results back into the incident."""
+        incident = self._incidents.get(incident_id)
+        if not incident:
+            return
+        incident.agent_analysis = analysis
+        incident.incident_summary = analysis.get("summary", "")[:500]
+        incident.updated_at = datetime.utcnow().isoformat() + "Z"
+        logger.info(
+            f"Agent analysis stored for {incident_id}: verdict={analysis.get('verdict')}"
+        )
 
     def get_report(self, incident_id: str) -> Optional[str]:
         incident = self._incidents.get(incident_id)

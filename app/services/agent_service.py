@@ -21,6 +21,8 @@ from app.agent.tools.lookup_ioc import LookupIoCTool
 from app.agent.tools.query_siem import QuerySIEMTool
 from app.agent.tools.investigate import InvestigateTool
 from app.agent.tools.ml_classify import MLClassifyTool
+from app.agent.tools.get_incident import GetIncidentTool
+from app.agent.tools.get_incident_events import GetIncidentEventsTool
 from app.agent.schemas import AgentResponse
 
 logger = logging.getLogger(__name__)
@@ -78,6 +80,12 @@ class AgentService:
         self._tool_registry.register(QuerySIEMTool())
         self._tool_registry.register(InvestigateTool())
         self._tool_registry.register(MLClassifyTool())  # ML Engine as a ReAct tool
+
+        # Incident-level tools: give the agent access to full correlated incident data
+        from app.services.incident_manager import get_incident_manager
+        _im = get_incident_manager()
+        self._tool_registry.register(GetIncidentTool(_im))
+        self._tool_registry.register(GetIncidentEventsTool(_im))
 
         # Agent
         self._agent = CyberAgent(self._tool_registry, self._memory)

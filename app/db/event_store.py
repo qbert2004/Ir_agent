@@ -148,6 +148,7 @@ class IncidentRepository:
                 self._apply_update(existing, incident_data)
             else:
                 _assessment = incident_data.get("assessment")
+                _agent = incident_data.get("agent_analysis")
                 incident = Incident(
                     id=incident_data["id"],
                     host=incident_data.get("host", ""),
@@ -165,13 +166,16 @@ class IncidentRepository:
                     affected_users_json=json.dumps(incident_data.get("affected_users", [])),
                     threat_score=incident_data.get("threat_score"),
                     assessment_json=json.dumps(_assessment) if _assessment else None,
+                    agent_analysis_json=json.dumps(_agent) if _agent else None,
+                    incident_summary=incident_data.get("incident_summary", ""),
                 )
                 session.add(incident)
         return incident_data["id"]
 
     def _apply_update(self, existing: Incident, data: Dict[str, Any]) -> None:
         """Apply updates to existing Incident ORM object."""
-        for field in ("status", "severity", "classification", "root_cause", "impact_assessment"):
+        for field in ("status", "severity", "classification", "root_cause",
+                      "impact_assessment", "incident_summary"):
             if field in data:
                 setattr(existing, field, data[field])
 
@@ -194,6 +198,9 @@ class IncidentRepository:
 
         if "assessment" in data and data["assessment"] is not None:
             existing.assessment_json = json.dumps(data["assessment"])
+
+        if "agent_analysis" in data and data["agent_analysis"] is not None:
+            existing.agent_analysis_json = json.dumps(data["agent_analysis"])
 
     async def get_incident(self, incident_id: str) -> Optional[Dict[str, Any]]:
         """Fetch incident by ID."""

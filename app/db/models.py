@@ -152,6 +152,10 @@ class Incident(Base):
     root_cause: Mapped[Optional[str]] = mapped_column(Text)
     impact_assessment: Mapped[Optional[str]] = mapped_column(Text)
 
+    # Agent investigation results
+    agent_analysis_json: Mapped[Optional[str]] = mapped_column(Text)  # AgentAnalysis dict JSON
+    incident_summary: Mapped[Optional[str]] = mapped_column(Text)
+
     # Relationships
     events: Mapped[list["SecurityEvent"]] = relationship(
         "SecurityEvent",
@@ -184,6 +188,8 @@ class Incident(Base):
             "impact_assessment": self.impact_assessment,
             "threat_score": self.threat_score,
             "assessment": json.loads(self.assessment_json) if self.assessment_json else None,
+            "agent_analysis": json.loads(self.agent_analysis_json) if self.agent_analysis_json else None,
+            "incident_summary": self.incident_summary,
             "created_at": self.created_at.isoformat() if self.created_at else None,
             "updated_at": self.updated_at.isoformat() if self.updated_at else None,
         }

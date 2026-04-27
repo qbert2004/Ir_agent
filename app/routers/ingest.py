@@ -197,19 +197,30 @@ async def investigate_incident(incident_id: str):
     """
     Run full investigation on a correlated incident.
 
-    Performs:
-        1. Timeline reconstruction
-        2. IoC extraction
-        3. MITRE ATT&CK mapping
-        4. Incident classification
-        5. Root cause analysis
-        6. Impact assessment
-        7. Response recommendations
+    Phase 1 — Rule-based (instant):
+        Timeline reconstruction, IoC extraction, MITRE ATT&CK mapping,
+        classification, root cause, impact assessment, recommendations.
+
+    Phase 2 — AI Agent (ReAct loop):
+        Agent receives ALL correlated events, uses get_incident /
+        get_incident_events / lookup_ioc / search_logs tools,
+        then produces a verdict (MALICIOUS / SUSPICIOUS / FALSE_POSITIVE).
     """
-    result = incident_manager.investigate(incident_id)
-    if not result:
-        return {"status": "error", "message": f"Incident {incident_id} not found"}
-    return {"status": "success", "investigation": result}
+    agent_result = await event_processor.run_incident_investigation(incident_id)
+
+    if agent_result.get("status") == "error":
+        return agent_result
+
+    # Return full incident with agent analysis embedded
+    incident = incident_manager.get_incident(incident_id)
+    return {
+        "status": "success",
+        "incident": incident,
+        "agent_verdict": agent_result.get("agent_verdict"),
+        "agent_confidence": agent_result.get("agent_confidence"),
+        "tools_used": agent_result.get("tools_used", []),
+        "agent_steps": agent_result.get("steps", 0),
+    }
 
 
 @router.get("/incidents/{incident_id}/report")
