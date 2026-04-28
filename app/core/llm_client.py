@@ -47,14 +47,14 @@ class _GoogleProvider(_BaseProvider):
     Google AI Studio — Gemma 4 via the OpenAI-compatible REST endpoint.
 
     Endpoint: https://generativelanguage.googleapis.com/v1beta/openai/
-    Model:    gemma-4-27b-it  (set via GOOGLE_AI_MODEL or LLM_ANALYZER_MODEL)
+    Model:    models/gemma-4-31b-it  (set via GOOGLE_AI_MODEL or LLM_ANALYZER_MODEL)
     Key:      GOOGLE_API_KEY  (get at https://aistudio.google.com/apikey)
 
     No extra SDK required — uses the standard openai package with a custom base_url.
     """
     name = "google"
     _ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/openai/"
-    _DEFAULT_MODEL = "gemma-4-27b-it"
+    _DEFAULT_MODEL = "models/gemma-4-31b-it"
 
     def __init__(self):
         self._client = None

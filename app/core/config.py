@@ -26,7 +26,7 @@ class Settings(BaseSettings):
 
     # Google AI Studio — Gemma 4 (first priority)
     google_api_key: str = Field(default="", alias="GOOGLE_API_KEY")
-    google_ai_model: str = Field(default="gemma-4-27b-it", alias="GOOGLE_AI_MODEL")
+    google_ai_model: str = Field(default="models/gemma-4-31b-it", alias="GOOGLE_AI_MODEL")
 
     # Groq fallback
     groq_api_key: str = Field(default="", alias="LLM_API_KEY")
@@ -35,8 +35,8 @@ class Settings(BaseSettings):
     # Ollama local fallback
     ollama_base_url: str = Field(default="", alias="OLLAMA_BASE_URL")
 
-    ai_model: str = Field(default="gemma-4-27b-it", alias="LLM_ANALYZER_MODEL")
-    ai_report_model: str = Field(default="gemma-4-27b-it", alias="LLM_REPORT_MODEL")
+    ai_model: str = Field(default="models/gemma-4-31b-it", alias="LLM_ANALYZER_MODEL")
+    ai_report_model: str = Field(default="models/gemma-4-31b-it", alias="LLM_REPORT_MODEL")
     ai_threat_threshold: int = Field(default=60, alias="AI_SUSPICIOUS_THRESHOLD")
 
     # Better Stack
