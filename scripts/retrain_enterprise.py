@@ -858,7 +858,12 @@ def extract_features_enterprise(ev: dict) -> list[float]:
     f.append(float(ev.get("syscall") in ("connect","bind","accept")))
 
     # ── [81-90] Kaspersky + общие угрозы ────────────────────────────────────
-    f.append(float(ev.get("label") == 1))          # Kaspersky already labeled malicious
+    # kas_labeled_malicious: только для событий, размеченных Kaspersky-ом напрямую
+    # (НЕ читаем поле label — это был бы label leakage!)
+    f.append(float(
+        ev.get("source_type") == "kaspersky" and
+        (ev.get("detection_result") or "").lower() in ("detected","blocked","not_cured","disinfected")
+    ))
     f.append(float(any(p in threat for p in ("trojan","backdoor","ransomware","exploit"))))
     f.append(float("pdm:" in threat or "heur:" in threat))  # Behavioral/heuristic detect
     f.append(float("ransom" in threat))
@@ -1018,7 +1023,128 @@ def auto_label(ev: dict) -> tuple[int | None, str]:
 # ЧАСТЬ 5: ЗАГРУЗКА ДАННЫХ
 # ═══════════════════════════════════════════════════════════════════════════════
 
+class PassThroughNormalizer(BaseNormalizer):
+    """
+    'Нормализатор' для событий, уже приведённых к UNIFIED_SCHEMA
+    (например, real_attack_events.json от download_real_datasets.py).
+    Просто копирует поля 1:1, без дополнительной обработки.
+    """
+    source_type = "passthrough"
+
+    def normalize(self, raw: dict) -> dict:
+        ev = dict(UNIFIED_SCHEMA)
+        # Копируем все поля, которые есть в UNIFIED_SCHEMA
+        for key in UNIFIED_SCHEMA:
+            if key in raw:
+                ev[key] = raw[key]
+        # Поля которых нет в схеме — игнорируем
+        if not ev.get("source_type"):
+            ev["source_type"] = raw.get("source_type", "sysmon")
+        if not ev.get("event_id"):
+            ev["event_id"] = self._make_id(raw)
+        return ev
+
+
+class SplunkXMLNormalizer(BaseNormalizer):
+    """
+    Парсер Windows Event XML (формат Splunk attack_data / .log файлы).
+    Каждая строка = одно событие в XML формате.
+    """
+    source_type = "sysmon"
+
+    def normalize(self, raw: dict) -> dict:
+        """raw уже разобран из XML в dict via xml_log_to_events()"""
+        ev = super().normalize(raw)
+        eid = int(raw.get("EventID", 0))
+        ev["os_platform"]    = "windows"
+        ev["raw_event_id"]   = eid
+        # EID 10 (ProcessAccess): SourceImage/TargetImage; EID 1: Image/ParentImage
+        image = (raw.get("Image") or raw.get("SourceImage") or
+                 raw.get("NewProcessName") or "")
+        parent= (raw.get("ParentImage") or raw.get("SourceImage") or "")
+        ev["process_name"]   = self._basename(image)
+        ev["process_path"]   = image
+        ev["parent_process"] = self._basename(parent)
+        ev["command_line"]   = raw.get("CommandLine") or ""
+        ev["user"]           = (raw.get("User") or raw.get("SubjectUserName") or
+                                raw.get("SourceUser") or "")
+        ev["dst_ip"]         = (raw.get("DestinationIp") or
+                                raw.get("DestinationIpAddress") or "")
+        ev["dst_port"]       = self._safe_int(raw.get("DestinationPort"))
+        ev["src_ip"]         = raw.get("SourceIp") or ""
+        # ProcessAccess target (e.g., lsass.exe for T1003)
+        if eid == 10:
+            ev["target_user"] = self._basename(raw.get("TargetImage") or "")
+        hashes               = raw.get("Hashes") or ""
+        md5m = re.search(r"MD5=([0-9A-Fa-f]+)", hashes)
+        if md5m: ev["process_hash_md5"] = md5m.group(1)
+        ev["process_signed"] = str(raw.get("Signed","")).lower() == "true"
+        ev["file_path"]      = raw.get("TargetFilename") or raw.get("TargetObject") or ""
+        ev["severity"]       = "high" if raw.get("label") == 1 else "info"
+        ev["event_type"]     = SysmonNormalizer._classify_sysmon(ev["raw_event_id"])
+        ev["label"]          = raw.get("label")
+        ev["label_source"]   = raw.get("label_source", "splunk_xml")
+        return ev
+
+    @staticmethod
+    def _basename(path: str) -> str:
+        return Path(path).name.lower() if path else ""
+
+    @staticmethod
+    def _safe_int(v) -> int | None:
+        try: return int(v)
+        except: return None
+
+
+def xml_log_to_events(fpath: Path, label: int = 1) -> list[dict]:
+    """
+    Парсить файл из Splunk attack_data (Windows Event XML, одно событие = одна строка).
+    Возвращает список словарей с полями из EventData + label.
+    """
+    try:
+        import xml.etree.ElementTree as ET
+    except ImportError:
+        log.warning("xml.etree.ElementTree недоступен")
+        return []
+
+    events = []
+    ns = {"e": "http://schemas.microsoft.com/win/2004/08/events/event"}
+
+    text = fpath.read_text(encoding="utf-8", errors="replace")
+    for line in text.splitlines():
+        line = line.strip()
+        if not line or not line.startswith("<Event"):
+            continue
+        try:
+            root = ET.fromstring(line)
+            ev = {"label": label, "label_source": "splunk_xml"}
+
+            # System fields
+            sys_node = root.find("e:System", ns) or root.find("System")
+            if sys_node is not None:
+                eid_node = sys_node.find("e:EventID", ns) or sys_node.find("EventID")
+                if eid_node is not None:
+                    try: ev["EventID"] = int(eid_node.text.strip())
+                    except: pass
+                comp = sys_node.find("e:Computer", ns) or sys_node.find("Computer")
+                if comp is not None: ev["Computer"] = comp.text
+
+            # EventData fields
+            edata = root.find("e:EventData", ns) or root.find("EventData")
+            if edata is not None:
+                for data in edata:
+                    name = data.get("Name")
+                    if name and data.text:
+                        ev[name] = data.text.strip()
+            events.append(ev)
+        except ET.ParseError:
+            pass
+
+    return events
+
+
 NORMALIZERS = {
+    # Синтетические данные (baseline)
     "windows_security_events.json": WindowsSecurityNormalizer(),
     "sysmon_events.json":           SysmonNormalizer(),
     "active_directory_events.json": ActiveDirectoryNormalizer(),
@@ -1026,17 +1152,24 @@ NORMALIZERS = {
     "linux_auth_events.json":       LinuxAuthNormalizer(),
     "kaspersky_events.json":        KasperskyNormalizer(),
     "firewall_events.json":         FirewallNormalizer(),
-    # Поддержка уже существующих датасетов проекта
-    "train_events.json":            SysmonNormalizer(),
+    # ── РЕАЛЬНЫЕ ДАННЫЕ (приоритет) ────────────────────────────────────────────
+    # OTRF Security-Datasets + existing training data → уже в UNIFIED_SCHEMA
+    # Содержит ALL события: OTRF attacks + real benign sysmon + existing training
+    "real_attack_events.json":      PassThroughNormalizer(),
+    # sysmon_real_attacks.json и windows_security_real.json — ПОДМНОЖЕСТВА
+    # real_attack_events.json, поэтому НЕ грузим их отдельно (дублирование)
+    # "sysmon_real_attacks.json":   PassThroughNormalizer(),  # ← subset
+    # "windows_security_real.json": PassThroughNormalizer(),  # ← subset
+    # Дополнительные реальные benign Sysmon события (из EVTX дампа системы)
     "real_benign_sysmon.json":      SysmonNormalizer(),
-    "test_events.json":             SysmonNormalizer(),
 }
 
 def load_dataset() -> tuple[list[dict], dict[str, int]]:
-    """Загрузить все JSON-датасеты, нормализовать, вернуть события + статистику."""
+    """Загрузить все JSON-датасеты и XML-логи, нормализовать, вернуть события + статистику."""
     events = []
     stats  = {}
 
+    # ── JSON датасеты ─────────────────────────────────────────────────────────
     for fname, normalizer in NORMALIZERS.items():
         fpath = DATASETS / fname
         if not fpath.exists():
@@ -1062,7 +1195,6 @@ def load_dataset() -> tuple[list[dict], dict[str, int]]:
                 continue
             try:
                 ev = normalizer.normalize(raw)
-                # Если нет метки — пытаемся проставить автоматически
                 if ev["label"] is None:
                     ev["label"], ev["label_source"] = auto_label(ev)
                 events.append(ev)
@@ -1070,6 +1202,33 @@ def load_dataset() -> tuple[list[dict], dict[str, int]]:
             except Exception as e:
                 log.debug("Ошибка нормализации события: %s", e)
 
+        stats[fname] = count
+        log.info("  → загружено %d событий", count)
+
+    # ── Splunk XML-логи (Windows Event XML, malicious=1) ─────────────────────
+    xml_normalizer = SplunkXMLNormalizer()
+    splunk_files = {
+        "splunk_t1003_sysmon.log":  1,  # T1003 — Credential Dumping
+        "splunk_t1059_ps_sysmon.log": 1, # T1059.001 — PowerShell
+        "splunk_t1547_sysmon.log":  1,  # T1547.001 — Registry Run Keys
+        "splunk_t1136_sysmon.log":  1,  # T1136.001 — Create Account
+    }
+    for fname, label in splunk_files.items():
+        fpath = DATASETS / fname
+        if not fpath.exists():
+            continue
+        log.info("Загружаем Splunk XML %s ...", fname)
+        raw_xml_events = xml_log_to_events(fpath, label=label)
+        count = 0
+        for raw in raw_xml_events:
+            try:
+                ev = xml_normalizer.normalize(raw)
+                if ev["label"] is None:
+                    ev["label"], ev["label_source"] = auto_label(ev)
+                events.append(ev)
+                count += 1
+            except Exception as e:
+                log.debug("Splunk normalize error: %s", e)
         stats[fname] = count
         log.info("  → загружено %d событий", count)
 
@@ -1100,15 +1259,14 @@ def build_xy(events: list[dict]) -> tuple[np.ndarray, np.ndarray, list[int]]:
 
 def train_enterprise_model(X: np.ndarray, y: np.ndarray) -> dict:
     """Обучить ансамбль классификаторов с cross-validation."""
-    from sklearn.model_selection import StratifiedKFold, cross_val_score
+    from sklearn.model_selection import train_test_split
     from sklearn.preprocessing   import StandardScaler
-    from sklearn.ensemble        import GradientBoostingClassifier, RandomForestClassifier
-    from sklearn.linear_model    import LogisticRegression
+    from sklearn.ensemble        import HistGradientBoostingClassifier
+    from sklearn.calibration     import CalibratedClassifierCV
     from sklearn.metrics         import (roc_auc_score, accuracy_score,
                                          precision_score, recall_score,
                                          f1_score, brier_score_loss,
                                          confusion_matrix)
-    from sklearn.calibration     import CalibratedClassifierCV
 
     log.info("=" * 55)
     log.info("ОБУЧЕНИЕ ENTERPRISE ML МОДЕЛИ")
@@ -1117,32 +1275,39 @@ def train_enterprise_model(X: np.ndarray, y: np.ndarray) -> dict:
              y.sum(), 100*y.mean(), (y==0).sum(), 100*(1-y.mean()))
     log.info("=" * 55)
 
-    # Масштабирование
+    # Масштабирование (нужно для Platt calibration, HistGBM не требует)
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
-    # Train/val split
-    from sklearn.model_selection import train_test_split
+    # Train/val split (стратифицированный)
     X_tr, X_val, y_tr, y_val = train_test_split(
         X_scaled, y, test_size=0.25, random_state=42, stratify=y
     )
 
-    # ── Алгоритм: GradientBoosting ───────────────────────────────────────────
-    log.info("Обучаем GradientBoostingClassifier ...")
-    gb = GradientBoostingClassifier(
-        n_estimators=300,
-        max_depth=5,
+    # ── Алгоритм: HistGradientBoosting (50x быстрее GBM на больших датасетах) ─
+    # Аналог LightGBM — обрабатывает 500k событий за минуты вместо часов
+    log.info("Обучаем HistGradientBoostingClassifier (fast, large-scale) ...")
+    n = len(X_tr)
+    gb = HistGradientBoostingClassifier(
+        max_iter=300,             # количество деревьев
+        max_depth=6,              # глубина
         learning_rate=0.07,
-        subsample=0.8,
-        max_features="sqrt",
         min_samples_leaf=20,
+        l2_regularization=0.1,
+        max_bins=255,             # макс. бинов для гистограмм
+        class_weight="balanced" if y.mean() < 0.2 else None,
         random_state=42,
+        early_stopping=True,      # автостоп если нет прогресса
+        n_iter_no_change=20,
+        validation_fraction=0.1,
+        verbose=0,
     )
     gb.fit(X_tr, y_tr)
+    log.info("  Деревьев обучено: %d", gb.n_iter_)
 
-    # ── Калибровка (Platt Scaling) ───────────────────────────────────────────
-    log.info("Калибруем вероятности (Platt scaling) ...")
-    calibrated = CalibratedClassifierCV(gb, cv=5, method="sigmoid")
+    # ── Калибровка (Platt Scaling, cv=3 для скорости на большом датасете) ────
+    log.info("Калибруем вероятности (Platt scaling, cv=3) ...")
+    calibrated = CalibratedClassifierCV(gb, cv=3, method="sigmoid")
     calibrated.fit(X_tr, y_tr)
 
     # ── Метрики ──────────────────────────────────────────────────────────────
@@ -1189,12 +1354,30 @@ def train_enterprise_model(X: np.ndarray, y: np.ndarray) -> dict:
     log.info("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 
     # ── Top feature importances ──────────────────────────────────────────────
-    fi = gb.feature_importances_
-    top_idx = np.argsort(fi)[::-1][:15]
     log.info("\nТОП-15 ПРИЗНАКОВ:")
-    for rank, i in enumerate(top_idx, 1):
-        bar = "█" * int(fi[i]*100)
-        log.info("  %2d. %-35s %.4f %s", rank, FEATURE_NAMES[i], fi[i], bar)
+    fi = None
+    # HistGBM имеет feature_importances_ в sklearn >= 1.2; fallback на permutation
+    if hasattr(gb, 'feature_importances_'):
+        fi = gb.feature_importances_
+    else:
+        try:
+            from sklearn.inspection import permutation_importance
+            log.info("  (вычисляем permutation importance на подвыборке 10k ...)")
+            idx_sub = np.random.default_rng(42).choice(len(X_val),
+                          min(10000, len(X_val)), replace=False)
+            perm = permutation_importance(calibrated, X_val[idx_sub], y_val[idx_sub],
+                                          n_repeats=5, random_state=42, n_jobs=-1)
+            fi = perm.importances_mean
+        except Exception as e:
+            log.warning("  feature importance недоступна: %s", e)
+
+    if fi is not None:
+        top_idx = np.argsort(fi)[::-1][:15]
+        for rank, i in enumerate(top_idx, 1):
+            bar = "█" * int(fi[i]*100)
+            log.info("  %2d. %-35s %.4f %s", rank, FEATURE_NAMES[i], fi[i], bar)
+    else:
+        log.info("  (feature importance недоступна для этого алгоритма)")
 
     metrics = {
         "accuracy": float(acc), "roc_auc": float(auc),
