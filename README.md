@@ -2,130 +2,133 @@
 
 ![CI](https://github.com/qbert2004/Ir_agent/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![Tests](https://img.shields.io/badge/tests-128%20passing-brightgreen)
+![Tests](https://img.shields.io/badge/tests-144%20passing-brightgreen)
+![ROC-AUC](https://img.shields.io/badge/ROC--AUC-0.9899-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-**Autonomous AI-powered Cyber Incident Response Platform**
+**Автономная AI-платформа для реагирования на киберинциденты**
 
-IR-Agent is a production-ready FastAPI service that correlates raw security telemetry into **Incidents**, then dispatches a ReAct LLM agent to investigate the **full incident group** — not just individual events. A GradientBoosting ML classifier, IoC threat-intelligence lookups, MITRE ATT&CK mapper, and a Bayesian threat-score fusion engine are all wired together into one autonomous pipeline.
-
----
-
-## What Changed in v2 — Incident-Based Investigation
-
-Previous versions analysed events **one at a time**. An agent was invoked for each log entry independently, which meant multi-stage attacks (reconnaissance → credential dump → lateral movement) were never seen as a single narrative.
-
-**v2 rewrites investigation to be incident-first:**
-
-```
-Before:  event → ML → agent(single log) → verdict
-After:   event₁ ─┐
-         event₂ ─┤→ IncidentManager → Incident → agent(ALL logs) → verdict
-         event₃ ─┘
-```
+IR-Agent — это production-ready FastAPI сервис, который:
+1. Принимает сырые события безопасности (Windows Events, Sysmon, AD, Linux, Kaspersky, Firewall)
+2. Группирует их в **инциденты** по хосту и временному окну
+3. Запускает **Enterprise ML-классификатор** (HistGradientBoosting, 90 признаков, ROC-AUC 0.99)
+4. Отправляет **ReAct LLM агента** расследовать целый инцидент, а не отдельные события
+5. Возвращает вердикт с тактиками MITRE ATT&CK, IoC, таймлайном атаки и рекомендациями
 
 ---
 
-## How It Works — Step by Step
-
-### 1. Event Ingestion
+## Архитектура системы
 
 ```
-POST /ingest/telemetry  ← raw endpoint/SIEM log
+Источники событий
+  Windows Security  Sysmon  Active Directory  Linux auditd  Kaspersky  Firewall
+        │                │                │             │          │          │
+        └────────────────┴────────────────┴─────────────┴──────────┴──────────┘
+                                          │
+                                   EventProcessor
+                                          │
+                          ┌───────────────┴────────────────┐
+                          │                                │
+                 Enterprise ML                     IncidentManager
+              (HistGBM, 90 features)              (корреляция по хосту,
+               ROC-AUC = 0.9899                    30-мин. окно)
+                          │                                │
+                    score 0.0–1.0                    Incident объект
+                          │                         (timeline, IoC, MITRE)
+                          └───────────────┬────────────────┘
+                                          │
+                                  ThreatAssessmentEngine
+                                (4 сигнала × веса + 7 правил)
+                                          │
+                                    CyberAgent (LLM)
+                               ReAct loop, до 8 шагов, 11 инструментов
+                                          │
+                                     Verdict + Report
+                              (MALICIOUS / SUSPICIOUS / FALSE_POSITIVE)
 ```
 
-The `EventProcessor` receives a raw event dict (Windows Security log, Sysmon, custom telemetry).
+---
 
-### 2. ML Classification
+## Как это работает — шаг за шагом
 
-`MLAttackDetector` (GradientBoosting) scores the event 0.0 – 1.0.
+### 1. Приём события
 
-| Score range | Path |
+```
+POST /ingest/telemetry  ← raw endpoint / SIEM-лог
+```
+
+`EventProcessor` нормализует событие через один из 7 нормализаторов (Windows Security, Sysmon, Active Directory, Linux auditd, Linux auth, Kaspersky, Firewall) в единую схему **UNIFIED\_SCHEMA** (40 полей).
+
+### 2. ML-классификация
+
+`MLAttackDetector` (HistGradientBoostingClassifier, 90 признаков) оценивает событие от 0.0 до 1.0:
+
+| Диапазон | Путь |
 |---|---|
-| < 0.50 | Filtered — discarded as benign |
-| 0.50 – 0.80 | **Deep path** — sent to CyberAgent |
-| > 0.80 | **Fast path** — saved immediately; background investigation triggered |
+| < 0.50 | Отброшено как benign |
+| 0.50 – 0.80 | **Deep path** → CyberAgent |
+| > 0.80 | **Fast path** → сохранить немедленно, расследование в фоне |
 
-### 3. Incident Correlation
+### 3. Корреляция в инциденты
 
-**Before any agent call**, the event is passed to `IncidentManager.correlate_event()`.
-
-- Events from the **same hostname** within a **30-minute window** are merged into one `Incident`.
-- A new `Incident` object is created when no active incident exists for that host (or the window has expired).
-- Each `Incident` accumulates: raw events, affected hosts/users, timestamps.
+`IncidentManager.correlate_event()` объединяет события **одного хоста** в пределах **30 минут** в один `Incident`. Агент видит сразу всю цепочку атаки, а не изолированные события.
 
 ```python
-# Example: two events on WS-VICTIM01 within 30 min → same incident
 id1 = manager.correlate_event(event_powershell, 0.9, "ML malicious")
 id2 = manager.correlate_event(event_mimikatz,   0.85, "ML malicious")
-assert id1 == id2  # same incident!
+assert id1 == id2  # тот же инцидент
 ```
 
-### 4. Incident Investigation (rule-based)
+### 4. Rule-based расследование инцидента
 
-`IncidentManager.investigate(incident_id)` runs **before** the LLM:
+До вызова LLM `IncidentManager.investigate()` выполняет:
 
-1. **Timeline builder** — sorts events chronologically, classifies each into an `AttackPhase` (Initial Access, Execution, Credential Access, Lateral Movement, etc.)
-2. **IoC extractor** — RegEx scans all text fields (command_line, script_block_text, source_ip, …) for IPs, domains, hashes, URLs, file paths, registry keys; filters private IPs; deduplicates
-3. **MITRE ATT&CK mapper** — matches process names and command-line fragments to 40+ known technique patterns (T1059.001, T1003.001, T1053.005, …)
-4. **Classification** — determines incident type from phase combination (e.g. Credential Access + Lateral Movement → "Credential theft with lateral movement")
-5. **Severity scoring** — Bayesian-weighted: event count + phase diversity + critical phases + MITRE density + IoC count + avg ML confidence + multi-host flag
-6. **Root cause analysis** — identifies initial vector from first timeline entry (brute force, RDP, PowerShell, phishing, etc.)
-7. **Impact assessment** — lists concrete risks (credentials at risk, persistence established, active C2, data exfiltration possible)
-8. **Recommendations** — generates ordered response actions (isolate host, reset credentials, block IPs, remove persistence, preserve forensics)
+1. **Timeline builder** — хронологическая сортировка + `AttackPhase` для каждого события (Initial Access / Execution / Credential Access / Lateral Movement / ...)
+2. **IoC extractor** — RegEx по всем текстовым полям: IP, домены, хэши, URL, пути файлов, ключи реестра; фильтрация приватных IP; дедупликация
+3. **MITRE ATT&CK mapper** — сопоставление с 40+ техниками по имени процесса и командной строке (T1059.001, T1003.001, T1053.005, ...)
+4. **Severity scoring** — взвешенная сумма: количество событий + разнообразие фаз + критические фазы + плотность MITRE + IoC + средний ML confidence + флаг multi-host
+5. **Root cause analysis** — начальный вектор из первой записи таймлайна (brute force, RDP, PowerShell, фишинг, ...)
+6. **Impact assessment** — конкретные риски (кража учётных данных, persistence, активный C2, ...)
+7. **Recommendations** — упорядоченный план реагирования
 
-### 5. AI Agent Investigation (LLM)
+### 5. AI-агент (LLM)
 
-`CyberAgent` (ReAct loop, up to 8 steps) receives a rich **incident-level prompt**:
+`CyberAgent` (ReAct loop, до 8 шагов) получает богатый **промпт уровня инцидента**:
 
 ```
 INCIDENT IR-20260427-A1B2C3 on WS-VICTIM01
 
 TIMELINE (2 events):
-  2026-04-27T10:00:00Z  [Execution] PowerShell execution by john.doe (encoded command)
+  2026-04-27T10:00:00Z  [Execution] PowerShell execution (encoded command)
     MITRE: T1059.001, T1027
-  2026-04-27T10:01:00Z  [Credential Access] Credential dumping: mimikatz.exe
+  2026-04-27T10:01:00Z  [Credential Access] mimikatz.exe
     MITRE: T1003.001
 
-IoCs EXTRACTED (2):
-  [PROCESS] mimikatz.exe — Suspicious tool
-  [IP]      185.220.101.5 — Found in event 4625
+IoCs (2): [PROCESS] mimikatz.exe  |  [IP] 185.220.101.5
 
 PRELIMINARY CLASSIFICATION: Credential access / dumping attempt
-CONFIDENCE: 35%
 
-AVAILABLE TOOLS: get_incident, get_incident_events, lookup_ioc, mitre_lookup, search_logs, ml_classify
-
-INVESTIGATION TASK:
-  1. Review the complete incident timeline and all events
-  2. Look up any suspicious IoCs with lookup_ioc
-  3. Map all observed techniques to MITRE ATT&CK
-  4. Assess the attack chain from first event to last
-
-Conclude with: Verdict: MALICIOUS / SUSPICIOUS / FALSE_POSITIVE
+INVESTIGATION TASK: review timeline → lookup IoCs → map MITRE → assess chain
+Conclude: Verdict: MALICIOUS / SUSPICIOUS / FALSE_POSITIVE
 ```
 
-The agent has **11 tools** available:
+**11 инструментов агента:**
 
-| Tool | Purpose |
+| Инструмент | Назначение |
 |---|---|
-| `get_incident` | Fetch full incident: timeline, IoCs, MITRE, findings, root cause, recommendations |
-| `get_incident_events` | Get raw log events from incident; supports `phase_filter` ("Credential Access", …) and `limit` |
-| `knowledge_search` | Vector search over security knowledge base (FAISS) |
-| `search_logs` | Query historical events by hostname/time range |
-| `classify_event` | Run ML classifier on a raw event dict |
-| `analyze_event` | Deep LLM analysis of a single event |
-| `mitre_lookup` | Look up a MITRE technique by ID or keyword |
-| `lookup_ioc` | Check IP/domain/hash against VirusTotal + AbuseIPDB |
-| `query_siem` | Query SIEM-style event history |
-| `investigate` | Trigger rule-based investigation on an incident |
-| `ml_classify` | Direct ML scoring of event text |
+| `get_incident` | Полный инцидент: таймлайн, IoC, MITRE, выводы, рекомендации |
+| `get_incident_events` | Сырые события с фильтром по фазе и лимитом |
+| `knowledge_search` | Векторный поиск по базе знаний (FAISS) |
+| `search_logs` | Запрос исторических событий по хосту / времени |
+| `classify_event` | ML-классификация raw event dict |
+| `analyze_event` | Глубокий LLM-анализ одного события |
+| `mitre_lookup` | Поиск техники MITRE по ID или ключевому слову |
+| `lookup_ioc` | Проверка IP / домена / хэша в VirusTotal + AbuseIPDB |
+| `query_siem` | SIEM-запрос истории событий |
+| `investigate` | Rule-based расследование инцидента |
+| `ml_classify` | Прямой ML-скоринг текста события |
 
-The agent reuses the **same session** (`session_id = "incident-{incident_id}"`) across all events in the same incident, so it retains memory between calls.
-
-### 6. Threat Assessment Fusion
-
-After the agent completes, `ThreatAssessmentEngine` fuses all four signals:
+### 6. Fusion: ThreatAssessmentEngine
 
 ```
 ML score    × 0.35
@@ -136,49 +139,94 @@ Agent score × 0.15
 Final score  0–100  →  INFO / LOW / MEDIUM / HIGH / CRITICAL
 ```
 
-Seven arbitration rules can override the weighted score:
+Семь правил могут переопределить взвешенный результат:
 
-| Rule | Trigger | Effect |
+| Правило | Триггер | Эффект |
 |---|---|---|
-| R1 | ≥2 IoC providers confirmed malicious | Force score ≥ 85 (CRITICAL) |
-| R2 | "lsass"/"credential dump" in ML reason | Force score ≥ 80 |
-| R3 | MITRE: lateral_movement + credential_access | Force score ≥ 65 (HIGH) |
-| R4 | MITRE: impact tactic | Force score ≥ 65 |
-| R5 | All 3+ sources vote malicious | +10% bonus |
-| R6 | Agent FALSE_POSITIVE + ML < 0.6 | Cap score at 25 (LOW) |
-| R7 | IoC clean + Agent FP + ML uncertain | Cap score at 40 |
-
-### 7. Fast-path Background Investigation
-
-High-confidence events (> 0.80) skip the synchronous agent call but still get investigated:
-
-```python
-# In _fast_path_forward():
-if incident.agent_analysis is None:
-    asyncio.create_task(_background_investigate_incident(incident_id))
-```
-
-The background task runs `run_incident_investigation()` non-blocking, stores results in the incident, and persists to DB.
-
-### 8. Persistence
-
-All results are stored in SQLite (dev) or PostgreSQL (prod):
-
-- `events` table — every raw event with ML scores, threat scores, `incident_id` FK
-- `incidents` table — full investigation result including `agent_analysis_json` and `incident_summary`
-- `iocs` table — all extracted IoCs linked to incidents
+| R1 | ≥2 IoC-провайдера подтвердили malicious | Принудительно score ≥ 85 (CRITICAL) |
+| R2 | «lsass»/«credential dump» в причине ML | Принудительно score ≥ 80 |
+| R3 | MITRE: lateral_movement + credential_access | Принудительно score ≥ 65 (HIGH) |
+| R4 | MITRE: impact тактика | Принудительно score ≥ 65 |
+| R5 | Все 3+ источника голосуют malicious | +10% бонус |
+| R6 | Agent FALSE_POSITIVE + ML < 0.6 | Ограничить score ≤ 25 (LOW) |
+| R7 | IoC чисто + Agent FP + ML неопределён | Ограничить score ≤ 40 |
 
 ---
 
-## Quick Start
+## Enterprise ML модель
 
-### Prerequisites
+### Обучающие данные
 
-- Python 3.11+ (3.13 confirmed working)
-- [Groq API key](https://console.groq.com) — free tier, required for LLM features
-- Docker + Docker Compose (optional)
+Модель обучена на **286 352 реальных событиях** из трёх источников:
 
-### 1. Clone and install
+| Источник | Событий | Описание |
+|---|---|---|
+| [OTRF Security-Datasets](https://github.com/OTRF/Security-Datasets) | 107 000 | Реальные атаки в лаб. среде: mimikatz, PsExec, DCSync, WMI, PSRemoting, Rubeus |
+| [Splunk attack_data](https://github.com/splunk/attack_data) | 42 524 | Windows Event XML: T1003, T1059, T1136, T1547 |
+| Синтетические + проектные данные | 136 828 | 7 источников × 500 синтетических + 132k из train_events.json |
+
+**Покрытие MITRE ATT&CK:**
+T1021 (25k) · T1003.002 (19k) · T1003.003 (17k) · T1136.001 (12k) · T1003.006 (8k) · T1047 (6k) · T1003.001 (6k) · T1021.002 (4k) · T1558.003 (1k) · T1053.005 (1k)
+
+### Алгоритм и результаты
+
+```
+Алгоритм:  HistGradientBoostingClassifier + Platt scaling (CalibratedClassifierCV, cv=3)
+Деревьев:  300 (early stopping)
+Признаков: 90 (процессы, сеть, аутентификация, Kaspersky, Linux, временные)
+Разбивка:  75% train / 25% validation (stratified)
+```
+
+| Метрика | Значение |
+|---|---|
+| ROC-AUC | **0.9899** |
+| Accuracy | 96.04% |
+| F1-Score | 0.9750 |
+| FPR (ложные тревоги) | 10.07% |
+| FNR (пропущенные атаки) | 2.34% |
+| Threshold (Youden-J) | 0.8102 |
+
+**Топ-15 признаков** (permutation importance):
+
+| # | Признак | Важность |
+|---|---|---|
+| 1 | `auth_empty_user` | 0.0945 |
+| 2 | `proc_signed` | 0.0807 |
+| 3 | `proc_system_path` | 0.0791 |
+| 4 | `proc_has_hash` | 0.0650 |
+| 5 | `etype_registry` | 0.0533 |
+| 6 | `etype_process_create` | 0.0368 |
+| 7 | `sev_high_or_critical` | 0.0242 |
+| 8 | `sev_medium` | 0.0221 |
+| 9 | `auth_admin_user` | 0.0104 |
+| 10 | `src_windows_security` | 0.0048 |
+
+### Переобучение модели
+
+```bash
+# 1. Скачать реальные датасеты (OTRF + Splunk, кэшируется в datasets/)
+python scripts/download_real_datasets.py
+
+# 2. Сгенерировать синтетические данные
+python scripts/generate_enterprise_data.py
+
+# 3. Обучить модель
+python scripts/retrain_enterprise.py
+```
+
+Подробнее: [TRAINING_PLAYBOOK.md](TRAINING_PLAYBOOK.md)
+
+---
+
+## Быстрый старт
+
+### Требования
+
+- Python 3.11+ (протестировано на 3.13)
+- API-ключ провайдера LLM (Google AI / Groq / OpenAI / Ollama)
+- Docker + Docker Compose (опционально)
+
+### 1. Клонирование и установка
 
 ```bash
 git clone https://github.com/qbert2004/Ir_agent
@@ -188,46 +236,62 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2. Configure environment
+### 2. Настройка окружения
 
 ```bash
 cp .env.example .env
-# Edit .env
+# Отредактировать .env
 ```
 
-Minimum required:
+Минимальная конфигурация (один из провайдеров):
 
 ```env
-LLM_API_KEY=gsk_...           # Groq API key
-ENVIRONMENT=development        # disables auth, enables /docs
+# Google AI (рекомендуется)
+GOOGLE_API_KEY=AIzaSy...
+GOOGLE_AI_MODEL=models/gemma-4-31b-it
+
+# Groq (альтернатива)
+LLM_API_KEY=gsk_...
+
+# Режим окружения
+ENVIRONMENT=development    # отключает auth, включает /docs
 ```
 
-### 3. Run migrations
+### 3. Миграции БД
 
 ```bash
 alembic upgrade head
 ```
 
-### 4. Start the server
+### 4. Запуск
 
 ```bash
 python app/main.py
-# or
+# или
 uvicorn app.main:app --host 0.0.0.0 --port 9000 --reload
 ```
 
-- Swagger UI: **http://localhost:9000/docs**
-- Dashboard: **http://localhost:9000/dashboard**
-- Health: **http://localhost:9000/health**
+| URL | Назначение |
+|---|---|
+| http://localhost:9000/docs | Swagger UI |
+| http://localhost:9000/dashboard | Web-дашборд |
+| http://localhost:9000/health | Health check |
+
+### 5. Docker
+
+```bash
+docker-compose up -d
+docker-compose logs -f ir-agent
+```
 
 ---
 
-## Verify the Incident Pipeline
+## Проверка pipeline
 
-### Step 1 — Send two related events (same host, within 30 min)
+### Отправка двух связанных событий (один хост, одна атака)
 
 ```bash
-# Event 1: PowerShell encoded command
+# Событие 1: PowerShell с зашифрованной командой
 curl -X POST http://localhost:9000/ingest/telemetry \
   -H "Content-Type: application/json" \
   -d '{
@@ -239,7 +303,7 @@ curl -X POST http://localhost:9000/ingest/telemetry \
     "user": "john.doe"
   }'
 
-# Event 2: Mimikatz credential dumping (same host)
+# Событие 2: Mimikatz (тот же хост, +1 мин)
 curl -X POST http://localhost:9000/ingest/telemetry \
   -H "Content-Type: application/json" \
   -d '{
@@ -252,21 +316,13 @@ curl -X POST http://localhost:9000/ingest/telemetry \
   }'
 ```
 
-### Step 2 — List incidents
+### Просмотр инцидентов
 
 ```bash
 curl http://localhost:9000/ingest/incidents
-# Returns: {"status":"success","incidents":[{"id":"IR-20260427-XXXXXX","host":"WS-VICTIM01",...}],"stats":{...}}
 ```
 
-### Step 3 — Get full incident details (copy ID from step 2)
-
-```bash
-curl http://localhost:9000/ingest/incidents/IR-20260427-XXXXXX
-# Returns: timeline, iocs, mitre_techniques, root_cause, impact_assessment, recommendations
-```
-
-### Step 4 — Read the investigation report (plain text)
+### Отчёт по инциденту
 
 ```bash
 curl http://localhost:9000/ingest/incidents/IR-20260427-XXXXXX/report
@@ -279,43 +335,24 @@ INCIDENT INVESTIGATION REPORT
 Incident ID:     IR-20260427-XXXXXX
 Host:            WS-VICTIM01
 Severity:        MEDIUM
-Confidence:      35%
 Classification:  Credential access / dumping attempt
 
-----------------------------------------------------------------------
 ATTACK TIMELINE
-----------------------------------------------------------------------
-  2026-04-27T10:00:00Z  [!] [Execution]
-    PowerShell execution by john.doe (encoded command)
-    MITRE: T1059.001, T1027
+  10:00Z  [Execution]         PowerShell encoded command  T1059.001, T1027
+  10:01Z  [Credential Access] mimikatz.exe                T1003.001
 
-  2026-04-27T10:01:00Z  [!!!] [Credential Access]
-    Credential dumping: mimikatz.exe executed by john.doe
-    MITRE: T1003.001
+INDICATORS OF COMPROMISE
+  [PROCESS]  mimikatz.exe
 
-----------------------------------------------------------------------
-INDICATORS OF COMPROMISE (IoCs)
-----------------------------------------------------------------------
-  [PROCESS]
-    - mimikatz.exe (Suspicious tool)
+ROOT CAUSE: PowerShell-based delivery, credential harvesting.
 
-----------------------------------------------------------------------
-ROOT CAUSE ANALYSIS
-----------------------------------------------------------------------
-  PowerShell-based attack, likely delivered via phishing or exploit.
-  Credential harvesting indicates intent for privilege escalation or lateral movement.
-
-----------------------------------------------------------------------
 RECOMMENDED RESPONSE
-----------------------------------------------------------------------
-  1. Isolate affected host(s) from network
-  2. Reset all credentials for affected users
-  3. Force password change for all accounts on affected hosts
-  4. Review Active Directory for unauthorized changes
-  5. Preserve evidence and forensic artifacts
+  1. Isolate host from network
+  2. Reset credentials for john.doe
+  3. Preserve forensic evidence
 ```
 
-### Step 5 — Trigger AI agent investigation
+### Запуск AI-агента
 
 ```bash
 curl -X POST http://localhost:9000/ingest/incidents/IR-20260427-XXXXXX/investigate
@@ -324,10 +361,9 @@ curl -X POST http://localhost:9000/ingest/incidents/IR-20260427-XXXXXX/investiga
 ```json
 {
   "status": "success",
-  "incident_id": "IR-20260427-XXXXXX",
   "agent_verdict": "MALICIOUS",
   "agent_confidence": 0.95,
-  "summary": "Confirmed attack chain: encoded PowerShell delivery followed by mimikatz credential dumping. High confidence malicious activity.",
+  "summary": "Confirmed attack chain: encoded PowerShell delivery + mimikatz credential dumping.",
   "tools_used": ["get_incident", "get_incident_events", "lookup_ioc", "mitre_lookup"],
   "steps": 4
 }
@@ -335,33 +371,47 @@ curl -X POST http://localhost:9000/ingest/incidents/IR-20260427-XXXXXX/investiga
 
 ---
 
-## Incident API Reference
+## API Reference
 
-| Method | Endpoint | Description |
+### Инциденты
+
+| Метод | Endpoint | Описание |
 |---|---|---|
-| `GET` | `/ingest/incidents` | List all incidents with stats |
-| `GET` | `/ingest/incidents/{id}` | Get full incident (timeline, IoCs, MITRE, findings) |
-| `GET` | `/ingest/incidents/{id}/report` | Plain-text investigation report |
-| `POST` | `/ingest/incidents/{id}/investigate` | Run full AI agent investigation |
-| `POST` | `/ingest/telemetry` | Ingest a raw security event |
-| `POST` | `/ingest/event` | Ingest a structured event |
+| `POST` | `/ingest/telemetry` | Приём сырого события |
+| `POST` | `/ingest/event` | Приём структурированного события |
+| `GET` | `/ingest/incidents` | Список всех инцидентов со статистикой |
+| `GET` | `/ingest/incidents/{id}` | Полный инцидент (таймлайн, IoC, MITRE, выводы) |
+| `GET` | `/ingest/incidents/{id}/report` | Текстовый отчёт |
+| `POST` | `/ingest/incidents/{id}/investigate` | Запуск AI-агента |
+
+### ML / Агент
+
+| Метод | Endpoint | Описание |
+|---|---|---|
+| `POST` | `/ml/classify` | ML-классификация события |
+| `GET` | `/ml/status` | Статус модели и метрики |
+| `GET` | `/ml/mitre-map` | MITRE ATT&CK → EventID маппинг |
+| `POST` | `/agent/query` | Запрос к AI-агенту |
+| `POST` | `/agent/query/stream` | Стриминг ответа агента |
+| `GET` | `/health` | Статус сервиса |
+| `GET` | `/metrics` | Prometheus-метрики |
 
 ---
 
-## Other Interfaces
+## CLI и TUI
 
 ### CLI
 
 ```bash
-python cli.py status                              # Server health
-python cli.py query "What is T1003?"             # Agent query
-python cli.py query "Analyze mimikatz" --stream  # Streaming
-python cli.py tools                               # List 11 agent tools
-python cli.py metrics                             # ML + agent + incident stats
+python cli.py status                              # Здоровье сервера
+python cli.py query "What is T1003?"             # Запрос к агенту
+python cli.py query "Analyze mimikatz" --stream  # Стриминг
+python cli.py tools                               # 11 инструментов агента
+python cli.py metrics                             # ML + агент + инциденты
 python cli.py ioc 185.220.101.45                 # IoC lookup
-python cli.py mitre T1003.001                    # MITRE technique lookup
-python cli.py assess --ml 0.87 --ioc 0.9        # Threat assessment
-python cli.py shell                               # Interactive REPL
+python cli.py mitre T1003.001                    # MITRE lookup
+python cli.py assess --ml 0.87 --ioc 0.9        # Threat Assessment
+python cli.py shell                               # Интерактивный REPL
 ```
 
 ### TUI (Terminal UI)
@@ -370,133 +420,145 @@ python cli.py shell                               # Interactive REPL
 python tui.py
 ```
 
-Eight tabs — switch with keys **1–8**:
+8 вкладок (переключение клавишами **1–8**):
 
-| Key | Tab | Contents |
+| Клавиша | Вкладка | Содержимое |
 |---|---|---|
-| 1 | **Status** | Server health, uptime, environment |
-| 2 | **Query** | Send queries to the AI agent |
-| 3 | **Tools** | List all 11 registered agent tools |
-| 4 | **Metrics** | ML/agent/incident stats, background investigations |
+| 1 | **Status** | Health, uptime, окружение |
+| 2 | **Query** | Запросы к AI-агенту |
+| 3 | **Tools** | 11 зарегистрированных инструментов |
+| 4 | **Metrics** | ML/агент/инциденты, фоновые расследования |
 | 5 | **IoC** | VirusTotal + AbuseIPDB lookup |
-| 6 | **MITRE** | Technique search |
-| 7 | **Incidents** | List incidents + trigger AI investigation |
-| 8 | **Assess** | Manual ThreatAssessment with signal sliders |
+| 6 | **MITRE** | Поиск техник |
+| 7 | **Incidents** | Список инцидентов + запуск AI |
+| 8 | **Assess** | Ручной ThreatAssessment |
 
 ---
 
-## Docker
+## Тестирование
 
 ```bash
-docker-compose up -d
-docker-compose logs -f ir-agent
+pip install -r requirements-dev.txt
+
+# Все 144 теста
+pytest tests/ -v
+
+# Один модуль
+pytest tests/test_incident_investigation.py -v
+pytest tests/test_comprehensive.py -v
+
+# С покрытием
+pytest tests/ --cov=app --cov-report=html
 ```
+
+**144 теста** в 10 модулях:
+
+| Модуль | Тестов | Покрывает |
+|---|---|---|
+| `test_comprehensive.py` | 37 | ThreatAssessmentEngine, IoC extraction, root cause, impact, recommendations |
+| `test_agent_fixes.py` | 31 | LRU cache, timeouts, confidence, thread safety, prompt injection |
+| `test_incident_investigation.py` | 16 | Incident correlation, GetIncidentTool, API endpoints |
+| `test_event_processor.py` | 9 | ML pipeline, enrichment, metrics |
+| `test_middleware.py` | 7 | Auth, rate limiting, request ID |
+| `test_config.py` | 7 | Settings validation, провайдеры |
+| `test_api_ml.py` | 6 | ML API contract |
+| `test_ml_detector.py` | 6 | Classifier, heuristics, features |
+| `test_api_ingest.py` | 5 | Ingest endpoint |
+| `test_health.py` | 4 | Health/readiness probes |
 
 ---
 
-## Project Structure
+## Структура проекта
 
 ```
 Ir_agent/
 ├── app/
-│   ├── main.py
+│   ├── main.py                        # FastAPI app, startup, DB init
+│   ├── core/
+│   │   └── config.py                  # Settings (Pydantic, .env)
 │   ├── routers/
-│   │   ├── ingest.py              # /ingest/telemetry + incident endpoints
-│   │   ├── agent.py               # /agent/query, /agent/query/stream
-│   │   ├── assessment.py          # /assessment/analyze
-│   │   └── ...
+│   │   ├── ingest.py                  # /ingest/* + incident endpoints
+│   │   ├── agent.py                   # /agent/query, /agent/query/stream
+│   │   ├── ml.py                      # /ml/classify, /ml/status
+│   │   └── assessment.py              # /assessment/analyze
 │   ├── agent/
-│   │   ├── core/agent.py          # CyberAgent — ReAct loop
-│   │   └── tools/
-│   │       ├── get_incident.py        # NEW: query full incident
-│   │       ├── get_incident_events.py # NEW: raw events with phase filter
-│   │       ├── knowledge_search.py
-│   │       ├── mitre_lookup.py
+│   │   ├── core/agent.py              # CyberAgent — ReAct loop
+│   │   └── tools/                     # 11 инструментов агента
+│   │       ├── get_incident.py
+│   │       ├── get_incident_events.py
 │   │       ├── lookup_ioc.py
+│   │       ├── mitre_lookup.py
 │   │       └── ...
 │   ├── services/
-│   │   ├── event_processor.py     # ML pipeline + incident correlation
-│   │   ├── incident_manager.py    # Correlation engine, timeline, IoC, MITRE
-│   │   ├── agent_service.py       # Agent singleton, 11 tools registered
-│   │   └── ...
+│   │   ├── event_processor.py         # ML pipeline + incident correlation
+│   │   ├── incident_manager.py        # Correlation, timeline, IoC, MITRE
+│   │   ├── agent_service.py           # Agent singleton, 11 tools
+│   │   └── llm_client.py              # Google AI / Groq / OpenAI / Ollama
 │   ├── assessment/
-│   │   └── threat_assessment.py   # 4-signal Bayesian fusion, 7 arbitration rules
+│   │   └── threat_assessment.py       # 4-сигнальный fusion, 7 правил
+│   ├── ml/
+│   │   └── detector.py                # MLAttackDetector (90 признаков)
 │   └── db/
-│       ├── models.py              # SecurityEvent, Incident, IoC ORM models
-│       ├── event_store.py         # Async CRUD
-│       └── database.py
-├── alembic/                       # Migrations (including agent_analysis_json)
-├── tests/                         # 128 tests
-├── tui.py                         # Textual full-screen TUI
-├── cli.py
+│       ├── models.py                  # ORM: SecurityEvent, Incident, IoC
+│       ├── event_store.py             # Async CRUD
+│       └── database.py                # SQLAlchemy async engine
+├── models/
+│   └── gradient_boosting_enterprise.pkl  # Enterprise ML (HistGBM, 90 feat.)
+├── datasets/                          # Датасеты для обучения
+│   ├── *_events.json                  # Синтетические (7 источников × 500)
+│   └── real_benign_sysmon.json        # 80k реальных benign событий
+├── scripts/
+│   ├── retrain_enterprise.py          # Основной скрипт обучения
+│   ├── download_real_datasets.py      # Скачать OTRF + Splunk датасеты
+│   └── generate_enterprise_data.py    # Генерация синтетических данных
+├── tests/                             # 144 теста
+├── alembic/                           # Миграции БД
+├── tui.py                             # Textual full-screen TUI
+├── cli.py                             # CLI интерфейс
 ├── Dockerfile
 ├── docker-compose.yml
+├── TRAINING_PLAYBOOK.md               # Руководство по обучению модели
 └── requirements.txt
 ```
 
 ---
 
-## Environment Variables
+## Переменные окружения
 
-| Variable | Default | Description |
+| Переменная | По умолчанию | Описание |
 |---|---|---|
-| `LLM_API_KEY` | — | Groq API key (required for AI) |
-| `LLM_PROVIDER` | `groq` | Primary LLM provider |
-| `LLM_ANALYZER_MODEL` | `llama-3.3-70b-versatile` | Model for agent analysis |
-| `MY_API_TOKEN` | — | Bearer token (required in production) |
-| `ENVIRONMENT` | `production` | `development` = no auth + /docs enabled |
-| `DATABASE_URL` | `sqlite+aiosqlite:///./ir_agent.db` | DB connection |
-| `VIRUSTOTAL_API_KEY` | — | IoC lookups |
+| `GOOGLE_API_KEY` | — | Google AI API ключ |
+| `GOOGLE_AI_MODEL` | `models/gemma-4-31b-it` | Google AI модель |
+| `LLM_API_KEY` | — | Groq API ключ (альтернатива) |
+| `OPENAI_API_KEY` | — | OpenAI API ключ (альтернатива) |
+| `OLLAMA_BASE_URL` | — | URL локального Ollama (альтернатива) |
+| `LLM_PROVIDER` | `google` | Приоритетный провайдер |
+| `MY_API_TOKEN` | — | Bearer token (в production обязателен) |
+| `ENVIRONMENT` | `production` | `development` = без auth + /docs |
+| `DATABASE_URL` | `sqlite+aiosqlite:///./ir_agent.db` | Строка подключения к БД |
+| `VIRUSTOTAL_API_KEY` | — | IoC lookups (VirusTotal) |
 | `ABUSEIPDB_API_KEY` | — | IP reputation lookups |
-| `BETTER_STACK_SOURCE_TOKEN` | — | Log shipping |
-| `AI_SUSPICIOUS_THRESHOLD` | `60` | ML threshold (0–100) |
-| `API_PORT` | `9000` | HTTP listen port |
+| `BETTER_STACK_SOURCE_TOKEN` | — | Лог-шиппинг |
+| `AI_SUSPICIOUS_THRESHOLD` | `60` | Порог угрозы ML (0–100) |
+| `API_PORT` | `9000` | HTTP порт |
+| `CORS_ORIGINS` | `*` | Разрешённые CORS origins |
+| `RATE_LIMIT_PER_MINUTE` | `60` | Rate limit (запросов/мин) |
 
-Full list: [`.env.example`](.env.example)
-
----
-
-## Testing
-
-```bash
-pip install -r requirements-dev.txt
-
-# Run all unit tests (no external services needed)
-pytest tests/ -k "not API" -v
-
-# Run everything including API integration tests
-pytest tests/ -v
-
-# Single module
-pytest tests/test_incident_investigation.py -v
-pytest tests/test_comprehensive.py -v
-```
-
-**128 tests** across 11 modules:
-
-| Module | Tests | Covers |
-|---|---|---|
-| `test_incident_investigation.py` | 22 | Incident correlation, GetIncidentTool, GetIncidentEventsTool, API endpoints |
-| `test_comprehensive.py` | 46 | ThreatAssessmentEngine (16), IoC extraction (6), root cause (5), impact (4), recommendations (5), misc (7), edge cases (3) |
-| `test_event_processor.py` | 9 | ML pipeline, event enrichment, metrics |
-| `test_ml_detector.py` | 10 | ML classifier, heuristics, features |
-| `test_api_ingest.py` | 10 | Ingest endpoint contract |
-| `test_api_ml.py` | 8 | ML API |
-| `test_agent_fixes.py` | 7 | Agent response parsing |
-| `test_health.py` | 6 | Health/readiness probes |
-| `test_middleware.py` | 5 | Auth, rate limiting |
-| `test_config.py` | 3 | Settings validation |
+Полный список: [`.env.example`](.env.example)
 
 ---
 
-## Documentation
+## Документация
 
-| Document | Description |
+| Документ | Описание |
 |---|---|
-| [INVESTIGATION_GUIDE.md](INVESTIGATION_GUIDE.md) | Step-by-step investigation workflows |
-| [ML_ARCHITECTURE.md](ML_ARCHITECTURE.md) | ML model training, features, MITRE mapping |
-| [DIPLOMA_DOCUMENTATION.md](DIPLOMA_DOCUMENTATION.md) | Full diploma-defence documentation (RU) |
-| [CHANGELOG.md](CHANGELOG.md) | Version history |
+| [TRAINING_PLAYBOOK.md](TRAINING_PLAYBOOK.md) | Pipeline обучения ML: архитектура, 90 признаков, датасеты, команды |
+| [ML_ARCHITECTURE.md](ML_ARCHITECTURE.md) | Детали ML-модели, MITRE-маппинг |
+| [INVESTIGATION_GUIDE.md](INVESTIGATION_GUIDE.md) | Рабочие процессы расследования |
+| [DIPLOMA_DOCUMENTATION.md](DIPLOMA_DOCUMENTATION.md) | Полная документация для дипломной защиты (RU) |
+| [docs/api.md](docs/api.md) | Полный API Reference |
+| [docs/architecture.md](docs/architecture.md) | Архитектурные решения |
+| [CHANGELOG.md](CHANGELOG.md) | История версий |
 
 ---
 
