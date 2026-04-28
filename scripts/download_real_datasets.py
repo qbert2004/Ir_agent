@@ -174,9 +174,11 @@ def otrf_to_normalized(raw: dict, label: int, technique: str) -> dict:
     # Signed
     signed = str(event_data.get('Signed', '')).lower() == 'true'
 
-    # User
+    # User — OTRF stores at top level as raw['User'] (capital U) or raw['AccountName']
     user = (event_data.get('User') or event_data.get('SubjectUserName') or
-            event_data.get('TargetUserName') or raw.get('user') or '')
+            event_data.get('TargetUserName') or
+            raw.get('User') or raw.get('AccountName') or   # OTRF flat format
+            raw.get('user') or '')
 
     # Timestamp
     ts = (raw.get('TimeCreated') or raw.get('@timestamp') or
@@ -190,16 +192,16 @@ def otrf_to_normalized(raw: dict, label: int, technique: str) -> dict:
     # File/target paths for other event types
     target_filename = event_data.get('TargetFilename') or event_data.get('TargetObject') or ''
 
-    # Severity heuristic
+    # Severity heuristic — based ONLY on event type and process name,
+    # NOT on label (label → severity is direct leakage).
     sev = 'info'
-    if eid in (10, 8, 25):      sev = 'critical'
+    if eid in (10, 8, 25):      sev = 'critical'   # process injection / LSASS access / tampering
     elif eid in (1, 7) and proc_name_base in {
         'mimikatz.exe','vssadmin.exe','wce.exe','procdump.exe','wmic.exe',
         'certutil.exe','mshta.exe','regsvr32.exe','rundll32.exe','bitsadmin.exe',
         'cscript.exe','wscript.exe','powershell.exe','cmd.exe',
-    }:                           sev = 'high'
-    elif eid in (3,) and dst_ip: sev = 'medium'
-    elif label == 1:             sev = 'high'
+    }:                           sev = 'high'       # suspicious process create / image load
+    elif eid in (3,) and dst_ip: sev = 'medium'     # network connection
 
     # Event type
     etype_map = {
@@ -324,11 +326,11 @@ def adapt_existing_training_data() -> list[dict]:
         }
         event_type = etype_map.get(eid, 'other')
 
+        # Severity — based only on EID, not on label (label → sev is leakage)
         sev = 'info'
-        if label == 1:
-            tactic = raw.get('source_tactic', '')
-            if 'lateral' in tactic or 'credential' in tactic: sev = 'critical'
-            else: sev = 'high'
+        if eid in (10, 8, 25):  sev = 'critical'
+        elif eid in (1, 7):     sev = 'high'
+        elif eid in (3,):       sev = 'medium'
 
         ev = {
             'source_type':        source_type,
