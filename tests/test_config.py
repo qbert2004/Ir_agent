@@ -7,6 +7,9 @@ def test_defaults():
     s = Settings(
         _env_file=None,
         LLM_API_KEY="",
+        GOOGLE_API_KEY="",
+        OPENAI_API_KEY="",
+        OLLAMA_BASE_URL="",
         BETTER_STACK_SOURCE_TOKEN="",
     )
     assert s.app_name == "IR-Agent"
@@ -72,6 +75,7 @@ def test_ai_disabled_when_no_provider():
     s = Settings(
         _env_file=None,
         LLM_API_KEY="",
+        GOOGLE_API_KEY="",
         OPENAI_API_KEY="",
         OLLAMA_BASE_URL="",
         BETTER_STACK_SOURCE_TOKEN="",
