@@ -2,9 +2,10 @@
 LLM client with multi-provider support and automatic fallback.
 
 Provider priority (based on available API keys in .env):
-    1. Groq    — LLM_API_KEY         (fast, free tier)
-    2. OpenAI  — OPENAI_API_KEY      (reliable, paid)
-    3. Ollama  — OLLAMA_BASE_URL     (local, offline)
+    1. Google  — GOOGLE_API_KEY      (Gemma 4 via AI Studio OpenAI-compat endpoint)
+    2. Groq    — LLM_API_KEY         (fast, free tier)
+    3. OpenAI  — OPENAI_API_KEY      (reliable, paid)
+    4. Ollama  — OLLAMA_BASE_URL     (local, offline)
 
 If a provider fails during a request, the next available provider is tried.
 """
@@ -37,6 +38,66 @@ class _BaseProvider:
 
     def chat_stream(self, messages: list[dict], model: str, temperature: float) -> Iterator[str]:
         raise NotImplementedError
+
+
+# ── Google AI provider (Gemma 4 via OpenAI-compatible endpoint) ───────────────
+
+class _GoogleProvider(_BaseProvider):
+    """
+    Google AI Studio — Gemma 4 via the OpenAI-compatible REST endpoint.
+
+    Endpoint: https://generativelanguage.googleapis.com/v1beta/openai/
+    Model:    gemma-4-27b-it  (set via GOOGLE_AI_MODEL or LLM_ANALYZER_MODEL)
+    Key:      GOOGLE_API_KEY  (get at https://aistudio.google.com/apikey)
+
+    No extra SDK required — uses the standard openai package with a custom base_url.
+    """
+    name = "google"
+    _ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/openai/"
+    _DEFAULT_MODEL = "gemma-4-27b-it"
+
+    def __init__(self):
+        self._client = None
+        api_key = settings.google_api_key
+        if api_key:
+            try:
+                from openai import OpenAI
+                self._client = OpenAI(
+                    base_url=self._ENDPOINT,
+                    api_key=api_key,
+                    timeout=DEFAULT_TIMEOUT,
+                )
+                model = settings.google_ai_model or self._DEFAULT_MODEL
+                logger.info("LLM provider: Google AI Studio (model=%s)", model)
+            except ImportError:
+                logger.warning("openai package not installed — cannot use Google provider")
+
+    def is_available(self) -> bool:
+        return self._client is not None
+
+    def _model(self, override: str | None) -> str:
+        return override or settings.google_ai_model or self._DEFAULT_MODEL
+
+    def chat(self, messages, model, temperature, max_tokens) -> str:
+        resp = self._client.chat.completions.create(
+            model=self._model(model),
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        return resp.choices[0].message.content or ""
+
+    def chat_stream(self, messages, model, temperature) -> Iterator[str]:
+        resp = self._client.chat.completions.create(
+            model=self._model(model),
+            messages=messages,
+            temperature=temperature,
+            stream=True,
+        )
+        for chunk in resp:
+            text = chunk.choices[0].delta.content or ""
+            if text:
+                yield text
 
 
 # ── Groq provider ─────────────────────────────────────────────────────────────
@@ -190,6 +251,7 @@ class LLMClient:
             return
         self._initialized = True
         self._providers: list[_BaseProvider] = [
+            _GoogleProvider(),
             _GroqProvider(),
             _OpenAIProvider(),
             _OllamaProvider(),
