@@ -1,0 +1,4209 @@
+[
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Network Attack Blocked",
+    "ThreatName": "Intrusion.Win.MS17-010.DoublePulsar",
+    "Host": "CORP-SRV-01",
+    "SourceIP": "185.220.101.45",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "User": "CORP\\finance1",
+    "ThreatName": "Trojan.Win32.Emotet.gen",
+    "FilePath": "C:\\Users\\finance1\\AppData\\Local\\Temp\\doc.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "MD5": "DEADBEEFDEADBEEF",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "FINANCE-PC-01",
+    "ThreatName": "PDM:Trojan.Win32.Generic",
+    "FilePath": "C:\\Windows\\Temp\\loader.exe",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Exploit Prevention",
+    "ThreatName": "Exploit.Win32.CVE-2021-40444",
+    "Host": "CORP-PC-03",
+    "Application": "WINWORD.EXE",
+    "Action": "Blocked",
+    "DetectionResult": "blocked",
+    "_label": 1
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "On-Demand Scan Completed",
+    "Host": "CORP-PC-01",
+    "User": "CORP\\alice",
+    "DetectionResult": "",
+    "ThreatName": "",
+    "FilePath": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Application Control Event",
+    "Host": "CORP-PC-01",
+    "Application": "chrome.exe",
+    "Action": "Allowed",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Threat Detected",
+    "Host": "CORP-PC-05",
+    "ThreatName": "Ransomware.Win32.Conti.a",
+    "FilePath": "C:\\Users\\bob\\Desktop\\invoice.exe",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Database Updated",
+    "Host": "CORP-PC-01",
+    "DatabaseVersion": "2026-04-28",
+    "DetectionResult": "",
+    "_label": 0
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  },
+  {
+    "EventType": "Behavior Detection",
+    "ThreatName": "HEUR:Backdoor.Win32.CobaltStrike.gen",
+    "Host": "CORP-PC-02",
+    "FilePath": "C:\\Windows\\Temp\\beacon.dll",
+    "Action": "Detected",
+    "DetectionResult": "detected",
+    "_label": 1
+  }
+]

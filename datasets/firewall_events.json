@@ -1,0 +1,4916 @@
+[
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.50",
+    "DstIP": "195.176.3.23",
+    "DstPort": 9001,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 150000000,
+    "Application": "locker.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "185.220.101.45",
+    "DstPort": 4444,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "powershell.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.99",
+    "DstIP": "10.0.1.20",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 8096,
+    "Application": "cmd.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "172.16.0.1",
+    "DstPort": 80,
+    "Protocol": "TCP",
+    "BytesSent": 2048,
+    "Application": "",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "185.220.101.45",
+    "DstPort": 1337,
+    "Protocol": "TCP",
+    "BytesSent": 256,
+    "Application": "nc.exe",
+    "_label": 1
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "185.220.101.45",
+    "DstIP": "10.0.0.1",
+    "DstPort": 3389,
+    "Protocol": "TCP",
+    "BytesSent": 10240,
+    "Application": "",
+    "_label": 1
+  },
+  {
+    "Action": "DENY",
+    "SrcIP": "0.0.0.0",
+    "DstIP": "10.0.1.5",
+    "DstPort": 8080,
+    "Protocol": "TCP",
+    "BytesSent": 0,
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.10",
+    "DstIP": "10.0.0.5",
+    "DstPort": 445,
+    "Protocol": "TCP",
+    "BytesSent": 512,
+    "Application": "svchost.exe",
+    "_label": 0
+  },
+  {
+    "Action": "ALLOW",
+    "SrcIP": "10.0.1.5",
+    "DstIP": "8.8.8.8",
+    "DstPort": 443,
+    "Protocol": "TCP",
+    "BytesSent": 1024,
+    "Application": "chrome.exe",
+    "_label": 0
+  }
+]

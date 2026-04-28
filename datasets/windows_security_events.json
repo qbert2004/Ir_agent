@@ -1,0 +1,4022 @@
+[
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 3,
+    "TargetUserName": "admin",
+    "IpAddress": "185.220.101.45",
+    "AuthPackage": "NTLM",
+    "WorkstationName": "ATTACKER",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4625,
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "FailureReason": "Unknown user name or bad password",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "krbtgt",
+    "SubjectUserName": "finance1",
+    "IpAddress": "192.168.1.99",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4776,
+    "TargetUserName": "administrator",
+    "Workstation": "185.220.101.45",
+    "ErrorCode": "0x0",
+    "AuthPackage": "NTLM",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4698,
+    "TaskName": "WindowsUpdater",
+    "SubjectUserName": "finance1",
+    "Command": "powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "svc_backdoor",
+    "SubjectUserName": "finance1",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "svc_backdoor",
+    "GroupName": "Domain Admins",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4672,
+    "SubjectUserName": "finance1",
+    "PrivilegeList": "SeDebugPrivilege\tSeTcbPrivilege",
+    "_label": 1,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4624,
+    "LogonType": 2,
+    "TargetUserName": "alice",
+    "WorkstationName": "CORP-PC-01",
+    "IpAddress": "10.0.1.5",
+    "AuthPackage": "Negotiate",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4648,
+    "TargetUserName": "fileserver$",
+    "SubjectUserName": "alice",
+    "IpAddress": "10.0.1.10",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 5140,
+    "ShareName": "\\\\*\\SYSVOL",
+    "SubjectUserName": "alice",
+    "_label": 0,
+    "_source": "windows_security"
+  },
+  {
+    "EventID": 4634,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "_label": 0,
+    "_source": "windows_security"
+  }
+]

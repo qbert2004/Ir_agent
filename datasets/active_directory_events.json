@@ -1,0 +1,3689 @@
+[
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "krbtgt",
+    "TicketOptions": "0x60810010",
+    "IpAddress": "192.168.100.5",
+    "TicketEncryptionType": "0x17",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4662,
+    "ObjectType": "domainDNS",
+    "AccessMask": "0x100",
+    "SubjectUserName": "finance1",
+    "Properties": "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "mssql_svc",
+    "TargetUserName": "hacker@corp.local",
+    "TicketEncryptionType": "0x17",
+    "IpAddress": "185.220.101.45",
+    "_label": 1
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4720,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4624,
+    "TargetUserName": "alice",
+    "LogonType": 2,
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4648,
+    "SubjectUserName": "finance1",
+    "TargetUserName": "administrator",
+    "IpAddress": "185.220.101.45",
+    "LogonGuid": "{00000000-0000-0000-0000-000000000000}",
+    "_label": 1
+  },
+  {
+    "EventID": 4769,
+    "ServiceName": "fileserver$",
+    "TargetUserName": "alice@corp.local",
+    "TicketEncryptionType": "0x12",
+    "IpAddress": "10.0.1.5",
+    "_label": 0
+  },
+  {
+    "EventID": 4768,
+    "TargetUserName": "alice@corp.local",
+    "IpAddress": "10.0.1.5",
+    "TicketOptions": "0x40810010",
+    "_label": 0
+  },
+  {
+    "EventID": 4728,
+    "TargetUserName": "backdoor_admin",
+    "SubjectUserName": "finance1",
+    "GroupName": "Domain Admins",
+    "_label": 1
+  }
+]

