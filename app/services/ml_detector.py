@@ -102,6 +102,10 @@ class MLAttackDetector:
             'bypass', 'hidden', 'encoded', '-enc', '-e ', 'base64',
             '-nop', 'noprofile', '-windowstyle', '-w hidden',
             'amsi', 'etw',
+            # Defender / AV tampering
+            'set-mppreference', 'disablerealtimemonitoring',
+            'disablebehaviormonitoring', 'disableioavprotection',
+            'disableblockatfirstseen', 'remove-mppreference',
             # C2 / remote
             'cobalt', 'meterpreter', 'reverse', 'payload', 'exploit',
             'beacon', 'stager', 'shellcode',
@@ -115,7 +119,7 @@ class MLAttackDetector:
             'run /v', 'runonce',
             # Ransomware / destruction
             'vssadmin', 'delete shadows', 'shadowcopy', 'diskshadow',
-            'wbadmin delete', 'bcdedit /set recoveryenabled no',
+            'wbadmin delete', 'recoveryenabled no',
             'format c:', 'cipher /w', 'sdelete',
             # Data staging / exfil
             'compress-archive', '7z a', 'rar a',
@@ -795,11 +799,16 @@ class MLAttackDetector:
         # --- 10b. Shadow copy / backup destruction (ransomware pre-cursor) ---
         _shadow_triggers = [
             'vssadmin', 'delete shadows', 'resize shadowstorage',
-            'diskshadow', 'wbadmin delete', 'bcdedit /set recoveryenabled no',
+            'diskshadow', 'wbadmin delete',
         ]
         if any(kw in all_text for kw in _shadow_triggers):
             score += 0.75
             reasons.append("shadow copy / backup destruction (ransomware indicator)")
+        # bcdedit recovery disable — separate check because real commands have
+        # boot entry GUIDs between tokens: `bcdedit /set {default} recoveryenabled no`
+        if 'bcdedit' in all_text and 'recoveryenabled' in all_text:
+            score += 0.75
+            reasons.append("bcdedit recovery disable (ransomware indicator)")
 
         # --- 11. Unsigned image load from user directories ---
         if event_id == 7 and image_loaded:
