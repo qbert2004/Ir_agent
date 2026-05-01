@@ -32,7 +32,8 @@ from typing import Tuple, Dict, Any, Optional, List
 logger = logging.getLogger("ir-agent")
 
 _BASE_DIR = os.path.join(os.path.dirname(__file__), "..", "..")
-# Priority: decoupled > production > legacy
+# Priority: v5_hgb (42-feat, honest AUC=0.984) > decoupled (90-feat, leaky) > production > legacy
+MODEL_PATH_V5_HGB      = os.path.join(_BASE_DIR, "models", "gradient_boosting_v5_hgb.pkl")
 MODEL_PATH_DECOUPLED   = os.path.join(_BASE_DIR, "models", "gradient_boosting_decoupled.pkl")
 MODEL_PATH             = os.path.join(_BASE_DIR, "models", "gradient_boosting_production.pkl")
 MODEL_PATH_LEGACY      = os.path.join(_BASE_DIR, "models", "gradient_boosting_model.pkl")
@@ -107,11 +108,15 @@ class MLAttackDetector:
             'nc.exe', 'netcat', 'ncat', 'socat',
             # Lateral movement
             'psexec', 'winrs', 'wmic process', 'wmiprvse',
-            # Persistence
-            'schtasks', '/create', 'onstart', 'onlogon',
+            # Persistence (compound checks preferred; standalone '/create' is too generic)
+            'schtasks', 'onstart', 'onlogon', '/ru system',
             'new-scheduledtask', 'register-scheduledtask',
             'sc create', 'sc config', 'reg add',
             'run /v', 'runonce',
+            # Ransomware / destruction
+            'vssadmin', 'delete shadows', 'shadowcopy', 'diskshadow',
+            'wbadmin delete', 'bcdedit /set recoveryenabled no',
+            'format c:', 'cipher /w', 'sdelete',
             # Data staging / exfil
             'compress-archive', '7z a', 'rar a',
             # LOLBin commands
@@ -173,15 +178,30 @@ class MLAttackDetector:
         self._load_model()
 
     def _load_model(self) -> bool:
-        """Load trained model. Prioritizes production (v3) model."""
+        """Load trained model.
+
+        Priority order (highest first):
+          1. production_v3  — 41 features, AUC=0.9396, trained on Windows Security events
+                              (EID 4624/4688); correct inductive bias for this system.
+          2. v5_hgb         — 42 features, AUC=0.984, trained on Sysmon events (EID 1-22);
+                              OOD-guard applied in predict() for Security-channel events.
+          3. decoupled_v4   — 90 features, AUC=1.0 (label leakage); kept only as last resort.
+          4. legacy          — fallback.
+        """
         paths = [
-            (MODEL_PATH_DECOUPLED, "decoupled_v4"),
-            (MODEL_PATH, "production_v3"),
-            (MODEL_PATH_LEGACY, "legacy_v1"),
-            ("models/gradient_boosting_decoupled.pkl", "decoupled_v4"),
+            # Primary: Windows Security events (EID 4000+)
+            (MODEL_PATH,             "production_v3"),
             ("models/gradient_boosting_production.pkl", "production_v3"),
-            ("models/gradient_boosting_model.pkl", "legacy_v1"),
-            ("models/random_forest_model.pkl", "legacy_rf"),
+            # Secondary: Sysmon events (EID 1–99); OOD-guarded for Security events
+            (MODEL_PATH_V5_HGB,      "v5_hgb"),
+            ("models/gradient_boosting_v5_hgb.pkl",    "v5_hgb"),
+            # Tertiary: leaky model kept for compatibility only
+            (MODEL_PATH_DECOUPLED,   "decoupled_v4"),
+            ("models/gradient_boosting_decoupled.pkl", "decoupled_v4"),
+            # Legacy fallbacks
+            (MODEL_PATH_LEGACY,      "legacy_v1"),
+            ("models/gradient_boosting_model.pkl",      "legacy_v1"),
+            ("models/random_forest_model.pkl",          "legacy_rf"),
         ]
 
         for path, version in paths:
@@ -417,6 +437,9 @@ class MLAttackDetector:
         'schtasks /create', 'sc create', 'reg add',
         'certutil -urlcache', 'bitsadmin /transfer',
         'mshta', 'rundll32', 'regsvr32', 'installutil', 'msbuild',
+        # Ransomware indicators
+        'vssadmin', 'delete shadows', 'shadowcopy', 'diskshadow',
+        'wbadmin delete', 'bcdedit',
     ]
     _V3_SUSPICIOUS_PROCESSES = [
         'powershell', 'pwsh', 'wscript', 'cscript', 'mshta',
@@ -769,6 +792,15 @@ class MLAttackDetector:
             score += 0.35
             reasons.append("explicit credential use (4648)")
 
+        # --- 10b. Shadow copy / backup destruction (ransomware pre-cursor) ---
+        _shadow_triggers = [
+            'vssadmin', 'delete shadows', 'resize shadowstorage',
+            'diskshadow', 'wbadmin delete', 'bcdedit /set recoveryenabled no',
+        ]
+        if any(kw in all_text for kw in _shadow_triggers):
+            score += 0.75
+            reasons.append("shadow copy / backup destruction (ransomware indicator)")
+
         # --- 11. Unsigned image load from user directories ---
         if event_id == 7 and image_loaded:
             if not any(p in image_loaded for p in self._suspicious_dll_paths):
@@ -794,7 +826,7 @@ class MLAttackDetector:
             try:
                 import numpy as np
                 # Use v3 features for production model, legacy for others
-                if self._model_version == "decoupled_v4":
+                if self._model_version in ("decoupled_v4", "v5_hgb"):
                     feat_v4 = self._extract_features_v4(event)
                     X = np.array([feat_v4], dtype=np.float32)
                     X_scaled = self.scaler.transform(X)
@@ -806,6 +838,25 @@ class MLAttackDetector:
                     X_scaled = self.scaler.transform(X)
                     base_score = float(self.model.predict_proba(X_scaled)[0][1])
                     base_reason = self._build_reason_v3(feat_v3, base_score)
+                else:
+                    # legacy path (handled below) — skip OOD check
+                    X_scaled = None
+
+                # Universal OOD guard: all available models were trained on Sysmon-heavy
+                # data where Windows Security EIDs (4000+) appeared in < 0.5% of events.
+                # StandardScaler amplifies those rare binary features to |scaled| > 15,
+                # causing the model to output ≈1.0 for ALL events regardless of content.
+                # Detection: if any scaled feature magnitude exceeds 10.0, the event is
+                # out-of-distribution → fall back to heuristics which handle it correctly.
+                if X_scaled is not None:
+                    import numpy as _np
+                    _ood_max = float(_np.abs(X_scaled).max())
+                    if _ood_max > 10.0:
+                        raise ValueError(
+                            f"OOD ({self._model_version}): max |scaled feat| = {_ood_max:.1f}; "
+                            "event is out-of-distribution for this model (Security channel or "
+                            "rare binary feature active) — falling back to heuristics"
+                        )
                 else:
                     features = self._extract_features(event)
                     X = np.array([features])
