@@ -48,19 +48,22 @@ from textual.widgets import (
 load_dotenv()
 
 BASE    = os.getenv("IR_AGENT_URL", "http://localhost:9000")
-TOKEN   = os.getenv("MY_API_TOKEN", "WAhV9fBn2sRyuOXLv6MNlwT4gHFbYKPS")
+TOKEN   = str(os.getenv("MY_API_TOKEN") or "")
 TIMEOUT = 120.0
 
 
 def _hdrs() -> dict:
-    return {"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"}
+    h: dict[str, str] = {"Content-Type": "application/json"}
+    if TOKEN:
+        h["Authorization"] = f"Bearer {TOKEN}"
+    return h
 
 
 def _client(timeout: float = 10.0) -> httpx.Client:
-    return httpx.Client(
-        headers={"Authorization": f"Bearer {TOKEN}"},
-        timeout=timeout,
-    )
+    h: dict[str, str] = {}
+    if TOKEN:
+        h["Authorization"] = f"Bearer {TOKEN}"
+    return httpx.Client(headers=h, timeout=timeout)
 
 
 def sev_style(s: str) -> str:

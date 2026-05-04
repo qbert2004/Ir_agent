@@ -51,7 +51,7 @@ from rich.text import Text
 load_dotenv()
 
 DEFAULT_BASE  = os.getenv("IR_AGENT_URL",   "http://localhost:9000")
-DEFAULT_TOKEN = os.getenv("MY_API_TOKEN",   "WAhV9fBn2sRyuOXLv6MNlwT4gHFbYKPS")
+DEFAULT_TOKEN = str(os.getenv("MY_API_TOKEN") or "")
 TIMEOUT       = 120.0
 
 console = Console(force_terminal=True, legacy_windows=False)
@@ -68,11 +68,10 @@ BANNER = """[bold cyan]
 
 # ── HTTP client factory ─────────────────────────────────────────────────────
 def make_client(base: str, token: str) -> httpx.Client:
-    return httpx.Client(
-        base_url=base,
-        headers={"Authorization": f"Bearer {token}"},
-        timeout=TIMEOUT,
-    )
+    h: dict[str, str] = {}
+    if token:
+        h["Authorization"] = f"Bearer {token}"
+    return httpx.Client(base_url=base, headers=h, timeout=TIMEOUT)
 
 
 # ── Severity color helper ────────────────────────────────────────────────────
