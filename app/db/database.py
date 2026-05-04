@@ -71,32 +71,58 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 async def init_db() -> None:
     """
-    Run Alembic migrations on startup.
+    Initialize the database schema on startup.
 
-    Applies any pending migrations automatically — safe for both fresh installs
-    (creates all tables) and upgrades (applies only new migrations).
-    Uses create_all as fallback if Alembic is unavailable (test environments).
+    Strategy (avoids the alembic-in-executor deadlock on Windows + Python 3.14
+    + aiosqlite, where alembic's `asyncio.run()` inside `run_in_executor()`
+    deadlocks against the running aiosqlite loop):
+
+      1. Try `Base.metadata.create_all` via the live async engine — this is
+         idempotent and safe for both fresh installs and existing databases.
+      2. If alembic_version table is missing or empty, stamp it to current
+         head so alembic CLI tools still work for future migrations.
+      3. Skip running migrations on startup; pending migrations should be
+         applied explicitly with `alembic upgrade head` from the CLI.
     """
     from app.db import models  # noqa: F401 — registers models with Base
+    from sqlalchemy import text
 
+    # Step 1: ensure all tables exist (idempotent)
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+    # Step 2: stamp alembic_version if needed (so CLI migrations still work)
     try:
-        from alembic.config import Config
-        from alembic import command
-        import os
-
-        alembic_cfg = Config(
-            os.path.join(os.path.dirname(__file__), "..", "..", "alembic.ini")
-        )
-        # Run synchronously in a thread to avoid blocking the event loop
-        # asyncio.get_running_loop() is the correct API in Python 3.10+ (get_event_loop deprecated)
-        loop = asyncio.get_running_loop()
-        await loop.run_in_executor(None, lambda: command.upgrade(alembic_cfg, "head"))
-        logger.info("Database migrations applied: %s", _safe_db_url(settings.database_url))
-    except Exception as e:
-        logger.warning("Alembic migration failed (%s) — falling back to create_all", e)
         async with engine.begin() as conn:
-            await conn.run_sync(Base.metadata.create_all)
-        logger.info("Database tables created via create_all: %s", _safe_db_url(settings.database_url))
+            # Create alembic_version table if not exists
+            await conn.execute(
+                text(
+                    "CREATE TABLE IF NOT EXISTS alembic_version "
+                    "(version_num VARCHAR(32) NOT NULL PRIMARY KEY)"
+                )
+            )
+            row = (await conn.execute(text("SELECT version_num FROM alembic_version"))).first()
+            if row is None:
+                # Discover current head from alembic scripts (sync, no DB I/O)
+                from alembic.config import Config
+                from alembic.script import ScriptDirectory
+                import os
+
+                alembic_cfg = Config(
+                    os.path.join(os.path.dirname(__file__), "..", "..", "alembic.ini")
+                )
+                script = ScriptDirectory.from_config(alembic_cfg)
+                head = script.get_current_head()
+                if head:
+                    await conn.execute(
+                        text("INSERT INTO alembic_version (version_num) VALUES (:v)"),
+                        {"v": head},
+                    )
+                    logger.info("Stamped alembic_version to head: %s", head)
+    except Exception as e:
+        logger.warning("alembic_version stamp skipped: %s", e)
+
+    logger.info("Database ready: %s", _safe_db_url(settings.database_url))
 
 
 async def close_db() -> None:
