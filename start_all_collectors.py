@@ -17,7 +17,7 @@ import socket
 import time
 import requests
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, Any, List
 from collections import defaultdict
 import ctypes
@@ -185,7 +185,7 @@ class UnifiedCollector:
         strings = record.StringInserts or []
 
         event = {
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "hostname": self.hostname,
             "data_type": "security_event",
             "event_id": event_id,
@@ -318,7 +318,7 @@ class UnifiedCollector:
     def collect_system_metrics(self) -> Dict:
         """Собирает системные метрики"""
         metrics = {
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "hostname": self.hostname,
             "data_type": "system_metrics",
             "platform": platform.system(),
@@ -422,7 +422,7 @@ class UnifiedCollector:
                 cmdline = " ".join(pinfo.get('cmdline', []) or [])
                 if any(kw in cmdline.lower() for kw in SUSPICIOUS_KEYWORDS):
                     events.append({
-                        "timestamp": datetime.utcnow().isoformat() + "Z",
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
                         "hostname": self.hostname,
                         "data_type": "process_monitoring",
                         "action": "suspicious_process",
@@ -454,7 +454,7 @@ class UnifiedCollector:
             for ip, count in remote_ips.items():
                 if count > 20 and ip not in ['127.0.0.1', '::1']:
                     events.append({
-                        "timestamp": datetime.utcnow().isoformat() + "Z",
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
                         "hostname": self.hostname,
                         "data_type": "network_monitoring",
                         "action": "high_connection_count",
@@ -478,7 +478,7 @@ class UnifiedCollector:
                 status = win32serviceutil.QueryServiceStatus(service)[1]
                 if status != win32service.SERVICE_RUNNING:
                     events.append({
-                        "timestamp": datetime.utcnow().isoformat() + "Z",
+                        "timestamp": datetime.now(timezone.utc).isoformat(),
                         "hostname": self.hostname,
                         "data_type": "service_monitoring",
                         "action": "service_down",
@@ -503,13 +503,13 @@ class UnifiedCollector:
             return True
 
         try:
+            hdrs = {"Content-Type": "application/json"}
+            if API_TOKEN:
+                hdrs["Authorization"] = f"Bearer {API_TOKEN}"
             response = requests.post(
                 API_URL,
                 json=data,
-                headers={
-                    "Content-Type": "application/json",
-                    "Authorization": f"Bearer {API_TOKEN}",
-                },
+                headers=hdrs,
                 timeout=10
             )
             if response.status_code == 200:
