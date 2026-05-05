@@ -548,6 +548,56 @@ Ir_agent/
 
 ---
 
+## Метод интерпретации — LIME
+
+ML-модель IR-Agent (`gradient_boosting_model.pkl`, 18 признаков) объясняется через
+**LIME** (Local Interpretable Model-agnostic Explanations) — для каждого события строится
+локальный линейный суррогат, показывающий вклад признаков в решение.
+
+### Зачем
+
+В отличие от глобальной важности признаков (Gini / permutation), LIME отвечает на вопрос
+**«почему именно это событие классифицировано как malicious»**. Аналитику SOC при
+триаже инцидента нужен per-event explanation, а не агрегированная важность по датасету.
+
+### Как читать график
+
+| Цвет | Что означает |
+|------|-------------|
+| **🟥 Красный** | Признак **толкает** в сторону `malicious` (увеличивает вероятность атаки) |
+| **🟩 Зелёный** | Признак **толкает** в сторону `benign` (снижает вероятность) |
+| Длина бара | Абсолютная величина вклада |
+
+### Артефакты
+
+- `models/lime_01..08.png` — bar-charts LIME по 8 типичным событиям
+  (mimikatz, lateral movement, persistence, exfiltration и др.)
+- `models/lime_report.html` — self-contained HTML со всеми 8 объяснениями
+
+### Запуск
+
+```bash
+# Системный Python (в нём установлены lime + matplotlib)
+python -X utf8 explain_lime.py
+
+# Альтернатива — через .venv (если в нём есть lime + matplotlib)
+.venv/Scripts/python explain_lime.py
+```
+
+### Чем отличается от SHAP / Occlusion
+
+| Метод | Применение | Что показывает |
+|-------|------------|----------------|
+| **SHAP** (TreeExplainer) | Tree-based модели на табличных признаках | Глобальная + локальная важность с гарантиями additivity |
+| **Occlusion** | Sequence-модели (CNN) | Позиция атакующего фрагмента в строке |
+| **LIME** *(этот проект)* | **Любая** модель (HistGB, GBM, NN) | Локальное приближение через линейный суррогат |
+
+LIME выбран потому, что: (1) модель — HistGradientBoosting, не классическое дерево
+(SHAP TreeExplainer работает медленнее); (2) аналитику нужен per-event view; (3) LIME
+устойчив к смешанным типам признаков (numeric + categorical-encoded).
+
+---
+
 ## Документация
 
 | Документ | Описание |
@@ -558,6 +608,8 @@ Ir_agent/
 | [DIPLOMA_DOCUMENTATION.md](DIPLOMA_DOCUMENTATION.md) | Полная документация для дипломной защиты (RU) |
 | [docs/api.md](docs/api.md) | Полный API Reference |
 | [docs/architecture.md](docs/architecture.md) | Архитектурные решения |
+| [docs/EVALUATION.md](docs/EVALUATION.md) | Методология, метрики, ограничения |
+| [docs/deployment.md](docs/deployment.md) | Развёртывание (Docker / Compose / k8s) |
 | [CHANGELOG.md](CHANGELOG.md) | История версий |
 
 ---
