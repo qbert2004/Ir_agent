@@ -27,6 +27,7 @@ from app.assessment.threat_assessment import (
     MLSignal, IoCSignal, MITRESignal, AgentSignal,
     get_assessment_engine,
 )
+from app.core.config import settings
 
 logger = logging.getLogger("ir-agent")
 
@@ -146,10 +147,20 @@ class EventProcessor:
             except Exception:
                 pass  # drift detector failure must never block event processing
 
-            # BENIGN - discard
+            # BENIGN - forward if send_all enabled, otherwise discard
             if not is_malicious:
                 self.metrics["benign_filtered"] += 1
                 logger.debug(f"BENIGN [{confidence:.0%}]: {event.get('process_name', 'unknown')}")
+
+                if settings.send_all_to_betterstack:
+                    enriched = event.copy()
+                    enriched["level"] = "info"
+                    enriched["message"] = (
+                        f"BENIGN [{confidence:.0%}] "
+                        f"{event.get('process_name', 'unknown')} - {reason}"
+                    )
+                    await self._forward_to_betterstack(enriched)
+
                 return {
                     "status": "filtered",
                     "classification": "benign",

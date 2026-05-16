@@ -104,6 +104,7 @@ class _GoogleProvider(_BaseProvider):
 
 class _GroqProvider(_BaseProvider):
     name = "groq"
+    _DEFAULT_MODEL = "llama-3.3-70b-versatile"
 
     def __init__(self):
         self._client = None
@@ -111,16 +112,19 @@ class _GroqProvider(_BaseProvider):
             try:
                 from groq import Groq
                 self._client = Groq(api_key=settings.groq_api_key, timeout=DEFAULT_TIMEOUT)
-                logger.info("LLM provider: Groq (model=%s)", settings.ai_model)
+                logger.info("LLM provider: Groq (model=%s)", self._DEFAULT_MODEL)
             except ImportError:
                 logger.warning("groq package not installed")
 
     def is_available(self) -> bool:
         return self._client is not None
 
+    def _model(self) -> str:
+        return self._DEFAULT_MODEL
+
     def chat(self, messages, model, temperature, max_tokens) -> str:
         resp = self._client.chat.completions.create(
-            model=model or settings.ai_model,
+            model=self._model(),
             messages=messages,
             temperature=temperature,
             max_tokens=max_tokens,
@@ -129,7 +133,7 @@ class _GroqProvider(_BaseProvider):
 
     def chat_stream(self, messages, model, temperature) -> Iterator[str]:
         resp = self._client.chat.completions.create(
-            model=model or settings.ai_model,
+            model=self._model(),
             messages=messages,
             temperature=temperature,
             stream=True,

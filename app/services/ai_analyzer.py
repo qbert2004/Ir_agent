@@ -12,16 +12,18 @@ load_dotenv()
 class AIAnalyzer:
     """AI-powered security event analyzer"""
 
+    _GROQ_MODEL = "llama-3.3-70b-versatile"
+
     def __init__(self):
         self.client = None
         self.enabled = False
-        self.model = settings.ai_model
+        self.model = self._GROQ_MODEL
         self.threshold = settings.ai_threat_threshold
 
         if settings.ai_enabled:
             self.client = AsyncGroq(api_key=settings.groq_api_key)
             self.enabled = True
-            print(f"OK AI Analyzer: Enabled ({settings.ai_provider}/{settings.ai_model})")
+            print(f"OK AI Analyzer: Enabled (groq/{self.model})")
         else:
             print("WARNING  AI Analyzer: Disabled (no API key)")
 
