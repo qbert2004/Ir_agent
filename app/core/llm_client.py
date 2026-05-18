@@ -20,9 +20,11 @@ from app.core.config import settings
 
 logger = logging.getLogger("ir-agent")
 
-MAX_RETRIES = 3
-RETRY_BACKOFF = (1.0, 2.0, 4.0)
-DEFAULT_TIMEOUT = 30.0
+MAX_RETRIES = 2
+RETRY_BACKOFF = (1.0, 2.0)
+DEFAULT_TIMEOUT = 20.0
+# Total time budget for all providers + retries (must fit within agent's 120s)
+LLM_TIME_BUDGET = 90.0
 
 
 # ── Provider base ─────────────────────────────────────────────────────────────
@@ -280,15 +282,30 @@ class LLMClient:
         temperature: float = 0.2,
         max_tokens: int = 1024,
     ) -> str:
-        """Send a chat completion with retry and cross-provider fallback."""
+        """Send a chat completion with retry and cross-provider fallback.
+
+        Uses a time budget so that slow primary providers don't consume all
+        the time and prevent fallback providers from being tried.
+        """
         providers = self._active_providers()
         if not providers:
             raise RuntimeError("No LLM providers configured (set LLM_API_KEY, OPENAI_API_KEY, or OLLAMA_BASE_URL)")
 
         last_error: Exception = RuntimeError("unknown")
+        t0 = time.monotonic()
 
         for provider in providers:
             for attempt in range(MAX_RETRIES):
+                # Check time budget before each attempt
+                elapsed = time.monotonic() - t0
+                remaining = LLM_TIME_BUDGET - elapsed
+                if remaining < 5.0:
+                    logger.warning(
+                        "LLM time budget exhausted (%.1fs used), skipping %s",
+                        elapsed, provider.name,
+                    )
+                    break
+
                 try:
                     result = provider.chat(messages, model, temperature, max_tokens)
                     if provider.name != self._providers[0].name:
@@ -298,8 +315,9 @@ class LLMClient:
                     last_error = e
                     wait = RETRY_BACKOFF[min(attempt, len(RETRY_BACKOFF) - 1)]
                     logger.warning(
-                        "[%s] LLM call failed (attempt %d/%d): %s",
-                        provider.name, attempt + 1, MAX_RETRIES, e,
+                        "[%s] LLM call failed (attempt %d/%d, %.1fs elapsed): %s",
+                        provider.name, attempt + 1, MAX_RETRIES,
+                        time.monotonic() - t0, e,
                     )
                     if attempt < MAX_RETRIES - 1:
                         time.sleep(wait)

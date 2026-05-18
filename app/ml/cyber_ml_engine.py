@@ -542,6 +542,8 @@ class CyberMLEngine:
         Classify a single event as malicious/benign.
 
         This is the core ML classification - NO LLM involved.
+        Uses ML model with sanity-check: if the model predicts malicious but
+        no meaningful indicators are present, the heuristic result overrides.
         """
         features = self._extract_event_features(event)
         feature_names = self._get_feature_names()
@@ -556,6 +558,20 @@ class CyberMLEngine:
 
                 is_malicious = bool(pred == 1)
                 confidence = float(proba[1]) if is_malicious else float(proba[0])
+
+                # Sanity check: if ML says malicious but no meaningful
+                # attack indicators are active, the model is hallucinating —
+                # use heuristic instead.  Only count features that indicate
+                # actual attack behavior, NOT generic event-type flags
+                # (features 0 and 14 fire on common events like 4688/4624).
+                attack_indicator_indices = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 16, 17]
+                indicator_sum = sum(features[i] for i in attack_indicator_indices)
+                # Require at least 2 strong indicators before trusting the ML
+                # prediction. Single indicator (e.g., cmd.exe=LOLBin alone,
+                # lsass.exe=credential process alone) is not enough context.
+                if is_malicious and indicator_sum < 1.5:
+                    # No real indicators found — override with heuristic
+                    return self._heuristic_classify(features, feature_names)
 
                 return ClassificationResult(
                     label="malicious" if is_malicious else "benign",
@@ -597,8 +613,12 @@ class CyberMLEngine:
             float(any(sp in process for sp in self.suspicious_processes)),
             # 3: base64 encoded content
             float("-enc" in cmdline or "base64" in cmdline or "frombase64" in all_text),
-            # 4: LSASS / credential access
-            float("lsass" in all_text or "sekurlsa" in all_text or "procdump" in all_text),
+            # 4: LSASS / credential access (only when another process targets lsass,
+            #    NOT when lsass.exe IS the running process)
+            float(
+                ("lsass" in cmdline or "sekurlsa" in all_text or "procdump" in cmdline)
+                and "lsass" not in process.rsplit("\\", 1)[-1].rsplit("/", 1)[-1]
+            ),
             # 5: PowerShell with bypass flags
             float("powershell" in process and any(f in cmdline for f in ["-enc", "-nop", "bypass", "hidden"])),
             # 6: cmdline length (normalized 0-1, cap at 1000)

@@ -858,6 +858,7 @@ class MLAttackDetector:
         Returns:
             (is_malicious, confidence, reason)
         """
+        _ood_detected = False
         # Base prediction
         if self._loaded and self.model is not None:
             try:
@@ -879,20 +880,23 @@ class MLAttackDetector:
                     # legacy path (handled below) — skip OOD check
                     X_scaled = None
 
-                # Universal OOD guard: all available models were trained on Sysmon-heavy
-                # data where Windows Security EIDs (4000+) appeared in < 0.5% of events.
-                # StandardScaler amplifies those rare binary features to |scaled| > 15,
-                # causing the model to output ≈1.0 for ALL events regardless of content.
-                # Detection: if any scaled feature magnitude exceeds 10.0, the event is
-                # out-of-distribution → fall back to heuristics which handle it correctly.
+                # OOD handling: models were trained on Sysmon-heavy data where
+                # Windows Security EIDs (4000+) appeared in < 0.5% of events.
+                # StandardScaler amplifies those rare binary features to |scaled| > 15.
+                # Instead of rejecting the event entirely, clip the extreme values
+                # so the model can still run.  If the model's output and heuristic
+                # disagree, we blend their scores conservatively.
+                _ood_detected = False
                 if X_scaled is not None:
                     import numpy as _np
                     _ood_max = float(_np.abs(X_scaled).max())
                     if _ood_max > 10.0:
-                        raise ValueError(
-                            f"OOD ({self._model_version}): max |scaled feat| = {_ood_max:.1f}; "
-                            "event is out-of-distribution for this model (Security channel or "
-                            "rare binary feature active) — falling back to heuristics"
+                        _ood_detected = True
+                        X_scaled = _np.clip(X_scaled, -5.0, 5.0)
+                        base_score = float(self.model.predict_proba(X_scaled)[0][1])
+                        logger.debug(
+                            "OOD clipped (%s): max |feat| was %.1f, ML score after clip=%.3f",
+                            self._model_version, _ood_max, base_score,
                         )
                 else:
                     features = self._extract_features(event)
@@ -910,6 +914,15 @@ class MLAttackDetector:
 
         # Advanced indicators
         adv_score, adv_reasons = self._check_advanced_indicators(event)
+
+        # When OOD was detected, blend clipped-ML score with heuristic
+        # to prevent the model from dominating with unreliable predictions.
+        if _ood_detected:
+            features = self._extract_features(event)
+            _, heur_score, heur_reason = self._heuristic_predict(features)
+            # Blend: 25% clipped ML + 75% heuristic (heuristic is more reliable for OOD)
+            base_score = base_score * 0.25 + heur_score * 0.75
+            base_reason = f"ML+heur ({base_score:.0%}): {heur_reason}"
 
         # Combine scores (weighted max)
         final_score = min(max(base_score, adv_score, (base_score + adv_score) * 0.7), 1.0)
