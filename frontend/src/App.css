@@ -1,0 +1,91 @@
+/* Global App Styles */
+
+:root {
+  --app-scrollbar-size: 8px;
+  --app-scrollbar-track: transparent;
+  --app-scrollbar-thumb: #e2e8f0;
+  --app-scrollbar-thumb-hover: #cbd5e1;
+}
+
+:root[data-theme='dark'] {
+  --app-scrollbar-thumb: #27272a;
+  --app-scrollbar-thumb-hover: #3f3f46;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.72) var(--app-scrollbar-track);
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.72) var(--app-scrollbar-track);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(56, 189, 248, 0.72) var(--app-scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: var(--app-scrollbar-size);
+  height: var(--app-scrollbar-size);
+}
+
+*::-webkit-scrollbar-track {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02)),
+    var(--app-scrollbar-track);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--app-scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: var(--app-scrollbar-shadow);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--app-scrollbar-thumb-hover);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Remove default number input spinners */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.app-scrollbar,
+.chat-scrollbar {
+  scrollbar-width: thin;
+}
+
+.app-scrollbar::-webkit-scrollbar,
+.chat-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.app-scrollbar::-webkit-scrollbar-thumb,
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--app-scrollbar-thumb);
+}
+
+.app-scrollbar::-webkit-scrollbar-thumb:hover,
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--app-scrollbar-thumb-hover);
+}

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  --color-primary: #6366f1;
+  --color-dark-bg: #09090b;
+  --color-dark-card: #121212;
+  --color-dark-border: #1f1f1f;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease;
+  }
+}
+
+@layer components {
+  .bento-tile {
+    @apply bg-white dark:bg-[#121212] border border-slate-200/60 dark:border-[#1F1F1F] rounded-2xl transition-all duration-200;
+  }
+
+  .bento-tile:hover {
+    @apply border-indigo-500 -translate-y-0.5 shadow-lg shadow-black/5;
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.slate.200') transparent;
+  }
+
+  .dark .custom-scrollbar {
+    scrollbar-color: theme('colors.zinc.800') transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 dark:bg-zinc-800 rounded-full;
+  }
+}

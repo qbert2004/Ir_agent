@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/qbert2004/Ir_agent/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![Tests](https://img.shields.io/badge/tests-144%20passing-brightgreen)
+![Tests](https://img.shields.io/badge/tests-422%20passing-brightgreen)
 ![ROC-AUC](https://img.shields.io/badge/ROC--AUC-0.9899-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
@@ -222,7 +222,8 @@ python scripts/retrain_enterprise.py
 
 ### Требования
 
-- Python 3.11+ (протестировано на 3.13)
+- Python 3.11+ (протестировано на 3.13, 3.14)
+- Node.js 18+ и npm (для фронтенда)
 - API-ключ провайдера LLM (Google AI / Groq / OpenAI / Ollama)
 - Docker + Docker Compose (опционально)
 
@@ -263,25 +264,81 @@ ENVIRONMENT=development    # отключает auth, включает /docs
 alembic upgrade head
 ```
 
-### 4. Запуск
+### 4. Запуск бэкенда
 
 ```bash
-python app/main.py
-# или
 uvicorn app.main:app --host 0.0.0.0 --port 9000 --reload
 ```
 
+### 5. Запуск фронтенда
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Фронтенд запускается на `http://localhost:5173` и проксирует API-запросы на бэкенд (`http://127.0.0.1:9000`).
+
 | URL | Назначение |
 |---|---|
-| http://localhost:9000/docs | Swagger UI |
-| http://localhost:9000/dashboard | Web-дашборд |
+| http://localhost:5173 | **Фронтенд (SOC Dashboard)** |
+| http://localhost:9000/docs | Swagger UI (бэкенд) |
 | http://localhost:9000/health | Health check |
 
-### 5. Docker
+### 6. Docker
 
 ```bash
 docker-compose up -d
 docker-compose logs -f ir-agent
+```
+
+---
+
+## Frontend (SOC Dashboard)
+
+Веб-интерфейс в директории `frontend/` — React/Vite приложение для работы с IR-Agent.
+
+### Возможности
+
+- **Сканирование логов** — загрузка и анализ 100 демо-событий безопасности
+- **Таблица событий** — статус `Норма` / `Риск` для каждого события
+- **Инциденты** — карточки с затронутыми хостами, MITRE-техниками и рекомендациями
+- **ML-модель** — статус модели, метрики, версия
+- **AI-ассистент** — чат с CyberAgent для расследования инцидентов
+- **Аналитика** — графики и дашборды (Recharts)
+- **Граф сети** — визуализация связей между хостами (Cytoscape)
+- **Экспорт отчётов** — аудиторский отчёт в формате `.doc` (XLSX)
+
+### Стек
+
+React 19 · Vite 7 · Tailwind CSS 4 · Recharts · Cytoscape · Lucide Icons
+
+### Запуск
+
+```bash
+cd frontend
+npm install
+npm run dev          # http://localhost:5173
+```
+
+### Прокси к бэкенду
+
+Vite автоматически проксирует API-запросы на бэкенд:
+
+```
+/ingest/*  → http://127.0.0.1:9000
+/ml/*      → http://127.0.0.1:9000
+/agent/*   → http://127.0.0.1:9000
+/health    → http://127.0.0.1:9000
+```
+
+Фронтенд работает и без бэкенда — с локальным демо-датасетом.
+
+### Сборка для продакшена
+
+```bash
+npm run build        # выход: frontend/dist/
 ```
 
 ---
@@ -440,7 +497,7 @@ python tui.py
 ```bash
 pip install -r requirements-dev.txt
 
-# Все 144 теста
+# Все 422 теста
 pytest tests/ -v
 
 # Один модуль
@@ -451,7 +508,7 @@ pytest tests/test_comprehensive.py -v
 pytest tests/ --cov=app --cov-report=html
 ```
 
-**144 теста** в 10 модулях:
+**422 теста** в 13 модулях:
 
 | Модуль | Тестов | Покрывает |
 |---|---|---|
@@ -475,7 +532,8 @@ Ir_agent/
 ├── app/
 │   ├── main.py                        # FastAPI app, startup, DB init
 │   ├── core/
-│   │   └── config.py                  # Settings (Pydantic, .env)
+│   │   ├── config.py                  # Settings (Pydantic, .env)
+│   │   └── llm_client.py              # Google AI / Groq / OpenAI / Ollama
 │   ├── routers/
 │   │   ├── ingest.py                  # /ingest/* + incident endpoints
 │   │   ├── agent.py                   # /agent/query, /agent/query/stream
@@ -484,40 +542,52 @@ Ir_agent/
 │   ├── agent/
 │   │   ├── core/agent.py              # CyberAgent — ReAct loop
 │   │   └── tools/                     # 11 инструментов агента
-│   │       ├── get_incident.py
-│   │       ├── get_incident_events.py
-│   │       ├── lookup_ioc.py
-│   │       ├── mitre_lookup.py
-│   │       └── ...
 │   ├── services/
 │   │   ├── event_processor.py         # ML pipeline + incident correlation
 │   │   ├── incident_manager.py        # Correlation, timeline, IoC, MITRE
-│   │   ├── agent_service.py           # Agent singleton, 11 tools
-│   │   └── llm_client.py              # Google AI / Groq / OpenAI / Ollama
+│   │   ├── ml_detector.py             # MLAttackDetector (41 feat, production)
+│   │   └── agent_service.py           # Agent singleton, 11 tools
 │   ├── assessment/
 │   │   └── threat_assessment.py       # 4-сигнальный fusion, 7 правил
 │   ├── ml/
-│   │   └── detector.py                # MLAttackDetector (90 признаков)
+│   │   └── cyber_ml_engine.py         # CyberMLEngine (18 feat, legacy)
 │   └── db/
 │       ├── models.py                  # ORM: SecurityEvent, Incident, IoC
 │       ├── event_store.py             # Async CRUD
 │       └── database.py                # SQLAlchemy async engine
+├── frontend/                          # React/Vite SOC Dashboard
+│   ├── src/
+│   │   ├── App.jsx                    # Главный компонент
+│   │   ├── components/                # UI компоненты
+│   │   │   ├── AnalyticsDashboard.jsx # Графики и аналитика
+│   │   │   ├── Chat.jsx              # AI-ассистент
+│   │   │   ├── DataTable.jsx          # Таблица событий
+│   │   │   ├── NetworkGraph.jsx       # Граф сети (Cytoscape)
+│   │   │   ├── FilterPanel.jsx        # Фильтры
+│   │   │   └── ...
+│   │   └── services/api.js           # API клиент
+│   ├── package.json
+│   └── vite.config.js                # Прокси к бэкенду :9000
 ├── models/
-│   └── gradient_boosting_enterprise.pkl  # Enterprise ML (HistGBM, 90 feat.)
-├── datasets/                          # Датасеты для обучения
-│   ├── *_events.json                  # Синтетические (7 источников × 500)
-│   └── real_benign_sysmon.json        # 80k реальных benign событий
+│   └── gradient_boosting_*.pkl        # ML модели
+├── knowledge_base/                    # База знаний для RAG
+│   ├── attack_patterns/               # Паттерны атак
+│   ├── mitre_attack/                  # MITRE ATT&CK данные
+│   └── nist_playbooks/                # NIST IR плейбуки
+├── vector_db/                         # FAISS индексы
 ├── scripts/
-│   ├── retrain_enterprise.py          # Основной скрипт обучения
-│   ├── download_real_datasets.py      # Скачать OTRF + Splunk датасеты
-│   └── generate_enterprise_data.py    # Генерация синтетических данных
-├── tests/                             # 144 теста
+│   ├── retrain_enterprise.py          # Обучение ML
+│   ├── ingest_knowledge.py            # Индексация knowledge base
+│   └── download_real_datasets.py      # Скачать датасеты
+├── tests/                             # 422 теста
 ├── alembic/                           # Миграции БД
-├── tui.py                             # Textual full-screen TUI
+├── tui.py                             # Terminal UI
 ├── cli.py                             # CLI интерфейс
+├── check_all.py                       # Health check (13 проверок)
+├── analyze_ml.py                      # ML диагностика
 ├── Dockerfile
 ├── docker-compose.yml
-├── TRAINING_PLAYBOOK.md               # Руководство по обучению модели
+├── TRAINING_PLAYBOOK.md               # Руководство по обучению
 └── requirements.txt
 ```
 
