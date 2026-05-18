@@ -822,21 +822,30 @@ class MLAttackDetector:
         # --- 12. Known attack tools ---
         _KNOWN_ATTACK_TOOLS = [
             'mimikatz', 'rubeus', 'lazagne', 'bloodhound', 'sharphound',
-            'procdump', 'nanodump', 'pypykatz', 'secretsdump',
-            'impacket', 'responder', 'crackmapexec', 'evil-winrm',
-            'covenant', 'sliver', 'cobalt', 'meterpreter',
+            'nanodump', 'pypykatz', 'secretsdump',
+            'impacket', 'crackmapexec', 'evil-winrm',
+            'covenant', 'sliver', 'meterpreter',
             'sharpup', 'seatbelt', 'winpeas', 'linpeas',
-            'kerbrute', 'hashcat', 'john',
+            'kerbrute', 'hashcat',
             'psexec', 'paexec', 'wmiexec', 'smbexec', 'atexec',
         ]
+        # Also match in process name only (NOT full cmdline to avoid user-path FPs)
+        _KNOWN_ATTACK_TOOLS_PROCESS_ONLY = ['cobalt', 'responder']
         proc_lower = process.rsplit('\\', 1)[-1].rsplit('/', 1)[-1].lower()
-        cmdline_lower = str(event.get('command_line', event.get('CommandLine', ''))).lower()
         if any(tool in proc_lower for tool in _KNOWN_ATTACK_TOOLS):
             score += 0.7
             reasons.append(f"known attack tool: {proc_lower}")
-        elif any(tool in cmdline_lower for tool in _KNOWN_ATTACK_TOOLS):
+        elif any(tool in proc_lower for tool in _KNOWN_ATTACK_TOOLS_PROCESS_ONLY):
             score += 0.6
-            reasons.append(f"attack tool in cmdline")
+            reasons.append(f"known attack tool (process): {proc_lower}")
+        else:
+            # Check cmdline for attack tool invocations — but only match
+            # tool names that appear as standalone tokens, not inside paths
+            cmdline_raw = str(event.get('command_line', event.get('CommandLine', '')))
+            cmdline_tokens = re.split(r'[\s\\/:]+', cmdline_raw.lower())
+            if any(tool in cmdline_tokens for tool in _KNOWN_ATTACK_TOOLS):
+                score += 0.6
+                reasons.append(f"attack tool in cmdline")
 
         return min(score, 1.0), reasons
 
