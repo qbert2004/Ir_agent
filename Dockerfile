@@ -9,9 +9,13 @@ RUN apt-get update && \
 
 # Python deps (cached layer)
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Install torch CPU-only (avoids ~1.5 GB of CUDA libraries — no GPU in container)
+RUN grep -v "^torch" requirements.txt > /tmp/requirements_no_torch.txt && \
+    pip install --no-cache-dir torch==2.12.0 --index-url https://download.pytorch.org/whl/cpu && \
+    pip install --no-cache-dir -r /tmp/requirements_no_torch.txt
 
 # Application code
+COPY cyber_incident_investigator.py .
 COPY app/ app/
 COPY models/ models/
 COPY vector_db/ vector_db/
