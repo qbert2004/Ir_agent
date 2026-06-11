@@ -21,9 +21,13 @@ COPY models/ models/
 COPY vector_db/ vector_db/
 COPY knowledge_base/ knowledge_base/
 
-# Non-root user
-RUN useradd --create-home agent
+# Non-root user — создаём папку для SQLite и передаём права
+RUN useradd --create-home agent && \
+    mkdir -p /app/data && \
+    chown -R agent:agent /app/data
 USER agent
+
+ENV DATABASE_URL=sqlite+aiosqlite:////app/data/ir_agent.db
 
 EXPOSE 9000
 
