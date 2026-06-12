@@ -194,37 +194,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
 .pfill.g{background:var(--green);}
 .pfill.o{background:var(--orange);}
 
-/* ===== COMPARE TAB ===== */
-.cmp2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.ccard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;}
-.ctitle{font-size:13px;font-weight:bold;margin-bottom:3px;}
-.ctitle.ir{color:var(--accent);}
-.ctitle.sq{color:var(--orange);}
-.csub{color:var(--muted);font-size:11px;margin-bottom:12px;}
-.flow{display:flex;align-items:center;gap:5px;flex-wrap:wrap;font-size:11px;margin:10px 0;}
-.fnode{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:4px 9px;}
-.fnode.hi{border-color:var(--accent);color:var(--accent);}
-.fnode.hio{border-color:var(--orange);color:var(--orange);}
-.fa{color:var(--muted);font-size:13px;}
-.codeblk{background:#040810;border:1px solid var(--border);border-radius:5px;
-  padding:10px;font-size:11px;line-height:1.6;overflow-x:auto;white-space:pre;}
-.kw{color:#569cd6;}.fn{color:#dcdcaa;}.str{color:#ce9178;}
-.cmt{color:#6a9955;}.cls{color:#4ec9b0;}.par{color:#9cdcfe;}
-.ctbl{width:100%;border-collapse:collapse;font-size:11px;}
-.ctbl th{text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;
-  letter-spacing:1px;padding:7px;border-bottom:1px solid var(--border);}
-.ctbl td{padding:7px;border-bottom:1px solid rgba(26,45,74,.4);vertical-align:top;}
-.ctbl .asp{color:var(--orange);}
-.ctbl .irc{color:var(--accent);}
-.ctbl .sqc{color:#ff9800;}
-.sbadge2{display:inline-block;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.3);
-  color:var(--green);border-radius:3px;padding:1px 5px;font-size:10px;}
-.dbadge{display:inline-block;background:rgba(255,68,68,.1);border:1px solid rgba(255,68,68,.3);
-  color:var(--red);border-radius:3px;padding:1px 5px;font-size:10px;}
-.insight{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);
-  border-radius:8px;padding:14px;margin-top:14px;}
-.insight-t{color:var(--accent);font-size:12px;font-weight:bold;margin-bottom:7px;}
-.insight-b{color:var(--text);font-size:12px;line-height:1.75;}
 </style>
 </head>
 <body>
@@ -248,7 +217,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   <div class="tab" data-tab="query">💬 Live Query</div>
   <div class="tab" data-tab="tools">🔧 Инструменты</div>
   <div class="tab" data-tab="metrics">📊 Метрики</div>
-  <div class="tab" data-tab="compare">⚖️ Сравнение проектов</div>
 </nav>
 
 <div class="main">
@@ -514,119 +482,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:1
   </div>
 </div>
 
-<!-- ═══════════════════ TAB: COMPARISON ═══════════════════ -->
-<div class="panel" id="panel-compare">
-  <div class="sec">Сравнение: IR-Agent vs SQL Injection Agent (github.com/qbert2004/Sql_injection_code)</div>
-  <div style="color:var(--muted);font-size:12px;margin-bottom:16px;">
-    Оба проекта используют <strong style="color:var(--accent);">одинаковый паттерн вызова агента</strong>:
-    HTTP запрос → FastAPI router → Singleton сервис → Метод агента → Структурированный ответ
-  </div>
-
-  <!-- Flow comparison side by side -->
-  <div class="cmp2" style="margin-bottom:16px;">
-    <div class="ccard">
-      <div class="ctitle ir">🛡️ IR-Agent (этот проект)</div>
-      <div class="csub">Incident Response · ReAct LLM Agent · iterative</div>
-      <div class="flow">
-        <div class="fnode">POST /agent/query</div><div class="fa">→</div>
-        <div class="fnode">AgentService</div><div class="fa">→</div>
-        <div class="fnode hi">aquery(query, session_id)</div><div class="fa">→</div>
-        <div class="fnode hi">CyberAgent.arun()</div><div class="fa">→</div>
-        <div class="fnode">AgentResponse{}</div>
-      </div>
-      <div class="codeblk"><span class="cmt"># app/routers/agent.py</span>
-<span class="kw">@router</span>.post(<span class="str">"/query"</span>)
-<span class="kw">async def</span> <span class="fn">agent_query</span>(<span class="par">req</span>):
-    <span class="kw">return await</span> agent_service.<span class="fn">aquery</span>(
-        <span class="par">req</span>.query, <span class="par">req</span>.session_id
-    )
-
-<span class="cmt"># app/services/agent_service.py</span>
-<span class="kw">async def</span> <span class="fn">aquery</span>(<span class="par">self</span>, query, session_id):
-    <span class="kw">return await</span> <span class="par">self</span>._agent.<span class="fn">arun</span>(
-        query, session_id
-    )
-
-<span class="cmt"># app/agent/core/agent.py</span>
-<span class="kw">async def</span> <span class="fn">arun</span>(<span class="par">self</span>, query, session_id):
-    <span class="kw">return await</span> asyncio.<span class="fn">wait_for</span>(
-        loop.<span class="fn">run_in_executor</span>(<span class="par">None</span>,
-            <span class="par">self</span>.run, query, session_id),
-        timeout=<span class="par">self</span>._timeout
-    )</div>
-    </div>
-    <div class="ccard">
-      <div class="ctitle sq">🔒 SQL Injection Agent</div>
-      <div class="csub">SQLi Detection · 7-Layer Ensemble Pipeline · sequential</div>
-      <div class="flow">
-        <div class="fnode">POST /api/check</div><div class="fa">→</div>
-        <div class="fnode">SQLiDetector</div><div class="fa">→</div>
-        <div class="fnode hio">check(text, source_ip)</div><div class="fa">→</div>
-        <div class="fnode hio">agent.evaluate()</div><div class="fa">→</div>
-        <div class="fnode">DetectionResult{}</div>
-      </div>
-      <div class="codeblk"><span class="cmt"># api_server.py</span>
-<span class="kw">@app</span>.post(<span class="str">"/api/check"</span>)
-<span class="kw">async def</span> <span class="fn">check</span>(<span class="par">payload</span>):
-    <span class="kw">return</span> detector.<span class="fn">check</span>(
-        <span class="par">payload</span>.text, client_ip,
-        endpoint, field
-    )
-
-<span class="cmt"># sql_injection_detector.py</span>
-<span class="kw">def</span> <span class="fn">check</span>(<span class="par">self</span>, text, source_ip, ...):
-    <span class="kw">return</span> <span class="par">self</span>.agent.<span class="fn">evaluate</span>(
-        text, source_ip
-    )
-
-<span class="cmt"># agent.py</span>
-<span class="kw">def</span> <span class="fn">evaluate</span>(<span class="par">self</span>, payload, source_ip):
-    <span class="cmt"># 7-layer sequential pipeline</span>
-    result = <span class="par">self</span>.<span class="fn">_run_pipeline</span>(
-        payload, source_ip
-    )
-    <span class="kw">return</span> result</div>
-    </div>
-  </div>
-
-  <!-- Comparison table -->
-  <div class="card" style="margin-bottom:14px;">
-    <div class="card-t">Детальное сравнение</div>
-    <table class="ctbl">
-      <thead><tr><th>Аспект</th><th>IR-Agent</th><th>SQLi Agent</th><th>Схожесть</th></tr></thead>
-      <tbody>
-        <tr><td class="asp">Фреймворк</td><td class="irc">FastAPI</td><td class="sqc">FastAPI</td><td><span class="sbadge2">✓ одинаково</span></td></tr>
-        <tr><td class="asp">Паттерн сервиса</td><td class="irc">Singleton AgentService</td><td class="sqc">Singleton SQLiDetector</td><td><span class="sbadge2">✓ singleton</span></td></tr>
-        <tr><td class="asp">Точка входа</td><td class="irc">aquery(query, session_id)</td><td class="sqc">evaluate(payload, source_ip)</td><td><span class="sbadge2">✓ один метод</span></td></tr>
-        <tr><td class="asp">Контекст</td><td class="irc">session_id (история)</td><td class="sqc">source_ip (IP-профиль)</td><td><span class="sbadge2">✓ идентификатор</span></td></tr>
-        <tr><td class="asp">Ответ</td><td class="irc">AgentResponse (dict)</td><td class="sqc">DetectionResult (dict)</td><td><span class="sbadge2">✓ структурированный</span></td></tr>
-        <tr><td class="asp">Логика агента</td><td class="irc">ReAct loop (итеративный)</td><td class="sqc">7-layer pipeline (последовательный)</td><td><span class="dbadge">~ разный тип</span></td></tr>
-        <tr><td class="asp">LLM</td><td class="irc">Groq / OpenAI / Ollama</td><td class="sqc">Нет LLM (ML only)</td><td><span class="dbadge">✗ разное</span></td></tr>
-        <tr><td class="asp">ML модель</td><td class="irc">GradientBoosting (42 фичи)</td><td class="sqc">RF + CNN ensemble</td><td><span class="sbadge2">✓ ensemble ML</span></td></tr>
-        <tr><td class="asp">Память</td><td class="irc">Session + Long-term</td><td class="sqc">IPMemory LRU (10k IPs)</td><td><span class="sbadge2">✓ stateful</span></td></tr>
-        <tr><td class="asp">Объяснимость</td><td class="irc">explanation_trace</td><td class="sqc">contributing_factors CEF</td><td><span class="sbadge2">✓ explainable</span></td></tr>
-        <tr><td class="asp">Стриминг</td><td class="irc">NDJSON stream</td><td class="sqc">Нет стриминга</td><td><span class="dbadge">✗ разное</span></td></tr>
-        <tr><td class="asp">Knowledge store</td><td class="irc">FAISS RAG (33 vectors)</td><td class="sqc">Signature DB + SGD incremental</td><td><span class="sbadge2">✓ knowledge store</span></td></tr>
-        <tr><td class="asp">Persistence</td><td class="irc">SQLite + FAISS index</td><td class="sqc">SQLite / Redis (pluggable)</td><td><span class="sbadge2">✓ SQLite default</span></td></tr>
-        <tr><td class="asp">Rate limiting</td><td class="irc">60 req/min</td><td class="sqc">100 req/min</td><td><span class="sbadge2">✓ middleware</span></td></tr>
-        <tr><td class="asp">Auth</td><td class="irc">Bearer Token</td><td class="sqc">Optional API Key</td><td><span class="sbadge2">✓ token-based</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Insight -->
-  <div class="insight">
-    <div class="insight-t">💡 Ключевой вывод — одинаковый паттерн вызова</div>
-    <div class="insight-b">
-      Оба проекта используют <strong style="color:var(--accent);">HTTP → Router → Singleton → Agent.method(input, context_id) → dict</strong><br/><br/>
-      Разница только в <strong>типе pipeline внутри</strong>:<br/>
-      • IR-Agent: <strong style="color:var(--accent);">итеративный ReAct loop</strong> — Thought → Action → Observation × N шагов (LLM-driven)<br/>
-      • SQLi Agent: <strong style="color:var(--orange);">последовательный 7-слойный ensemble</strong> — Normalize → Lexical → ML → Semantic → Decision → Severity → Explain<br/><br/>
-      <strong style="color:var(--green);">Потенциал интеграции:</strong> IR-Agent может вызывать SQLi-агент как инструмент <code style="color:var(--orange);">check_sqli(payload)</code>
-      в своём ReAct loop — когда агент анализирует веб-атаку, он может делегировать проверку SQL-инъекций в специализированный pipeline.
-    </div>
-  </div>
-</div>
 
 </div><!-- /main -->
 
