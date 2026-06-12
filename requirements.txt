@@ -36,6 +36,10 @@ requests==2.34.2
 logtail-python==0.3.4
 python-json-logger==4.1.0
 
+# ─── Windows Collector (start_all_collectors.py) ─────────────────────────────
+pywin32==312       # win32evtlog, win32service, win32serviceutil
+psutil>=5.9.0      # CPU / Memory / Disk / Network / Process monitoring
+
 # ─── Data Processing ─────────────────────────────────────────────────────────
 python-evtx==0.8.1
 beautifulsoup4==4.14.3
